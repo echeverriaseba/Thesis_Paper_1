@@ -1,0 +1,1029 @@
+Date;Sampling;Plot;Treat;Rep;Sub_sample;Weight;Phylum_SubPhylum;Class_SubClass;Order_SubOrder;Family_SubFamily;Genus;Species;Unclassified;Stadium;Weighted_Abundance;Trophic_level;Obs;Taxres_max
+2022-06-10;1;P01;AWD;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;3;NA;NA;Ceratopogoninae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;12;NA;NA;Chironominae
+2022-06-10;1;P01;AWD;1;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;62;NA;NA;Chironominae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;4;NA;NA;Coenagrionidae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;2;NA;Enviado;Dolichopodidae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;21;NA;Algunos individuos dejados en UdG;Hydroglyphus
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Rhantus;suturalis;NA;Larvae;1;NA;"Enviado; Foto 63-64; Comprovar estado";suturalis
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;4;NA;NA;Libellulidae
+2022-06-10;1;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;13;NA;NA;Orthocladiinae
+2022-06-10;1;P01;AWD;1;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;180;NA;NA;Orthocladiinae
+2022-06-10;1;P01;AWD;1;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;"Enviado; Foto 66-67";NA
+2022-06-10;1;P01;AWD;1;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;28;NA;"Algunos individuos dejados en UdG; Foto 65";NA
+2022-06-10;1;P01;AWD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;606;NA;NA;Cyclopoida
+2022-06-10;1;P02;MSD;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;2;NA;NA;clarkii
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;3;NA;NA;Ceratopogoninae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;5;NA;NA;Chironominae
+2022-06-10;1;P02;MSD;1;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;100;NA;NA;Chironominae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;2;NA;NA;Coenagrionidae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;3;NA;NA;nigrolineata
+2022-06-10;1;P02;MSD;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;7;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;1;NA;NA;Dolichopodidae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;43;NA;NA;Hydroglyphus
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;2;NA;NA;Ephydridae
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;7;NA;NA;Libellulidae
+2022-06-10;1;P02;MSD;1;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;1;NA;NA;peregra
+2022-06-10;1;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;8;NA;NA;Orthocladiinae
+2022-06-10;1;P02;MSD;1;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;534;NA;NA;Orthocladiinae
+2022-06-10;1;P02;MSD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;4;NA;NA;acuta
+2022-06-10;1;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;NA;NA
+2022-06-10;1;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;55;NA;NA;NA
+2022-06-10;1;P02;MSD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;105;NA;NA;Cyclopoida
+2022-06-10;1;P03;CON;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;13;NA;NA;Chironominae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;131;NA;NA;Chironominae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;6;NA;NA;Coenagrionidae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;5;NA;NA;nigrolineata
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;3;NA;"Enviado; Foto 75";Culex
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-06-10;1;P03;CON;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;62;NA;"Enviado; Foto 76";Daphniidae/ Moinidae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;4;NA;NA;Dolichopodidae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;31;NA;NA;Hydroglyphus
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;8;NA;NA;Libellulidae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;9;NA;NA;Orthocladiinae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;223;NA;NA;Orthocladiinae
+2022-06-10;1;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-06-10;1;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;39;NA;NA;NA
+2022-06-10;1;P03;CON;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;1325;NA;NA;Cyclopoida
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;3;NA;NA;Ceratopogoninae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;7;NA;NA;Chironominae
+2022-06-10;1;P04;MSD;2;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;54;NA;NA;Chironominae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;4;NA;NA;Coenagrionidae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;4;NA;NA;nigrolineata
+2022-06-10;1;P04;MSD;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;2;NA;NA;Dolichopodidae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;"Enviado; Fotos 72-74";Hydroglyphus
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;44;NA;NA;Hydroglyphus
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;"Enviado; Fotos 69-71";Helochares
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;7;NA;NA;Libellulidae
+2022-06-10;1;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;8;NA;Repetido en la hoja (1+7);Orthocladiinae
+2022-06-10;1;P04;MSD;2;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;288;NA;NA;Orthocladiinae
+2022-06-10;1;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;27;NA;NA;NA
+2022-06-10;1;P04;MSD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;183;NA;NA;Cyclopoida
+2022-06-10;1;P05;AWD;2;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;4;NA;NA;Ceratopogoninae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;6;NA;NA;Chironominae
+2022-06-10;1;P05;AWD;2;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;76;NA;NA;Chironominae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;1;NA;NA;Coenagrionidae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-06-10;1;P05;AWD;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;5;NA;NA;Dolichopodidae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;39;NA;NA;Hydroglyphus
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;3;NA;NA;Ephydridae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;1;NA;NA;Libellulidae
+2022-06-10;1;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;5;NA;NA;Orthocladiinae
+2022-06-10;1;P05;AWD;2;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;238;NA;NA;Orthocladiinae
+2022-06-10;1;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;2;NA;NA;NA
+2022-06-10;1;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 2;NA;2;NA;NA;NA
+2022-06-10;1;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;22;NA;NA;NA
+2022-06-10;1;P05;AWD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;206;NA;NA;Cyclopoida
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-06-10;1;P06;CON;2;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;5;NA;NA;Ceratopogoninae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;4;NA;NA;Ceratopogoninae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;8;NA;NA;Chironominae
+2022-06-10;1;P06;CON;2;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;156;NA;NA;Chironominae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;5;NA;NA;Coenagrionidae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;3;NA;NA;nigrolineata
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;7;NA;NA;Dolichopodidae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;2;NA;NA;Hydroglyphus
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;20;NA;NA;Hydroglyphus
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;1;NA;NA;Ephydridae
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;16;NA;NA;Libellulidae
+2022-06-10;1;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;15;NA;NA;peregra
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;8;NA;NA;Orthocladiinae
+2022-06-10;1;P06;CON;2;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;254;NA;NA;Orthocladiinae
+2022-06-10;1;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;2;NA;NA;acuta
+2022-06-10;1;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-06-10;1;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela peluda;NA;2;NA;"Enviado; Foto 78";NA
+2022-06-10;1;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;6;NA;NA;NA
+2022-06-10;1;P06;CON;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;1212;NA;NA;Cyclopoida
+2022-06-10;1;P07;MSD;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;3;NA;NA;Ceratopogoninae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;7;NA;NA;Chironominae
+2022-06-10;1;P07;MSD;3;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;150;NA;NA;Chironominae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;3;NA;NA;nigrolineata
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;10;NA;NA;Dolichopodidae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;37;NA;NA;Hydroglyphus
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;9;NA;NA;Orthocladiinae
+2022-06-10;1;P07;MSD;3;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;274;NA;NA;Orthocladiinae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-06-10;1;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-06-10;1;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;11;NA;NA;NA
+2022-06-10;1;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;23;NA;NA;NA
+2022-06-10;1;P07;MSD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;207;NA;NA;Cyclopoida
+2022-06-10;1;P08;CON;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;4;NA;NA;clarkii
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;8;NA;NA;Chironominae
+2022-06-10;1;P08;CON;3;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;210;NA;NA;Chironominae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;3;NA;NA;Coenagrionidae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;6;NA;NA;nigrolineata
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;1;NA;NA;Culex
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P08;CON;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;10;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;8;NA;NA;Dolichopodidae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;38;NA;NA;Hydroglyphus
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;1;NA;NA;Ephydridae
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;12;NA;NA;Libellulidae
+2022-06-10;1;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;3;NA;NA;peregra
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;12;NA;NA;Orthocladiinae
+2022-06-10;1;P08;CON;3;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;218;NA;NA;Orthocladiinae
+2022-06-10;1;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;1;NA;NA;acuta
+2022-06-10;1;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;1;NA;NA;carinatus
+2022-06-10;1;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-06-10;1;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;NA;NA
+2022-06-10;1;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 2;NA;1;NA;NA;NA
+2022-06-10;1;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;Ooteca sanguijuelas;NA;1;NA;La foto esta en la tarjeta de la lupa;NA
+2022-06-10;1;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;19;NA;NA;NA
+2022-06-10;1;P08;CON;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;535;NA;NA;Cyclopoida
+2022-06-10;1;P09;AWD;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;3;NA;NA;Ceratopogoninae
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;4;NA;NA;Chironominae
+2022-06-10;1;P09;AWD;3;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;214;NA;NA;Chironominae
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;4;NA;NA;nigrolineata
+2022-06-10;1;P09;AWD;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;8;NA;NA;Dolichopodidae
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;2;NA;"Enviado; Foto 80";Hydroglyphus
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;40;NA;NA;Hydroglyphus
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;2;NA;NA;Libellulidae
+2022-06-10;1;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;3;NA;NA;peregra
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;11;NA;NA;Orthocladiinae
+2022-06-10;1;P09;AWD;3;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;586;NA;NA;Orthocladiinae
+2022-06-10;1;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;2;NA;NA;acuta
+2022-06-10;1;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;2;NA;NA;carinatus
+2022-06-10;1;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;5;NA;NA;Tanypodinae
+2022-06-10;1;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 2;NA;2;NA;"Enviado; Foto 82; No estamos seguros que sea la misma";NA
+2022-06-10;1;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 3;NA;2;NA;"Enviado; Foto 84";NA
+2022-06-10;1;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;"Enviado; Foto 83";NA
+2022-06-10;1;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;18;NA;NA;NA
+2022-06-10;1;P09;AWD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;910;NA;NA;Cyclopoida
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;5;NA;NA;Baetidae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-06-10;1;P10;AWD;4;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;4;NA;NA;Ceratopogoninae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;4;NA;NA;Chironominae
+2022-06-10;1;P10;AWD;4;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;124;NA;NA;Chironominae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;2;NA;NA;Coenagrionidae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P10;AWD;4;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;40;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;3;NA;NA;Dolichopodidae
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;3;NA;NA;Hydroglyphus
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;46;NA;NA;Hydroglyphus
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Rhantus;suturalis;NA;Larvae;2;NA;"Enviado; Foto 93; Llegamos a sF. Colymbetinae; Comprovar estado";suturalis
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;4;NA;NA;Libellulidae
+2022-06-10;1;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;7;NA;NA;peregra
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;4;NA;NA;Orthocladiinae
+2022-06-10;1;P10;AWD;4;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;338;NA;NA;Orthocladiinae
+2022-06-10;1;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;5;NA;NA;acuta
+2022-06-10;1;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;5;NA;NA;Tanypodinae
+2022-06-10;1;P10;AWD;4;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;2;NA;NA;NA
+2022-06-10;1;P10;AWD;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 1;NA;2;NA;"Enviado; Foto 85";NA
+2022-06-10;1;P10;AWD;4;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;37;NA;NA;NA
+2022-06-10;1;P10;AWD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;2106;NA;NA;Cyclopoida
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-06-10;1;P11;MSD;4;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;8;NA;NA;Chironominae
+2022-06-10;1;P11;MSD;4;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;138;NA;NA;Chironominae
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;1;NA;NA;Coenagrionidae
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;9;NA;NA;Dolichopodidae
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;3;NA;En buen estado;Hydroglyphus
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;44;NA;NA;Hydroglyphus
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;1;NA;NA;Ephydridae
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;1;NA;NA;Libellulidae
+2022-06-10;1;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;3;NA;NA;peregra
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;5;NA;NA;Orthocladiinae
+2022-06-10;1;P11;MSD;4;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;252;NA;NA;Orthocladiinae
+2022-06-10;1;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;3;NA;NA;carinatus
+2022-06-10;1;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;7;NA;NA;Tanypodinae
+2022-06-10;1;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;NA;NA
+2022-06-10;1;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 1;NA;2;NA;NA;NA
+2022-06-10;1;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;62;NA;NA;NA
+2022-06-10;1;P11;MSD;4;Y;2;Crustacea;Ostracoda (azul);NA;NA;NA;NA;NA;NA;656;NA;NA;Ostracoda (azul)
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;6;NA;NA;Caenis
+2022-06-10;1;P12;CON;4;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;4;NA;NA;Chironominae
+2022-06-10;1;P12;CON;4;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;108;NA;NA;Chironominae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;7;NA;NA;Coenagrionidae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;3;NA;NA;nigrolineata
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-06-10;1;P12;CON;4;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;9;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;1;NA;NA;Dolichopodidae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;48;NA;NA;Hydroglyphus
+2022-06-10;1;P12;CON;4;N;1;Cnidaria;Hydrozoa;Hydreyueduoida;Hydridae;NA;NA;NA;NA;1;NA;NA;Hydridae
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;5;NA;NA;Libellulidae
+2022-06-10;1;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;1;NA;NA;peregra
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;5;NA;NA;Orthocladiinae
+2022-06-10;1;P12;CON;4;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;298;NA;NA;Orthocladiinae
+2022-06-10;1;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;3;NA;NA;acuta
+2022-06-10;1;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;16;NA;NA;carinatus
+2022-06-10;1;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-06-10;1;P12;CON;4;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;2;NA;NA;NA
+2022-06-10;1;P12;CON;4;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;25;NA;NA;NA
+2022-06-10;1;P12;CON;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;414;NA;NA;Cyclopoida
+2022-06-10;1;P13;MSD;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;5;NA;NA;Ceratopogoninae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;3;NA;NA;Chironominae
+2022-06-10;1;P13;MSD;5;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;194;NA;NA;Chironominae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;6;NA;NA;Coenagrionidae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;6;NA;NA;nigrolineata
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P13;MSD;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;145;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;13;NA;NA;Dolichopodidae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;52;NA;NA;Hydroglyphus
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Rhantus;suturalis;NA;Larvae;1;NA;Enviado;suturalis
+2022-06-10;1;P13;MSD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;17;NA;NA;peregra
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;10;NA;NA;Orthocladiinae
+2022-06-10;1;P13;MSD;5;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;282;NA;NA;Orthocladiinae
+2022-06-10;1;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;4;NA;NA;Tanypodinae
+2022-06-10;1;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Laccophilus sp;NA;1;NA;Enviado;NA
+2022-06-10;1;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;NA;NA
+2022-06-10;1;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Oligoqueto?;NA;1;NA;"Enviado; Foto 115";NA
+2022-06-10;1;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;14;NA;NA;NA
+2022-06-10;1;P13;MSD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;209;NA;NA;Cyclopoida
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;4;NA;NA;Chironominae
+2022-06-10;1;P14;AWD;5;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;126;NA;NA;Chironominae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;4;NA;NA;Coenagrionidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-06-10;1;P14;AWD;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;10;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;2;NA;NA;Dolichopodidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;9;NA;NA;Hydroglyphus
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Libellulidae;NA;NA;NA;NA;2;NA;NA;Libellulidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;10;NA;NA;Orthocladiinae
+2022-06-10;1;P14;AWD;5;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;118;NA;NA;Orthocladiinae
+2022-06-10;1;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;6;NA;NA;acuta
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-06-10;1;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-06-10;1;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 3;NA;1;NA;NA;NA
+2022-06-10;1;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 4;NA;7;NA;"Enviado; Foto 123";NA
+2022-06-10;1;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;2;NA;NA;NA
+2022-06-10;1;P14;AWD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;164;NA;NA;Cyclopoida
+2022-06-10;1;P15;CON;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-06-10;1;P15;CON;5;Y;2;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;102;NA;NA;Chironominae
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;NA;NA;NA;NA;2;NA;NA;Coenagrionidae
+2022-06-10;1;P15;CON;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;40;NA;NA;Daphniidae/ Moinidae
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Dolichopodidae;NA;NA;NA;NA;3;NA;NA;Dolichopodidae
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;11;NA;NA;Hydroglyphus
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Arachnida;Trombidiformes;Hydrachnidae;Hydrachna;NA;NA;NA;1;NA;NA;Hydrachna
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;2;NA;NA;Orthocladiinae
+2022-06-10;1;P15;CON;5;Y;2;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;40;NA;NA;Orthocladiinae
+2022-06-10;1;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-06-10;1;P15;CON;5;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;1;NA;NA;NA
+2022-06-10;1;P15;CON;5;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;8;NA;NA;NA
+2022-06-10;1;P15;CON;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;85;NA;NA;Cyclopoida
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;90;NA;NA;Chironominae
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;1;NA;NA;elegans
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;1;NA;NA;Culex
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;3;NA;NA;Hydroglyphus
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;2;NA;NA;Hydroglyphus
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-07-15;2;P01;AWD;1;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;18;NA;NA;peregra
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;2;NA;NA;Orthocladiinae
+2022-07-15;2;P01;AWD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;58;NA;NA;acuta
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;2;NA;NA;Stratiomyidae
+2022-07-15;2;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;1;NA;NA;pygmaea
+2022-07-15;2;P01;AWD;1;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;5;NA;NA;NA
+2022-07-15;2;P01;AWD;1;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;2;NA;NA;NA
+2022-07-15;2;P01;AWD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;199;NA;NA;Cyclopoida
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;NA;Caenis
+2022-07-15;2;P02;MSD;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;56;NA;NA;Chironominae
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;2;NA;NA;Coenagrion
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;6;NA;NA;elegans
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;3;NA;NA;Anopheles
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;51;NA;NA;Culex
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;13;NA;NA;oryzophilus
+2022-07-15;2;P02;MSD;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;15;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Arachnida;Trombidiformes;Hydrachnidae;Hydrachna;NA;NA;NA;1;NA;NA;Hydrachna
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-07-15;2;P02;MSD;1;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;4;NA;NA;peregra
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;2;NA;NA;sardeus
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;9;NA;NA;Orthocladiinae
+2022-07-15;2;P02;MSD;1;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;346;NA;NA;acuta
+2022-07-15;2;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;24;NA;NA;pygmaea
+2022-07-15;2;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;5;NA;NA;NA
+2022-07-15;2;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;4;NA;NA;NA
+2022-07-15;2;P02;MSD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;483;NA;NA;Cyclopoida
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;2;NA;NA;Baetidae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;3;NA;NA;Caenis
+2022-07-15;2;P03;CON;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;119;NA;NA;Chironominae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;4;NA;"Enviado; Foto 134";Coenagrion
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;58;NA;NA;elegans
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;3;NA;"Enviado; Foto 132,133";graellsii
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;7;NA;NA;nigrolineata
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;3;NA;"Enviados; Foto 136,137";Anopheles
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;4;NA;NA;Culex
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;329;NA;NA;Culex
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;7;NA;Enviado;oryzophilus
+2022-07-15;2;P03;CON;1;Y;2;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;878;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;1;NA;"Enviado; Foto 138; Comprovar estado";Hydaticus
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;1;NA;NA;Hydroglyphus
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;4;NA;NA;Gerris
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;6;NA;NA;Helochares
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;3;NA;Enviado;fonscolombii
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;lefebvrii;NA;NA;1;NA;Enviado;lefebvrii
+2022-07-15;2;P03;CON;1;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;12;NA;NA;peregra
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;18;NA;NA;Orthocladiinae
+2022-07-15;2;P03;CON;1;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;126;NA;NA;acuta
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;4;NA;NA;Tanypodinae
+2022-07-15;2;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;44;NA;NA;pygmaea
+2022-07-15;2;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;4;NA;"Enviado; Foto 140";NA
+2022-07-15;2;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 1;NA;1;NA;NA;NA
+2022-07-15;2;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;Tricoptero 1;NA;1;NA;"Enviado; Foto 139";NA
+2022-07-15;2;P03;CON;1;Y;2;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;478;NA;NA;Cyclopoida
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;5;NA;NA;Chironominae
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;86;NA;NA;Chironominae
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;1;NA;NA;Coenagrion
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;1;NA;NA;elegans
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;99;NA;NA;Culex
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;10;NA;NA;oryzophilus
+2022-07-15;2;P04;MSD;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;3;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;1;NA;Comprovar estado;Hydaticus
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;2;NA;NA;Hydroglyphus
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;5;NA;NA;Orthocladiinae
+2022-07-15;2;P04;MSD;2;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;308;NA;NA;acuta
+2022-07-15;2;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;9;NA;NA;pygmaea
+2022-07-15;2;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;Graphoderus sp;NA;1;NA;"Enviado; Bote 59 (Acilius/ Graphoderus)";NA
+2022-07-15;2;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;6;NA;NA;NA
+2022-07-15;2;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;2;NA;NA;NA
+2022-07-15;2;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;Sanguijuela pequena;NA;1;NA;NA;NA
+2022-07-15;2;P04;MSD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;679;NA;NA;Cyclopoida
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;53;NA;NA;Chironominae
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;20;NA;NA;elegans
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;16;NA;NA;Culex
+2022-07-15;2;P05;AWD;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;12;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;0;NA;Muy deteriorado;Hydaticus
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;5;NA;NA;Hydroglyphus
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;2;NA;NA;Hydroglyphus
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-07-15;2;P05;AWD;2;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;3;NA;NA;peregra
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;1;NA;NA;Orthocladiinae
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;1;NA;NA;Orthocladiinae
+2022-07-15;2;P05;AWD;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;15;NA;NA;acuta
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;Grande, 4cm;Stratiomyidae
+2022-07-15;2;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;11;NA;NA;pygmaea
+2022-07-15;2;P05;AWD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;159;NA;NA;Cyclopoida
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;5;NA;NA;Baetidae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;12;NA;NA;Caenis
+2022-07-15;2;P06;CON;2;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;3;NA;NA;Chironominae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;37;NA;NA;Chironominae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;1;NA;NA;Coenagrion
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;46;NA;"Enviado; Foto 144; Tattoo en cabeza";elegans
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;4;NA;Enviado;nigrolineata
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;4;NA;NA;Culex
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;131;NA;NA;Culex
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;23;NA;NA;oryzophilus
+2022-07-15;2;P06;CON;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;16;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;18;NA;NA;Hydroglyphus
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;12;NA;NA;Gerris
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;3;NA;NA;Helochares
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;3;NA;NA;fonscolombii
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;lefebvrii;NA;NA;0;NA;NA;lefebvrii
+2022-07-15;2;P06;CON;2;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;222;NA;NA;peregra
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;7;NA;Enviado;sardeus
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;1;NA;NA;Orthocladiinae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;2;NA;NA;Orthocladiinae
+2022-07-15;2;P06;CON;2;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;454;NA;NA;acuta
+2022-07-15;2;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;11;NA;NA;carinatus
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Sciomyzidae;NA;NA;NA;NA;1;NA;NA;Sciomyzidae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;7;NA;NA;Tanypodinae
+2022-07-15;2;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;26;NA;NA;pygmaea
+2022-07-15;2;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Coenagrion/ graellsii;NA;1;NA;"Enviado; Foto 145";NA
+2022-07-15;2;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-07-15;2;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;2;NA;NA;NA
+2022-07-15;2;P06;CON;2;Y;2;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;742;NA;NA;Cyclopoida
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-07-15;2;P07;MSD;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;104;NA;NA;Chironominae
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;1;NA;NA;Coenagrion
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;1;NA;NA;elegans
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Aedes;NA;NA;NA;1;NA;NA;Aedes
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;110;NA;NA;Culex
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;12;NA;NA;oryzophilus
+2022-07-15;2;P07;MSD;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;4;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;3;NA;NA;Hydroglyphus
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;2;NA;NA;Helochares
+2022-07-15;2;P07;MSD;3;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;14;NA;NA;peregra
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;3;NA;NA;vittigera
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;9;NA;NA;Orthocladiinae
+2022-07-15;2;P07;MSD;3;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;164;NA;NA;acuta
+2022-07-15;2;P07;MSD;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;2;NA;NA;carinatus
+2022-07-15;2;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;16;NA;NA;pygmaea
+2022-07-15;2;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-07-15;2;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;6;NA;NA;NA
+2022-07-15;2;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;1;NA;NA;NA
+2022-07-15;2;P07;MSD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;231;NA;NA;Cyclopoida
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;5;NA;NA;Caenis
+2022-07-15;2;P08;CON;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;2;NA;NA;clarkii
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;43;NA;NA;Chironominae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;18;NA;NA;elegans
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;"Enviada; Tatoo";graellsii
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;2;NA;NA;nigrolineata
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;2;NA;NA;Culex
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;39;NA;NA;Culex
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;12;NA;NA;oryzophilus
+2022-07-15;2;P08;CON;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;30;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;2;NA;NA;Hydroglyphus
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;10;NA;NA;Gerris
+2022-07-15;2;P08;CON;3;N;1;Cnidaria;Hydrozoa;Hydreyueduoida;Hydridae;NA;NA;NA;NA;4;NA;NA;Hydridae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;4;NA;NA;Helochares
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;6;NA;NA;fonscolombii
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;lefebvrii;NA;NA;1;NA;NA;lefebvrii
+2022-07-15;2;P08;CON;3;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;236;NA;NA;peregra
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;13;NA;"Enviado; Foto 147-150";vittigera
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;Pupa;2;NA;NA;Orthocladiinae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;3;NA;NA;Orthocladiinae
+2022-07-15;2;P08;CON;3;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;388;NA;NA;acuta
+2022-07-15;2;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;35;NA;NA;carinatus
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;6;NA;NA;Tanypodinae
+2022-07-15;2;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;13;NA;NA;pygmaea
+2022-07-15;2;P08;CON;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;429;NA;NA;Cyclopoida
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;22;NA;NA;Chironominae
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;14;NA;NA;Hydroglyphus
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;3;NA;NA;Hydroglyphus
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Ephydridae;NA;NA;NA;NA;1;NA;NA;Ephydridae
+2022-07-15;2;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;52;NA;NA;peregra
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;12;NA;NA;Orthocladiinae
+2022-07-15;2;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;32;NA;NA;acuta
+2022-07-15;2;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;4;NA;NA;carinatus
+2022-07-15;2;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;1;NA;NA;pygmaea
+2022-07-15;2;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;NA;NA
+2022-07-15;2;P09;AWD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;92;NA;NA;Cyclopoida
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;4;NA;NA;Ceratopogoninae
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;5;NA;NA;Ceratopogoninae
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;183;NA;NA;Chironominae
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;2;NA;NA;elegans
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;1;NA;NA;Culex
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;5;NA;NA;Hydroglyphus
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;4;NA;NA;Hydroglyphus
+2022-07-15;2;P10;AWD;4;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;1;NA;NA;Erpobdella
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;2;NA;NA;Helochares
+2022-07-15;2;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;376;NA;NA;peregra
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;10;NA;NA;Orthocladiinae
+2022-07-15;2;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;157;NA;NA;acuta
+2022-07-15;2;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;5;NA;NA;carinatus
+2022-07-15;2;P10;AWD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;5;NA;NA;pygmaea
+2022-07-15;2;P10;AWD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;326;NA;NA;Cyclopoida
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-07-15;2;P11;MSD;4;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;13;NA;NA;Chironominae
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;20;NA;NA;Culex
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;3;NA;NA;oryzophilus
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-07-15;2;P11;MSD;4;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;184;NA;NA;peregra
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;3;NA;NA;vittigera
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;2;NA;NA;Orthocladiinae
+2022-07-15;2;P11;MSD;4;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;574;NA;NA;acuta
+2022-07-15;2;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;55;NA;NA;carinatus
+2022-07-15;2;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;4;NA;NA;pygmaea
+2022-07-15;2;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;NA;NA
+2022-07-15;2;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;1;NA;NA;NA
+2022-07-15;2;P11;MSD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;332;NA;NA;Cyclopoida
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;2;NA;NA;Chironominae
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;23;NA;NA;Chironominae
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;1;NA;NA;Coenagrion
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;24;NA;NA;elegans
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;5;NA;NA;nigrolineata
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;2;NA;NA;Anopheles
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;4;NA;NA;Culex
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;37;NA;NA;Culex
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;20;NA;NA;oryzophilus
+2022-07-15;2;P12;CON;4;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;36;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;6;NA;NA;Hydroglyphus
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Rhantus;suturalis;NA;Adult;1;NA;"Enviado; Olvidado de poner en hoja pero apuntado a lista de enviados";suturalis
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;5;NA;NA;Gerris
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;1;NA;NA;fonscolombii
+2022-07-15;2;P12;CON;4;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;60;NA;NA;peregra
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;12;NA;"Enviado; sin saliente en cabeza";sardeus
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;5;NA;NA;Orthocladiinae
+2022-07-15;2;P12;CON;4;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;698;NA;NA;acuta
+2022-07-15;2;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;93;NA;NA;carinatus
+2022-07-15;2;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;23;NA;NA;pygmaea
+2022-07-15;2;P12;CON;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;652;NA;NA;Cyclopoida
+2022-07-15;2;P13;MSD;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;1;NA;NA;Ceratopogoninae
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;19;NA;NA;Chironominae
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;16;NA;NA;oryzophilus
+2022-07-15;2;P13;MSD;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;1;NA;NA;Hydaticus
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-07-15;2;P13;MSD;5;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;338;NA;NA;peregra
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;13;NA;NA;Orthocladiinae
+2022-07-15;2;P13;MSD;5;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;358;NA;NA;acuta
+2022-07-15;2;P13;MSD;5;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;37;NA;NA;carinatus
+2022-07-15;2;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;4;NA;NA;pygmaea
+2022-07-15;2;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;7;NA;NA;NA
+2022-07-15;2;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 3;NA;1;NA;NA;NA
+2022-07-15;2;P13;MSD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;232;NA;NA;Cyclopoida
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-07-15;2;P14;AWD;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;8;NA;NA;clarkii
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;2;NA;NA;Ceratopogoninae
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;8;NA;NA;Chironominae
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;205;NA;NA;Chironominae
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;5;NA;NA;nigrolineata
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;4;NA;NA;Culex
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;3;NA;NA;oryzophilus
+2022-07-15;2;P14;AWD;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;2;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;2;NA;NA;Hydaticus
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;4;NA;NA;Hydroglyphus
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;3;NA;NA;Hydroglyphus
+2022-07-15;2;P14;AWD;5;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;1;NA;NA;Erpobdella
+2022-07-15;2;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;3;NA;NA;peregra
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;19;NA;NA;Orthocladiinae
+2022-07-15;2;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;123;NA;NA;acuta
+2022-07-15;2;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;4;NA;NA;carinatus
+2022-07-15;2;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;2;NA;NA;pygmaea
+2022-07-15;2;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;3;NA;NA;NA
+2022-07-15;2;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;1;NA;NA;NA
+2022-07-15;2;P14;AWD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;236;NA;NA;Cyclopoida
+2022-07-15;2;P15;CON;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;2;NA;NA;Ceratopogoninae
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;2;NA;NA;Chironominae
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;29;NA;NA;Chironominae
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;9;NA;NA;elegans
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;0;NA;NA;graellsii
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;7;NA;NA;nigrolineata
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;Pupa;6;NA;NA;Culex
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;121;NA;NA;Culex
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;14;NA;NA;oryzophilus
+2022-07-15;2;P15;CON;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;37;NA;NA;Daphniidae/ Moinidae
+2022-07-15;2;P15;CON;5;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;1;NA;NA;Erpobdella
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;2;NA;NA;Gerris
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;1;NA;NA;fonscolombii
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;lefebvrii;NA;NA;0;NA;NA;lefebvrii
+2022-07-15;2;P15;CON;5;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;6;NA;NA;peregra
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;4;NA;NA;vittigera
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;2;NA;NA;sardeus
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;10;NA;NA;Orthocladiinae
+2022-07-15;2;P15;CON;5;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;142;NA;NA;acuta
+2022-07-15;2;P15;CON;5;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;1;NA;NA;carinatus
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;16;NA;NA;Tanypodinae
+2022-07-15;2;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;57;NA;NA;pygmaea
+2022-07-15;2;P15;CON;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 2;NA;1;NA;NA;NA
+2022-07-15;2;P15;CON;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;295;NA;NA;Cyclopoida
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;4;NA;NA;Chironominae
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;2;NA;NA;Culex
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;3;NA;NA;oryzophilus
+2022-08-02;3;P01;AWD;1;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;4;NA;NA;peregra
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-08-02;3;P01;AWD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;7;NA;NA;acuta
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-08-02;3;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;5;NA;NA;pygmaea
+2022-08-02;3;P01;AWD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;91;NA;NA;Cyclopoida
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;2;NA;NA;Baetidae
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;NA;Caenis
+2022-08-02;3;P02;MSD;1;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;13;NA;NA;Chironominae
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;26;NA;NA;elegans
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;6;NA;NA;nigrolineata
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;5;NA;NA;oryzophilus
+2022-08-02;3;P02;MSD;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;5;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;10;NA;NA;sardeus
+2022-08-02;3;P02;MSD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;19;NA;NA;acuta
+2022-08-02;3;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;5;NA;NA;pygmaea
+2022-08-02;3;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-02;3;P02;MSD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;502;NA;NA;Cyclopoida
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;3;NA;NA;Chironominae
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;36;NA;NA;elegans
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;10;NA;NA;graellsii
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;11;NA;NA;Culex
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;9;NA;NA;oryzophilus
+2022-08-02;3;P03;CON;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;18;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;1;NA;NA;Hydroglyphus
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;2;NA;NA;sardeus
+2022-08-02;3;P03;CON;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;85;NA;NA;acuta
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-08-02;3;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;22;NA;NA;pygmaea
+2022-08-02;3;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-08-02;3;P03;CON;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;475;NA;NA;Cyclopoida
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;9;NA;NA;Baetidae
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;3;NA;NA;Caenis
+2022-08-02;3;P04;MSD;2;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;2;NA;NA;clarkii
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;NA;2;NA;NA;Ceratopogoninae
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;21;NA;NA;Chironominae
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;42;NA;NA;elegans
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;9;NA;NA;nigrolineata
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;1;NA;NA;Enochrus
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;8;NA;NA;sardeus
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Orthocladiinae;NA;NA;NA;NA;1;NA;NA;Orthocladiinae
+2022-08-02;3;P04;MSD;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;38;NA;NA;acuta
+2022-08-02;3;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;6;NA;NA;pygmaea
+2022-08-02;3;P04;MSD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;317;NA;NA;Cyclopoida
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;11;NA;NA;Chironominae
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;2;NA;NA;elegans
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;4;NA;NA;oryzophilus
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;1;NA;Enviado;Enochrus
+2022-08-02;3;P05;AWD;2;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;1;NA;NA;peregra
+2022-08-02;3;P05;AWD;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;1;NA;NA;acuta
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-08-02;3;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;3;NA;NA;pygmaea
+2022-08-02;3;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;Erpobdella plana;NA;1;NA;"Enviado; Foto 193,194";NA
+2022-08-02;3;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-02;3;P05;AWD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;142;NA;NA;Cyclopoida
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;4;NA;NA;Chironominae
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;39;NA;NA;elegans
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;11;NA;NA;graellsii
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;8;NA;NA;nigrolineata
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;2;NA;NA;Anopheles
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;6;NA;NA;Culex
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;11;NA;NA;oryzophilus
+2022-08-02;3;P06;CON;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;4;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;1;NA;NA;Enochrus
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;1;NA;NA;fonscolombii
+2022-08-02;3;P06;CON;2;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;86;NA;NA;peregra
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;3;NA;NA;sardeus
+2022-08-02;3;P06;CON;2;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;72;NA;NA;acuta
+2022-08-02;3;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;1;NA;NA;carinatus
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-08-02;3;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;27;NA;NA;pygmaea
+2022-08-02;3;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-02;3;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Sigara dorsalis;NA;1;NA;Enviado;NA
+2022-08-02;3;P06;CON;2;Y;2;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;661;NA;NA;Cyclopoida
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;23;NA;NA;Chironominae
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;33;NA;NA;elegans
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-08-02;3;P07;MSD;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;3;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;12;NA;NA;sardeus
+2022-08-02;3;P07;MSD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;17;NA;NA;acuta
+2022-08-02;3;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;17;NA;NA;pygmaea
+2022-08-02;3;P07;MSD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;257;NA;NA;Cyclopoida
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;2;NA;NA;Baetidae
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;NA;Caenis
+2022-08-02;3;P08;CON;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;8;NA;NA;Chironominae
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;52;NA;NA;elegans
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;9;NA;NA;graellsii
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;7;NA;NA;oryzophilus
+2022-08-02;3;P08;CON;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;15;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P08;CON;3;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;9;NA;"Enviado; Foto 197,198";Erpobdella
+2022-08-02;3;P08;CON;3;N;1;Cnidaria;Hydrozoa;Hydreyueduoida;Hydridae;NA;NA;NA;NA;3;NA;NA;Hydridae
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;3;NA;NA;fonscolombii
+2022-08-02;3;P08;CON;3;Y;2;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;58;NA;NA;peregra
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;3;NA;NA;sardeus
+2022-08-02;3;P08;CON;3;Y;2;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;176;NA;NA;acuta
+2022-08-02;3;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;15;NA;NA;carinatus
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-08-02;3;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;7;NA;NA;pygmaea
+2022-08-02;3;P08;CON;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;716;NA;NA;Cyclopoida
+2022-08-02;3;P09;AWD;3;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Ceratopogoninae;NA;NA;NA;Pupa;1;NA;NA;Ceratopogoninae
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;10;NA;NA;Chironominae
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;3;NA;NA;elegans
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;2;NA;NA;Hydroglyphus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;2;NA;NA;Hydroglyphus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Adult;1;NA;"Enviado; Foto 201,202";Enochrus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;2;NA;NA;Enochrus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;1;NA;NA;Helochares
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;2;NA;NA;fonscolombii
+2022-08-02;3;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;148;NA;NA;peregra
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-08-02;3;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;12;NA;NA;acuta
+2022-08-02;3;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;24;NA;NA;carinatus
+2022-08-02;3;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;2;NA;NA;pygmaea
+2022-08-02;3;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-02;3;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 3;NA;2;NA;NA;NA
+2022-08-02;3;P09;AWD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;139;NA;NA;Cyclopoida
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;8;NA;NA;Chironominae
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;1;NA;NA;elegans
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;11;NA;NA;oryzophilus
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;1;NA;NA;Hydroglyphus
+2022-08-02;3;P10;AWD;4;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;8;NA;NA;Erpobdella
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;3;NA;NA;Enochrus
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Helochares;NA;NA;Larvae;3;NA;NA;Helochares
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Libellulidae;Sympetrum;fonscolombii;NA;NA;1;NA;NA;fonscolombii
+2022-08-02;3;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;96;NA;NA;peregra
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-08-02;3;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;22;NA;NA;acuta
+2022-08-02;3;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;8;NA;Un individuo grande y sin carena;carinatus
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Stratiomyidae;NA;NA;NA;NA;1;NA;NA;Stratiomyidae
+2022-08-02;3;P10;AWD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;12;NA;NA;pygmaea
+2022-08-02;3;P10;AWD;4;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-02;3;P10;AWD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;377;NA;NA;Cyclopoida
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;8;NA;NA;Baetidae
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;3;NA;NA;Caenis
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;25;NA;NA;Chironominae
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;4;NA;NA;nigrolineata
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;5;NA;NA;Culex
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;4;NA;NA;oryzophilus
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydaticus;NA;NA;Larvae;1;NA;NA;Hydaticus
+2022-08-02;3;P11;MSD;4;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;3;NA;NA;Erpobdella
+2022-08-02;3;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;11;NA;NA;peregra
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-08-02;3;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;47;NA;NA;acuta
+2022-08-02;3;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;6;NA;NA;carinatus
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-08-02;3;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;28;NA;NA;pygmaea
+2022-08-02;3;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-08-02;3;P11;MSD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;781;NA;NA;Cyclopoida
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;3;NA;NA;Baetidae
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;NA;Caenis
+2022-08-02;3;P12;CON;4;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;6;NA;NA;Chironominae
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;31;NA;NA;elegans
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;4;NA;NA;graellsii
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;10;NA;NA;Culex
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;12;NA;NA;oryzophilus
+2022-08-02;3;P12;CON;4;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;2;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;3;NA;NA;Gerris
+2022-08-02;3;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;29;NA;NA;peregra
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-02;3;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;69;NA;NA;acuta
+2022-08-02;3;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;15;NA;NA;carinatus
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;2;NA;NA;Tanypodinae
+2022-08-02;3;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;8;NA;NA;pygmaea
+2022-08-02;3;P12;CON;4;N;1;NA;NA;NA;NA;NA;NA;Larva diptero 1;NA;2;NA;NA;NA
+2022-08-02;3;P12;CON;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;358;NA;NA;Cyclopoida
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;NA;Caenis
+2022-08-02;3;P13;MSD;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;2;NA;NA;clarkii
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;3;NA;NA;Chironominae
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;44;NA;NA;elegans
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;5;NA;NA;nigrolineata
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;4;NA;NA;oryzophilus
+2022-08-02;3;P13;MSD;5;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;2;NA;NA;Erpobdella
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;1;NA;NA;Gerris
+2022-08-02;3;P13;MSD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;10;NA;NA;peregra
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;5;NA;NA;sardeus
+2022-08-02;3;P13;MSD;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;19;NA;NA;acuta
+2022-08-02;3;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;9;NA;NA;pygmaea
+2022-08-02;3;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-02;3;P13;MSD;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 1;NA;4;NA;NA;NA
+2022-08-02;3;P13;MSD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;99;NA;NA;Cyclopoida
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;6;NA;NA;Chironominae
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;19;NA;NA;Chironominae
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;1;NA;NA;elegans
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Larvae;2;NA;NA;Hydroglyphus
+2022-08-02;3;P14;AWD;5;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;2;NA;NA;Erpobdella
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Larvae;1;NA;NA;Enochrus
+2022-08-02;3;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;12;NA;NA;peregra
+2022-08-02;3;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;36;NA;NA;acuta
+2022-08-02;3;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;5;NA;NA;pygmaea
+2022-08-02;3;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-02;3;P14;AWD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;78;NA;NA;Cyclopoida
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;6;NA;NA;Chironominae
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;20;NA;NA;elegans
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;3;NA;NA;graellsii
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-08-02;3;P15;CON;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;4;NA;NA;Daphniidae/ Moinidae
+2022-08-02;3;P15;CON;5;N;1;Annelida;Clitellata;Arhynchobdellida;Erpobdellidae;Erpobdella;NA;NA;NA;1;NA;NA;Erpobdella
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Gerridae;Gerris;NA;NA;NA;2;NA;NA;Gerris
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-02;3;P15;CON;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;24;NA;NA;acuta
+2022-08-02;3;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;8;NA;NA;pygmaea
+2022-08-02;3;P15;CON;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;521;NA;NA;Cyclopoida
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;4;NA;NA;graellsii
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;4;NA;NA;Culex
+2022-08-31;4;P01;AWD;1;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;8;NA;NA;sardeus
+2022-08-31;4;P01;AWD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;5;NA;NA;acuta
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-08-31;4;P01;AWD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;29;NA;NA;pygmaea
+2022-08-31;4;P01;AWD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;22;NA;NA;Cyclopoida
+2022-08-31;4;P02;MSD;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;2;NA;NA;Chironominae
+2022-08-31;4;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P02;MSD;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;1;NA;NA;graellsii
+2022-08-31;4;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;3;NA;NA;sardeus
+2022-08-31;4;P02;MSD;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;1;NA;NA;acuta
+2022-08-31;4;P02;MSD;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;6;NA;NA;pygmaea
+2022-08-31;4;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P02;MSD;1;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;6;NA;NA;NA
+2022-08-31;4;P02;MSD;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;72;NA;NA;Cyclopoida
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;1;NA;NA;Coenagrion
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;3;NA;NA;elegans
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;6;NA;NA;sardeus
+2022-08-31;4;P03;CON;1;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;9;NA;NA;acuta
+2022-08-31;4;P03;CON;1;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;11;NA;NA;pygmaea
+2022-08-31;4;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-08-31;4;P03;CON;1;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;2;NA;NA;NA
+2022-08-31;4;P03;CON;1;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;74;NA;NA;Cyclopoida
+2022-08-31;4;P04;MSD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P04;MSD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;1;NA;NA;graellsii
+2022-08-31;4;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;2;NA;NA;sardeus
+2022-08-31;4;P04;MSD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;11;NA;NA;pygmaea
+2022-08-31;4;P04;MSD;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P04;MSD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;87;NA;NA;Cyclopoida
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-08-31;4;P05;AWD;2;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;1;NA;NA;clarkii
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;5;NA;NA;Chironominae
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;8;NA;NA;elegans
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;2;NA;NA;nigrolineata
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;3;NA;NA;Culex
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-08-31;4;P05;AWD;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;10;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-31;4;P05;AWD;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;34;NA;NA;acuta
+2022-08-31;4;P05;AWD;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;35;NA;NA;pygmaea
+2022-08-31;4;P05;AWD;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P05;AWD;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;121;NA;NA;Cyclopoida
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;2;NA;Enviado para ver si se llega a especie;Caenis
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;8;NA;NA;elegans
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P06;CON;2;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;1;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;14;NA;NA;peregra
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-31;4;P06;CON;2;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;5;NA;NA;acuta
+2022-08-31;4;P06;CON;2;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;16;NA;NA;pygmaea
+2022-08-31;4;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P06;CON;2;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;2;NA;NA;NA
+2022-08-31;4;P06;CON;2;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;125;NA;NA;Cyclopoida
+2022-08-31;4;P07;MSD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P07;MSD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;9;NA;NA;elegans
+2022-08-31;4;P07;MSD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P07;MSD;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;2;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-31;4;P07;MSD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;17;NA;NA;acuta
+2022-08-31;4;P07;MSD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;19;NA;NA;pygmaea
+2022-08-31;4;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-31;4;P07;MSD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;NA;NA
+2022-08-31;4;P07;MSD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;107;NA;NA;Cyclopoida
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;6;NA;NA;elegans
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;1;NA;NA;graellsii
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;2;NA;NA;Culex
+2022-08-31;4;P08;CON;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;2;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P08;CON;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;8;NA;NA;peregra
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;7;NA;NA;sardeus
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Diptera;Sciomyzidae;NA;NA;NA;NA;1;NA;NA;Sciomyzidae
+2022-08-31;4;P08;CON;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;17;NA;NA;pygmaea
+2022-08-31;4;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-08-31;4;P08;CON;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;NA;NA
+2022-08-31;4;P08;CON;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;98;NA;NA;Cyclopoida
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;Pupa;1;NA;NA;Chironominae
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;17;NA;NA;elegans
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;12;NA;NA;graellsii
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;2;NA;NA;Anopheles
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;2;NA;NA;Culex
+2022-08-31;4;P09;AWD;3;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;30;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;NA;NA;NA;Larvae;1;NA;Enviado. En la hoja no pone si es adulto o no, hay que mirarlo en el tarrito peque (54);Hydrophilidae
+2022-08-31;4;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;6;NA;NA;peregra
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;2;NA;NA;vittigera
+2022-08-31;4;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;48;NA;NA;acuta
+2022-08-31;4;P09;AWD;3;N;1;Mollusca;Gastropoda;Basommatophora;Planorbidae;Planorbis;carinatus;NA;NA;3;NA;NA;carinatus
+2022-08-31;4;P09;AWD;3;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;53;NA;NA;pygmaea
+2022-08-31;4;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;3;NA;NA;NA
+2022-08-31;4;P09;AWD;3;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero 1;NA;1;NA;NA;NA
+2022-08-31;4;P09;AWD;3;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;342;NA;NA;Cyclopoida
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;3;NA;NA;elegans
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;4;NA;NA;graellsii
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Anopheles;NA;NA;NA;1;NA;NA;Anopheles
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;NA;NA;NA;Larvae;1;NA;NA;Hydrophilidae
+2022-08-31;4;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;18;NA;NA;peregra
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;3;NA;NA;sardeus
+2022-08-31;4;P10;AWD;4;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;16;NA;NA;acuta
+2022-08-31;4;P10;AWD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;13;NA;NA;pygmaea
+2022-08-31;4;P10;AWD;4;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P10;AWD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;86;NA;NA;Cyclopoida
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-08-31;4;P11;MSD;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;11;NA;NA;peregra
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;3;NA;NA;vittigera
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;1;NA;NA;sardeus
+2022-08-31;4;P11;MSD;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;25;NA;NA;pygmaea
+2022-08-31;4;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P11;MSD;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;5;NA;NA;NA
+2022-08-31;4;P11;MSD;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;71;NA;NA;Cyclopoida
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;3;NA;NA;graellsii
+2022-08-31;4;P12;CON;4;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;8;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P12;CON;4;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;9;NA;NA;peregra
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;11;NA;NA;sardeus
+2022-08-31;4;P12;CON;4;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;14;NA;NA;pygmaea
+2022-08-31;4;P12;CON;4;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;1;NA;NA;NA
+2022-08-31;4;P12;CON;4;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;1;NA;NA;NA
+2022-08-31;4;P12;CON;4;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;68;NA;NA;Cyclopoida
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;NA;Baetidae
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-08-31;4;P13;MSD;5;N;1;Crustacea;Malacostraca;Decapoda;Cambaridae;Procambarus;clarkii;NA;NA;3;NA;NA;clarkii
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;0;NA;NA;graellsii
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;1;NA;NA;oryzophilus
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Dytiscidae;Hydroglyphus;NA;NA;Adult;1;NA;NA;Hydroglyphus
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;NA;NA;NA;Larvae;1;NA;Enviado. En la hoja no pone si es adulto o no, hay que mirarlo en el tarrito peque (55);Hydrophilidae
+2022-08-31;4;P13;MSD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;6;NA;NA;peregra
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Mesoveliidae;Mesovelia;vittigera;NA;NA;1;NA;NA;vittigera
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;21;NA;NA;pygmaea
+2022-08-31;4;P13;MSD;5;N;1;Arthropoda;Collembola;NA;NA;NA;NA;NA;NA;108;NA;NA;Collembola
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Ephemeroptera;Baetidae;NA;NA;NA;NA;1;NA;Enviado;Baetidae
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;4;NA;NA;elegans
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;2;NA;NA;graellsii
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;4;NA;NA;nigrolineata
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Curculionidae;Lissorhoptrus;oryzophilus;NA;Adult;2;NA;NA;oryzophilus
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Arachnida;Trombidiformes;Hydrachnidae;Hydrachna;NA;NA;NA;1;NA;NA;Hydrachna
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Coleoptera;Hydrophilidae;Enochrus;NA;NA;Adult;1;NA;Enviado;Enochrus
+2022-08-31;4;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Lymnaeidae;Radix;peregra;NA;NA;1;NA;NA;peregra
+2022-08-31;4;P14;AWD;5;N;1;Mollusca;Gastropoda;Basommatophora;Physidae;Physa;acuta;NA;NA;25;NA;NA;acuta
+2022-08-31;4;P14;AWD;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;17;NA;NA;pygmaea
+2022-08-31;4;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;2;NA;NA;NA
+2022-08-31;4;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;No identificado 3;NA;1;NA;Enviado;NA
+2022-08-31;4;P14;AWD;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;4;NA;NA;NA
+2022-08-31;4;P14;AWD;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;36;NA;NA;Cyclopoida
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Ephemeroptera;Caenidae;Caenis;NA;NA;NA;1;NA;NA;Caenis
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Chironominae;NA;NA;NA;NA;1;NA;NA;Chironominae
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Coenagrion;NA;NA;NA;0;NA;NA;Coenagrion
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;elegans;NA;NA;12;NA;NA;elegans
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Odonata;Coenagrionidae;Ischnura;graellsii;NA;NA;5;NA;NA;graellsii
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Corixinae;Sigara;nigrolineata;NA;NA;1;NA;NA;nigrolineata
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Culicinae;Culex;NA;NA;NA;1;NA;NA;Culex
+2022-08-31;4;P15;CON;5;N;1;Crustacea;Branchiopoda;Cladocera;Daphniidae/ Moinidae;NA;NA;NA;NA;2;NA;NA;Daphniidae/ Moinidae
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Notonectidae;Anisops;sardeus;NA;NA;4;NA;NA;sardeus
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Diptera;Tanypodinae;NA;NA;NA;NA;1;NA;NA;Tanypodinae
+2022-08-31;4;P15;CON;5;N;1;Arthropoda;Insecta;Heteroptera;Veliidae;Microvelia;pygmaea;NA;NA;16;NA;NA;pygmaea
+2022-08-31;4;P15;CON;5;N;1;NA;NA;NA;NA;NA;NA;No identificado 1;NA;4;NA;NA;NA
+2022-08-31;4;P15;CON;5;N;1;NA;NA;NA;NA;NA;NA;Pupa diptero;NA;3;NA;NA;NA
+2022-08-31;4;P15;CON;5;N;1;Crustacea;Copepoda;Cyclopoida;NA;NA;NA;NA;NA;257;NA;NA;Cyclopoida
