@@ -1,0 +1,499 @@
+
+####################################################### Thesis Paper 1 - Macroinvertebrates_Statistics #####################################################
+
+library(dplyr)
+library(glmmTMB)
+library(emmeans)
+library(DHARMa)
+library(AICcmodavg)
+# install.packages("Hmisc")
+library(Hmisc)
+# install.packages("dendextend")
+library(dendextend)
+library(RColorBrewer)
+# install.packages("usdm")
+library(usdm)
+library(ggplot2)
+library(visreg)
+library(car)
+library(DFIT)
+
+##############  1. Preparing base data frames #################
+
+#### 1.1. Working physicochemical data ####
+
+physchem_2022 <- read.csv("data/Other_factors_CERESTRES_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
+physchem_2022$Sampling_date <- as.Date(physchem_2022$Sampling_date)
+
+# To have a single value for each physicochemical variable representing the conditions in which organisms were developed within plots, the average of the three previous
+# physicochemical measurements to the biodiversity samplings is calculated:
+
+## Assigning Sampling, Rep and Treat:
+Sampling <- c("1", "2", "3", "4")
+Treat <- c("AWD", "MSD", "CON", "MSD", "AWD", "CON", "MSD", "CON", "AWD", "AWD", "MSD", "CON", "MSD", "AWD", "CON")
+Rep <- c("1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4", "5", "5", "5")
+
+## Subseting physchem_2022, only considering three Sampling dates previous to each biodiversity samplings.
+## Sampling column indicating to which biodiversity sampling each physicochemical sampling is assigned.
+## Biodiversity sampling date 1: "2022-06-10" -> 3 previous dates: "2022-06-09", "2022-06-02", "2022-05-26"
+## Biodiversity sampling date 2: "2022-07-15" -> 3 previous dates: "2022-07-14", "2022-07-07", "2022-07-05"
+## Biodiversity sampling date 3: "2022-08-02" -> 3 previous dates: "2022-07-29", "2022-07-27", "2022-07-21"
+## Biodiversity sampling date 4: "2022-08-31" -> 3 previous dates: "2022-07-29", "2022-07-27", "2022-07-21"
+
+prev.dates <- c("2022-06-09", "2022-06-02", "2022-05-26", "2022-07-14", "2022-07-07", "2022-07-05", "2022-07-29", "2022-07-27", "2022-07-21", "2022-07-29", "2022-07-27", "2022-07-21")
+sampling.prev <- c("1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4")
+PrevDate_Samp <- data.frame(prev.dates, sampling.prev) # Creates data frame with previous dates to average
+PrevDate_Samp$prev.dates <- as.Date(PrevDate_Samp$prev.dates)
+physchem_avg_2022 <- merge(physchem_2022, PrevDate_Samp, by.x="Sampling_date", by.y="prev.dates") # Assigning sampling.prev values
+colnames(physchem_avg_2022)[colnames(physchem_avg_2022) == "sampling.prev"] <- "Sampling" # Replacing column name "sampling.prev" for "Sampling"
+
+## Creating sampdateID and averaging the three previous dates:
+physchem_avg_2022$sampdateID <- paste0(physchem_avg_2022$Plot, "_" ,physchem_avg_2022$Sampling) # ID to group.by() and summarise(mean)
+
+physchem_avg_2022 <- physchem_avg_2022 %>% 
+                     group_by(sampdateID) %>% 
+                     summarise(Conduct_microS_cm = mean(Conduct_microS_cm, na.rm = TRUE), Temp_10_cm = mean(Temp_10_cm, na.rm = TRUE), pH_soil = mean(pH_soil, na.rm = TRUE), 
+                               Redox_pot = mean(Redox_pot, na.rm = TRUE), Water_temp = mean(Water_temp, na.rm = TRUE), O2_percent = mean(O2_percent, na.rm = TRUE), 
+                               O2_mg_l = mean(O2_mg_l, na.rm = TRUE), Salinity = mean(Salinity, na.rm = TRUE), pH_water = mean(pH_water, na.rm = TRUE), 
+                               across(Plot, ~., .names = "Plot"), across(Treat, ~., .names = "Treat"), 
+                               across(Rep, ~., .names = "Rep"), across(Sampling, ~., .names = "Sampling")) %>% # Keeps previous Plot, Treat, Rep and Sampling data.
+                               filter(row_number() == max(row_number())) # As the across() function triplicates each row (due to takingo Plot, Rep... from each of the three averaged values) this keeps only one row. 
+
+Sampling_date <- c("2022-06-10", "2022-07-15", "2022-08-02", "2022-08-31") # Macroinvertebrate sampling dates
+Sampling <- c("1", "2", "3", "4")
+Sam.Date <- data.frame(Sampling_date, Sampling) # data frame to include "Sampling"
+Sam.Date$Sampling_date <- as.Date(Sam.Date$Sampling_date)
+physchem_avg_2022 <- merge(physchem_avg_2022, Sam.Date, by.x="Sampling", by.y="Sampling") # Assigning Sampling values
+physchem_avg_2022$siteID <- paste0(physchem_avg_2022$Plot, "_", physchem_avg_2022$Sampling, "_", physchem_avg_2022$Treat) # Creates siteID to merge later with Hills_ColOdoHet data frame
+physchem_avg_2022 <- physchem_avg_2022 %>% 
+                     arrange(Sampling_date, Plot) %>% # Sorts by Sampling_date and then by Plot
+                     select(Sampling_date, Sampling, Plot, Treat, Rep, Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, sampdateID, siteID) %>%  # Re-orders.
+                     mutate(across(c(Water_temp, O2_percent, O2_mg_l, Salinity, pH_water), ~ifelse(is.nan(.), NA, .))) # Replaces NaN for NA values.
+
+#### 1.2. Creating base biodiv-physchem data frame ####
+
+Hills_Physchem <- merge(Hills_ColOdoHet, physchem_avg_2022, by = "siteID", all = TRUE)
+Hills_Physchem <- Hills_Physchem %>% 
+                  mutate(across(c(q2.se), ~ifelse(is.nan(.), NA, .))) # Replaces NaN for NA values.
+
+colnames(Hills_Physchem)[colnames(Hills_Physchem) == "Plot.x"] <- "Plot" # Renames ".x" columns
+colnames(Hills_Physchem)[colnames(Hills_Physchem) == "Sampling.x"] <- "Sampling"
+colnames(Hills_Physchem)[colnames(Hills_Physchem) == "Treat.x"] <- "Treat"
+
+Hills_Physchem <- Hills_Physchem[, !(colnames(Hills_Physchem) %in% c("Sampling.y", "Plot.y", "Treat.y"))] # Removes duplicated ".y" columns
+
+Hills_Physchem <- Hills_Physchem %>% 
+                  arrange(Sampling_date, Plot) %>% # Sorts by Sampling_date and then by Plot
+                  select(Sampling_date, Sampling, Plot, Treat, Rep, q0.obs, q0.est, q0.se, q1.obs, q1.est, q1.se, q2.obs, q2.est, q2.se,
+                         Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, sampdateID, siteID)  # Re-orders.
+
+################ 2. STATS ###################
+
+##### 2.1. Data validation ######
+# According to "Analysing the impact of multiple stressors in aquatic biomonitoring data: A ‘cookbook’ with applications in R" - Feld et al., 2016. ##
+
+#### 2.1.1. Outlier analysis ####
+
+summary(Hills_Physchem$Conduct_microS_cm)
+boxplot(Hills_Physchem$Conduct_microS_cm)
+boxplot(Hills_Physchem$Conduct_microS_cm)$out
+max(boxplot(Hills_Physchem$Conduct_microS_cm)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$Conduct_microS_cm)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$Temp_10_cm)
+boxplot(Hills_Physchem$Temp_10_cm)
+boxplot(Hills_Physchem$Temp_10_cm)$out
+max(boxplot(Hills_Physchem$Temp_10_cm)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$Temp_10_cm)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$pH_soil)
+boxplot(Hills_Physchem$pH_soil)
+boxplot(Hills_Physchem$pH_soil)$out
+max(boxplot(Hills_Physchem$pH_soil)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$pH_soil)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$Redox_pot)
+boxplot(Hills_Physchem$Redox_pot)
+boxplot(Hills_Physchem$Redox_pot)$out
+max(boxplot(Hills_Physchem$Redox_pot)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$Redox_pot)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$Water_temp)
+boxplot(Hills_Physchem$Water_temp)
+boxplot(Hills_Physchem$Water_temp)$out
+max(boxplot(Hills_Physchem$Water_temp)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$Water_temp)$out) # prints the minimum outlier value
+## Outliers identified for var: Water_temp - 31.4 and 29.4, I decide to keep them as they are probable values and not results of sampling error.
+
+summary(Hills_Physchem$O2_percent)
+boxplot(Hills_Physchem$O2_percent)
+boxplot(Hills_Physchem$O2_percent)$out
+max(boxplot(Hills_Physchem$O2_percent)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$O2_percent)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$O2_mg_l)
+boxplot(Hills_Physchem$O2_mg_l)
+boxplot(Hills_Physchem$O2_mg_l)$out
+max(boxplot(Hills_Physchem$O2_mg_l)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$O2_mg_l)$out) # prints the minimum outlier value
+
+summary(Hills_Physchem$Salinity)
+boxplot(Hills_Physchem$Salinity)
+boxplot(Hills_Physchem$Salinity)$out
+max(boxplot(Hills_Physchem$Salinity)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$Salinity)$out) # prints the minimum outlier value
+## Outliers identified for var: Salinity - 0.7466667 0.6600000 0.6600000, I decide to keep them as they are probable values and not results of sampling error.
+
+summary(Hills_Physchem$pH_water)
+boxplot(Hills_Physchem$pH_water)
+boxplot(Hills_Physchem$pH_water)$out
+max(boxplot(Hills_Physchem$pH_water)$out) # prints the maximum outlier value 
+min(boxplot(Hills_Physchem$pH_water)$out) # prints the minimum outlier value
+
+#### 2.1.2. Testing correlations ####
+
+#### i) Spearman rank correlation ####
+
+## The Spearman rank correlation is a non-parametric measure of association between two variables. 
+## It assesses the strength and direction of the monotonic relationship (whether it goes up or down) between two variables. 
+
+cor_matrix <- Hills_Physchem %>% 
+              select(q0.obs, q1.obs, q2.obs,
+                     Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, Sampling) %>% 
+              na.omit
+
+corr <- round(cor(cor_matrix, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
+
+pdf("outputs/Plots/BIO/Corr_plot.pdf", width = 11)
+corrplot::corrplot.mixed(corr, order = 'hclust', addrect = 2)
+dev.off()
+
+# Data Histogram (q0)
+hist(Hills_Physchem$q0.obs)
+hist(Hills_Physchem$Conduct_microS_cm)
+hist(Hills_Physchem$Water_temp)
+hist(Hills_Physchem$O2_percent)
+hist(Hills_Physchem$Redox_pot)
+hist(Hills_Physchem$Conduct_microS_cm)
+hist(Hills_Physchem$Salinity)
+
+#### ii) Variance inflation factors (VIF) ####
+
+## Method: Excluing variables with VIF > 8 stepwise, starting with the variable that has the highest VIF
+
+# Step 1: all variables considered
+selected_vars <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected <- (Hills_Physchem[, selected_vars])
+vif(data_selected, na.rm =TRUE) 
+names(data_selected)
+
+
+# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1309.181048)
+selected_vars_2 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_2 <- (Hills_Physchem[, selected_vars_2])
+vif(data_selected_2) 
+
+# Step 2: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
+selected_vars_3 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_3 <- (Hills_Physchem[, selected_vars_3])
+vif(data_selected_3) 
+## Removing O2_mg_l and Temp_10_cm achieves already a set where all variables have VIF < 8.
+
+#### iii) Data Dendrogram ####
+
+# Dend 1: Considering all variables (without VIF removal)
+# Variable clustering:
+similarity="pearson"
+vclust <- varclus(x=as.matrix(data_selected),
+                  similarity=similarity,
+                  type="data.matrix", 
+                  method="complete",
+                  na.action=na.retain,trans="abs")
+dend3 <- as.dendrogram(vclust)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
+dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_1.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Dend 2: Considering only remaining variables after VIF removal
+# Variable clustering:
+similarity="pearson"
+vclust <- varclus(x=as.matrix(data_selected_3),
+                  similarity=similarity,
+                  type="data.matrix", 
+                  method="complete",
+                  na.action=na.retain,trans="abs")
+dend3 <- as.dendrogram(vclust)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
+dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_2.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+#### 2.2. GLMMs ####
+
+Hills_Physchem$Rep_Treat <- paste0(Hills_Physchem$Rep, "_", Hills_Physchem$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
+
+# Testing effect of editing vector types:
+Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)
+Hills_Physchem$Treat <- as.character(Hills_Physchem$Treat)
+
+##### Checking q1 vs Samplings ####
+
+Hills_Physchem_summary_q1 <- Hills_Physchem %>%
+  group_by(Sampling) %>%
+  summarise(mean_q1.obs = mean(q1.obs),se_q1.obs = sd(q1.obs) / sqrt(n()))
+
+q1_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q1.obs))  +
+  geom_point() +
+  geom_point(data = Hills_Physchem_summary_q1, aes(x = Sampling, y = mean_q1.obs), shape = 19, colour = "black", size = 6) 
+
+print(q1_Sampling)
+
+##### Checking q0 vs Samplings ####
+Hills_Physchem_summary_q0 <- Hills_Physchem %>%
+  group_by(Sampling) %>%
+  summarise(mean_q0.obs = mean(q0.obs),se_q0.obs = sd(q0.obs) / sqrt(n()))
+
+q0_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q0.obs)) +
+  geom_point()  +
+  geom_point(data = Hills_Physchem_summary_q0, aes(x = Sampling, y = mean_q0.obs), shape = 19, colour = "black", size = 6) 
+
+print(q0_Sampling)
+
+##### Model 1: q0 - Poisson w/interaction  - Considering all original variables (without correlation analysis)  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep_Treat
+
+glmm.q0.pois1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+
+DHARMa::simulateResiduals(glmm.q0.pois1, plot = T)
+summary(glmm.q0.pois1)
+car::Anova(glmm.q0.pois1)
+performance::r2(glmm.q0.pois1)
+performance::check_collinearity(glmm.q0.pois1)
+performance::check_singularity(glmm.q0.pois1)
+
+##### Model 2: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
+# Random effect: Rep_Treat
+
+glmm.q0.pois2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
+
+DHARMa::simulateResiduals(glmm.q0.pois2, plot = T)
+summary(glmm.q0.pois2)
+car::Anova(glmm.q0.pois2)
+performance::r2(glmm.q0.pois2)
+performance::check_collinearity(glmm.q0.pois2)
+performance::check_singularity(glmm.q0.pois2)
+
+##### Model 3: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
+# Random effect: Rep_Treat
+
+glmm.q0.pois3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Redox_pot + Water_temp +
+                           O2_percent + Salinity  + (1|Rep_Treat) , family = "nbinom2")
+
+DHARMa::simulateResiduals(glmm.q0.pois3, plot = T)
+summary(glmm.q0.pois3)
+car::Anova(glmm.q0.pois3)
+performance::r2(glmm.q0.pois3)
+performance::check_collinearity(glmm.q0.pois3)
+performance::check_singularity(glmm.q0.pois3)
+
+
+# transf sqrt:
+Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs)
+
+##### Model 4: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
+# Random effect: Rep_Treat
+
+glmm.q0.pois4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Redox_pot + 
+                           O2_percent + Salinity  + (1|Rep) , family = "poisson")
+
+DHARMa::simulateResiduals(glmm.q0.pois4, plot = T)
+summary(glmm.q0.pois4)
+car::Anova(glmm.q0.pois4)
+performance::r2(glmm.q0.pois4)
+performance::check_collinearity(glmm.q0.pois4)
+performance::check_singularity(glmm.q0.pois4)
+
+##### Model 5: q1 - Poisson w/interaction  (Sampling^2) - Considering only remaining variables after correlation analysis  ####
+# Dependent variable: q1
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling + Treat*I(Sampling^2)
+# Additional independent variables: Redox_pot + O2_percent + Salinity 
+# Random effect: Rep_Treat
+
+glmm.q1.gaus1 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2)+ Redox_pot + 
+                           O2_percent + Salinity  + (1|Rep) , family = "gaussian")
+
+DHARMa::simulateResiduals(glmm.q1.gaus1, plot = T)
+summary(glmm.q1.gaus1)
+car::Anova(glmm.q1.gaus1)
+performance::r2(glmm.q1.gaus1)
+performance::check_collinearity(glmm.q1.gaus1)
+performance::check_singularity(glmm.q1.gaus1)
+
+##### Model 6: q1 - gaussian w/interaction (Sampling^2) - Considering only remaining variables after correlation analysis  ####
+# Dependent variable: q1
+# "Sampling" variable: Sampling and I(Sampling^2)
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling + Treat*I(Sampling^2)
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep
+
+glmm.q1.gaus2 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2)+ Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + 
+                           (1|Rep) , family = "gaussian")
+
+DHARMa::simulateResiduals(glmm.q1.gaus2, plot = T)
+summary(glmm.q1.gaus2)
+car::Anova(glmm.q1.gaus2)
+performance::r2(glmm.q1.gaus2)
+performance::check_collinearity(glmm.q1.gaus2)
+performance::check_singularity(glmm.q1.gaus2)
+
+##### Model 7: q1 - gaussian w/interaction (Sampling^2) - Removing high correlation variables from model 6  ####
+# Dependent variable: q1
+# Variables rmoved from model 6: Treat*Sampling + Redox_pot + O2_percent 
+# "Sampling" variable: I(Sampling^2)
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling + Treat*I(Sampling^2)
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep
+
+glmm.q1.gaus3 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Treat*Conduct_microS_cm + Treat*Salinity + 
+                           (1|Rep) , family = "gaussian")
+
+DHARMa::simulateResiduals(glmm.q1.gaus3, plot = T)
+summary(glmm.q1.gaus3)
+car::Anova(glmm.q1.gaus3)
+performance::r2(glmm.q1.gaus3)
+performance::check_collinearity(glmm.q1.gaus3)
+performance::check_singularity(glmm.q1.gaus3)
+
+visreg(glmm.q1.gaus3, scale="response")
+
+plot(Hills_Physchem$Treat, Hills_Physchem$q1.obs)
+plot(Hills_Physchem$Salinity, Hills_Physchem$Conduct_microS_cm)
+plot(Hills_Physchem$Water_temp, Hills_Physchem$Temp_10_cm)
+
+
+
+
+
+glm.Sal_Cond <- glm(data = Hills_Physchem, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
+dffits(glm.Sal_Cond)
+plot(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
+identify(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
+
+
+
+
+glm.Sal_Cond_nooutl <- glm(data = Hills_Physchem_nooutliers, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
+dffits(glm.Sal_Cond_nooutl)
+plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
+identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
+
+
+
+
+
+
+
+
+
+
+#### Removing Outliers and running correlation analysis again ####
+
+Hills_Physchem_nooutliers <-  Hills_Physchem %>%  # New data frame with a (1/0) Outliers column, then removing outlier rows
+  mutate(Outliers = 
+           case_when(Salinity > 0.74  | Water_temp > 29 ~ 1,
+            TRUE ~ 0)) %>% 
+            filter(Outliers == 0)
+
+#### ii) Variance inflation factors (VIF) ####
+
+## Method: Excluing variavles with VIF > 8 stepwise, starting with the variable that has the highest VIF
+
+# Step 1: all variables considered
+selected_vars_4 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_4 <- (Hills_Physchem_nooutliers[, selected_vars_4])
+vif(data_selected_4) 
+print(data_selected_4)
+
+# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1309.181048)
+selected_vars_2 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_2 <- (Hills_Physchem[, selected_vars_2])
+vif(data_selected_2) 
+
+# Step 2: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
+selected_vars_3 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_3 <- (Hills_Physchem[, selected_vars_3])
+vif(data_selected_3) 
+## Removing O2_mg_l and Temp_10_cm achieves already a set where all variables have VIF < 8.
+
+
+#### iii) Data Dendrogram ####
+
+# Dend 3: Considering all variables (without VIF removal)
+# Variable clustering:
+similarity="pearson"
+vclust <- varclus(x=as.matrix(data_selected),
+                  similarity=similarity,
+                  type="data.matrix", 
+                  method="complete",
+                  na.action=na.retain,trans="abs")
+dend3 <- as.dendrogram(vclust)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
+dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_1.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Dend 2: Considering only remaining variables after VIF removal
+# Variable clustering:
+similarity="pearson"
+vclust <- varclus(x=as.matrix(data_selected_3),
+                  similarity=similarity,
+                  type="data.matrix", 
+                  method="complete",
+                  na.action=na.retain,trans="abs")
+dend3 <- as.dendrogram(vclust)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
+dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_2.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
