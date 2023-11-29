@@ -1,0 +1,21 @@
+Date,Sampling,Plot,Treat,Rep,siteID,distID,Sub_sample,Weight,Phylum_SubPhylum,Class_SubClass,Order_SubOrder,Family_SubFamily,Genus,Species,Stadium,Unclassified,Trophic_level,Abundance,Weighted_Abundance
+2022-06-10,1,P05,AWD,2,Samp_1Rep_2AWDColeoptera,1AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,2,2
+2022-06-10,1,P07,MSD,3,Samp_1Rep_3MSDColeoptera,1MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,1,1
+2022-07-15,2,P02,MSD,1,Samp_2Rep_1MSDColeoptera,2MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,13,13
+2022-07-15,2,P05,AWD,2,Samp_2Rep_2AWDColeoptera,2AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Adult,,,5,30
+2022-07-15,2,P07,MSD,3,Samp_2Rep_3MSDColeoptera,2MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,12,12
+2022-07-15,2,P07,MSD,3,Samp_2Rep_3MSDColeoptera,2MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Adult,,,3,30
+2022-08-02,3,P02,MSD,1,Samp_3Rep_1MSDColeoptera,3MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,5,5
+2022-08-02,3,P05,AWD,2,Samp_3Rep_2AWDColeoptera,3AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,4,4
+2022-08-02,3,P07,MSD,3,Samp_3Rep_3MSDColeoptera,3MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,2,2
+2022-08-31,4,P05,AWD,2,Samp_4Rep_2AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Curculionidae,,,Adult,,,1,1
+2022-08-31,4,P05,AWD,2,Samp_4Rep_2AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,,,Adult,,,34,30
+2022-07-15,2,P07,MSD,3,Samp_2Rep_3MSDColeoptera,2MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,,,Adult,,,34,30
+2022-07-15,2,P07,MSD,3,Samp_2Rep_3MSDColeoptera,2MSDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,,,,Adult,,,2,2
+2022-06-10,1,P02,MSD,1,Samp_1Rep_1MSDColeoptera,1MSDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Larvae,,,43,43
+2022-06-10,1,P05,AWD,2,Samp_1Rep_2AWDColeoptera,1AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Larvae,,,39,39
+2022-06-10,1,P07,MSD,3,Samp_1Rep_3MSDColeoptera,1MSDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Larvae,,,37,37
+2022-07-15,2,P05,AWD,2,Samp_2Rep_2AWDColeoptera,2AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,Bidessus/ Hydroglyphus,sp,Larvae,,,1,1
+2022-07-15,2,P05,AWD,2,Samp_2Rep_2AWDColeoptera,2AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Dytiscidae,,,Larvae,,,1,1
+2022-07-15,2,P05,AWD,2,Samp_2Rep_2AWDColeoptera,2AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Family_y,,,Larvae,,,,90
+2022-07-15,2,P07,MSD,3,Samp_2Rep_3MSDColeoptera,2MSDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,,,,Larvae,,,55,55
