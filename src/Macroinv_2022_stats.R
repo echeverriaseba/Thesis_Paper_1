@@ -6,16 +6,13 @@ library(glmmTMB)
 library(emmeans)
 library(DHARMa)
 library(AICcmodavg)
-# install.packages("Hmisc")
 library(Hmisc)
-# install.packages("dendextend")
 library(dendextend)
 library(RColorBrewer)
-# install.packages("usdm")
 library(usdm)
 library(ggplot2)
 library(visreg)
-library(car)
+# library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
 
 ##############  1. Preparing base data frames #################
@@ -150,12 +147,20 @@ boxplot(Hills_Physchem$pH_water)$out
 max(boxplot(Hills_Physchem$pH_water)$out) # prints the maximum outlier value 
 min(boxplot(Hills_Physchem$pH_water)$out) # prints the minimum outlier value
 
+## From here onwards tests and models will be evaluated both considering outliers and removing them (suffix: "_nooutliers")
+
+Hills_Physchem_nooutliers <-  Hills_Physchem %>%  # New data frame with a (1/0) Outliers column, then removing outlier rows
+                              mutate(Outliers =case_when(Salinity > 0.74  | Water_temp > 29 ~ 1,TRUE ~ 0)) %>% 
+                              filter(Outliers == 0)
+
 #### 2.1.2. Testing correlations ####
 
 #### i) Spearman rank correlation ####
 
 ## The Spearman rank correlation is a non-parametric measure of association between two variables. 
 ## It assesses the strength and direction of the monotonic relationship (whether it goes up or down) between two variables. 
+
+### Considering outliers:
 
 cor_matrix <- Hills_Physchem %>% 
               select(q0.obs, q1.obs, q2.obs,
@@ -168,36 +173,77 @@ pdf("outputs/Plots/BIO/Corr_plot.pdf", width = 11)
 corrplot::corrplot.mixed(corr, order = 'hclust', addrect = 2)
 dev.off()
 
-# Data Histogram (q0)
+### Removing outliers:
+
+cor_matrix_nooutliers <- Hills_Physchem_nooutliers %>% 
+              select(q0.obs, q1.obs, q2.obs,
+                     Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, Sampling) %>% 
+              na.omit
+
+corr_nooutliers <- round(cor(cor_matrix_nooutliers, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
+
+pdf("outputs/Plots/BIO/Corr_plot_nooutliers.pdf", width = 11)
+corrplot::corrplot.mixed(corr_nooutliers, order = 'hclust', addrect = 2)
+dev.off()
+
+## Comparing corrplots the effect of removing rows with outliers for Water_temp and Salinity can be seen in correlation between other variables, for having discarded as 
+## well data regarding them that was contained in these rows.
+
+# Data Histogram (q0) # Checking each variable distribution (all 9 physicochemical independent variables)
 hist(Hills_Physchem$q0.obs)
+hist(Hills_Physchem_nooutliers$q0.obs)
 hist(Hills_Physchem$Conduct_microS_cm)
-hist(Hills_Physchem$Water_temp)
-hist(Hills_Physchem$O2_percent)
+hist(Hills_Physchem_nooutliers$Conduct_microS_cm)
+hist(Hills_Physchem$Water_temp) # Significant variation
+hist(Hills_Physchem_nooutliers$Water_temp) # Significant variation
+hist(Hills_Physchem$O2_percent) # Significant variation
+hist(Hills_Physchem_nooutliers$O2_percent) # Significant variation
 hist(Hills_Physchem$Redox_pot)
-hist(Hills_Physchem$Conduct_microS_cm)
-hist(Hills_Physchem$Salinity)
+hist(Hills_Physchem_nooutliers$Redox_pot)
+hist(Hills_Physchem$pH_water)
+hist(Hills_Physchem_nooutliers$pH_water)
+hist(Hills_Physchem$Temp_10_cm)
+hist(Hills_Physchem_nooutliers$Temp_10_cm)
+hist(Hills_Physchem$Salinity) # Significant variation
+hist(Hills_Physchem_nooutliers$Salinity) # Significant variation
+hist(Hills_Physchem$pH_soil)
+hist(Hills_Physchem_nooutliers$pH_soil)
+hist(Hills_Physchem$O2_mg_l)
+hist(Hills_Physchem_nooutliers$O2_mg_l)
 
 #### ii) Variance inflation factors (VIF) ####
 
-## Method: Excluing variables with VIF > 8 stepwise, starting with the variable that has the highest VIF
+## Method: Excluding variables with VIF > 8 stepwise, starting with the variable that has the highest VIF
+
+###  Considering outliers:
 
 # Step 1: all variables considered
 selected_vars <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
 data_selected <- (Hills_Physchem[, selected_vars])
-vif(data_selected, na.rm =TRUE) 
-names(data_selected)
-
+vif(data_selected,) 
 
 # Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1309.181048)
 selected_vars_2 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
 data_selected_2 <- (Hills_Physchem[, selected_vars_2])
 vif(data_selected_2) 
 
-# Step 2: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
+# Step 3: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
 selected_vars_3 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
 data_selected_3 <- (Hills_Physchem[, selected_vars_3])
 vif(data_selected_3) 
 ## Removing O2_mg_l and Temp_10_cm achieves already a set where all variables have VIF < 8.
+
+### Removing outliers:
+
+# Step 1: all variables considered
+selected_vars_4 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_4 <- (Hills_Physchem_nooutliers[, selected_vars_4])
+vif(data_selected_4,) 
+
+# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1845.687620)
+selected_vars_5 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_5 <- (Hills_Physchem_nooutliers[, selected_vars_5])
+vif(data_selected_5) 
 
 #### iii) Data Dendrogram ####
 
@@ -245,32 +291,35 @@ dev.off()
 
 Hills_Physchem$Rep_Treat <- paste0(Hills_Physchem$Rep, "_", Hills_Physchem$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
 
-# Testing effect of editing vector types:
-Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)
-Hills_Physchem$Treat <- as.character(Hills_Physchem$Treat)
-
-##### Checking q1 vs Samplings ####
-
-Hills_Physchem_summary_q1 <- Hills_Physchem %>%
-  group_by(Sampling) %>%
-  summarise(mean_q1.obs = mean(q1.obs),se_q1.obs = sd(q1.obs) / sqrt(n()))
-
-q1_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q1.obs))  +
-  geom_point() +
-  geom_point(data = Hills_Physchem_summary_q1, aes(x = Sampling, y = mean_q1.obs), shape = 19, colour = "black", size = 6) 
-
-print(q1_Sampling)
+# Testing effect of editing vector types: # These were a trial to check if changing dataframe structure would impact the GLMMs result. They sopped fitting...
+# Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)   
+# Hills_Physchem$Treat <- as.character(Hills_Physchem$Treat)
 
 ##### Checking q0 vs Samplings ####
+# Testing for linear or quadratic relation
+
 Hills_Physchem_summary_q0 <- Hills_Physchem %>%
-  group_by(Sampling) %>%
-  summarise(mean_q0.obs = mean(q0.obs),se_q0.obs = sd(q0.obs) / sqrt(n()))
+                group_by(Sampling) %>%
+                summarise(mean_q0.obs = mean(q0.obs),se_q0.obs = sd(q0.obs) / sqrt(n()))
 
 q0_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q0.obs)) +
-  geom_point()  +
-  geom_point(data = Hills_Physchem_summary_q0, aes(x = Sampling, y = mean_q0.obs), shape = 19, colour = "black", size = 6) 
+                geom_point()  +
+                geom_point(data = Hills_Physchem_summary_q0, aes(x = Sampling, y = mean_q0.obs), shape = 19, colour = "black", size = 6) 
 
-print(q0_Sampling)
+print(q0_Sampling) # Relation between q0 and Sampling seems to be quadratic, "Treat*I(Sampling^2)" interaction should be tested.
+
+##### Checking q1 vs Samplings ####
+# Testing for linear or quadratic relation
+
+Hills_Physchem_summary_q1 <- Hills_Physchem %>%
+                group_by(Sampling) %>%
+                summarise(mean_q1.obs = mean(q1.obs),se_q1.obs = sd(q1.obs) / sqrt(n()))
+
+q1_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q1.obs))  +
+                geom_point() +
+                geom_point(data = Hills_Physchem_summary_q1, aes(x = Sampling, y = mean_q1.obs), shape = 19, colour = "black", size = 6) 
+
+print(q1_Sampling) # Relation between q1 and Sampling seems to be quadratic, "Treat*I(Sampling^2)" interaction should be tested.
 
 ##### Model 1: q0 - Poisson w/interaction  - Considering all original variables (without correlation analysis)  ####
 # Family: Poisson
@@ -281,6 +330,7 @@ print(q0_Sampling)
 glmm.q0.pois1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois1, plot = T)
 summary(glmm.q0.pois1)
 car::Anova(glmm.q0.pois1)
@@ -297,6 +347,7 @@ performance::check_singularity(glmm.q0.pois1)
 glmm.q0.pois2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois2, plot = T)
 summary(glmm.q0.pois2)
 car::Anova(glmm.q0.pois2)
@@ -304,22 +355,22 @@ performance::r2(glmm.q0.pois2)
 performance::check_collinearity(glmm.q0.pois2)
 performance::check_singularity(glmm.q0.pois2)
 
-##### Model 3: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
-# Family: Poisson
+##### Model 3: q0 - nbinom2 w/interaction  - Considering only remaining variables after correlation analysis  ####
+# Family: nbinom2
 # Interacting independent variables: Treat*Sampling
 # Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
 # Random effect: Rep_Treat
 
-glmm.q0.pois3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Redox_pot + Water_temp +
+glmm.q0.nbinom3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Redox_pot + Water_temp +
                            O2_percent + Salinity  + (1|Rep_Treat) , family = "nbinom2")
 
-DHARMa::simulateResiduals(glmm.q0.pois3, plot = T)
-summary(glmm.q0.pois3)
-car::Anova(glmm.q0.pois3)
-performance::r2(glmm.q0.pois3)
-performance::check_collinearity(glmm.q0.pois3)
-performance::check_singularity(glmm.q0.pois3)
-
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.nbinom3, plot = T)
+summary(glmm.q0.nbinom3)
+car::Anova(glmm.q0.nbinom3)
+performance::r2(glmm.q0.nbinom3)
+performance::check_collinearity(glmm.q0.nbinom3)
+performance::check_singularity(glmm.q0.nbinom3)
 
 # transf sqrt:
 Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs)
@@ -333,6 +384,7 @@ Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs)
 glmm.q0.pois4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Redox_pot + 
                            O2_percent + Salinity  + (1|Rep) , family = "poisson")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois4, plot = T)
 summary(glmm.q0.pois4)
 car::Anova(glmm.q0.pois4)
@@ -350,6 +402,7 @@ performance::check_singularity(glmm.q0.pois4)
 glmm.q1.gaus1 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2)+ Redox_pot + 
                            O2_percent + Salinity  + (1|Rep) , family = "gaussian")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q1.gaus1, plot = T)
 summary(glmm.q1.gaus1)
 car::Anova(glmm.q1.gaus1)
@@ -368,6 +421,7 @@ performance::check_singularity(glmm.q1.gaus1)
 glmm.q1.gaus2 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2)+ Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + 
                            (1|Rep) , family = "gaussian")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q1.gaus2, plot = T)
 summary(glmm.q1.gaus2)
 car::Anova(glmm.q1.gaus2)
@@ -387,14 +441,14 @@ performance::check_singularity(glmm.q1.gaus2)
 glmm.q1.gaus3 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Treat*Conduct_microS_cm + Treat*Salinity + 
                            (1|Rep) , family = "gaussian")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q1.gaus3, plot = T)
 summary(glmm.q1.gaus3)
 car::Anova(glmm.q1.gaus3)
 performance::r2(glmm.q1.gaus3)
 performance::check_collinearity(glmm.q1.gaus3)
 performance::check_singularity(glmm.q1.gaus3)
-
-visreg(glmm.q1.gaus3, scale="response")
+visreg(glmm.q1.gaus3, scale="response") # Plotting conditional residuals
 
 plot(Hills_Physchem$Treat, Hills_Physchem$q1.obs)
 plot(Hills_Physchem$Salinity, Hills_Physchem$Conduct_microS_cm)
@@ -418,21 +472,13 @@ plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 
 
-
-
-
-
-
-
-
-
-#### Removing Outliers and running correlation analysis again ####
+#### 2.b. Second run: Removing outliers ####
+#### Removing Outliers and running correlation analysis again ##
 
 Hills_Physchem_nooutliers <-  Hills_Physchem %>%  # New data frame with a (1/0) Outliers column, then removing outlier rows
-  mutate(Outliers = 
-           case_when(Salinity > 0.74  | Water_temp > 29 ~ 1,
-            TRUE ~ 0)) %>% 
-            filter(Outliers == 0)
+                              mutate(Outliers =
+                              case_when(Salinity > 0.74  | Water_temp > 29 ~ 1,TRUE ~ 0)) %>% 
+                              filter(Outliers == 0)
 
 #### ii) Variance inflation factors (VIF) ####
 

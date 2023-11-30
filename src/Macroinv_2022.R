@@ -1,4 +1,4 @@
-abc
+
 ####################################################### Thesis Paper 1 - Macroinvertebrates #####################################################
 
 library(dplyr)
@@ -14,7 +14,6 @@ library(cowplot)
 library('unikn') 
 library(rsvg)
 library(png)
-
 
 Macroinv_2022 <- read.csv("data/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 
@@ -263,7 +262,7 @@ Macroinv_2022_assign_Species <- Macroinv_2022_assign_Species[order(Macroinv_2022
 
 Macroinv_2022_assign_ALL <- Macroinv_2022_assign_Species %>%
                 group_by(Date, Plot, Rep, Treat, Family_SubFamily, Genus, Species, Unclassified, Stadium) %>%
-                summarize(Weighted_Abundance = sum(Weighted_Abundance)) %>% ungroup() %>%
+                summarise(Weighted_Abundance = sum(Weighted_Abundance)) %>% ungroup() %>%
                 left_join(Macroinv_2022_assign_Species %>% 
                      select(Date, Sampling, Plot, Rep, Treat, Phylum_SubPhylum, Sub_sample, Weight, Class_SubClass, Order_SubOrder, 
                             Family_SubFamily, Genus, Species, Stadium, Unclassified, Trophic_level, Obs), 
@@ -361,7 +360,7 @@ extrar_divmetrics <- function (datafile){
 
 Tax_lev <- Macroinv_2022_assign_ALL %>% 
              group_by(Order_SubOrder) %>% 
-             summarize(Family_SubFamily = length(unique(Family_SubFamily)), Genus = length(unique(Genus)), Species = length(unique(Species)))
+             summarise(Family_SubFamily = length(unique(Family_SubFamily)), Genus = length(unique(Genus)), Species = length(unique(Species)))
 
 ColOdoHet <- subset(Macroinv_2022_assign_ALL, Order_SubOrder %in% c("Coleoptera", "Heteroptera", "Odonata") & (is.na(Stadium) | Stadium != "Adult")) %>%  # Mobile adults out of analysis
              group_by(Sampling, Treat, Plot, Taxres_max) %>% 
@@ -538,14 +537,6 @@ acc_Abundance_2022 <- Abundance_2022 %>% # Creates dataframe with accumulated ab
                       summarise(Abundance = sum(Abundance))
 
 #### 2.6 Plot abundance ####
-
-Hydrophilidae_file <- "data/Icons/Hydrophilidae.svg"
-Hydrophilidae_image <- rsvg_png(Hydrophilidae_file)
-grid.raster(Hydrophilidae_image)
-
-Hydrophilidae_png <- readPNG("data/Icons/Hydrophilidae.png")
-
-Hydrophilidae__txt <- paste(readLines(Hydrophilidae_image), collapse = "\n")
 
 Abundance_2022_plot <- ggplot(acc_Abundance_2022, aes(Treat, Abundance, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
                               geom_point(colour = "black", size = 13) +
