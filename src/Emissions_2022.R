@@ -14,30 +14,30 @@ library(gridExtra)
 
 ############### 1. Create Master_GHG_2022 Dataframe #########################
 
-load("C:/Users/SECHEVERRIA/Documents/R/Chromatography_results/outputs/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections:
+load("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections:  
 
 ## Master_GHG_2022 taking corrected CH4. Original data for N2O and CO2: 
 Emissions_2022 <- select(Emission_rates_w_corrections_2022, Sampling_date, Plot, Treat, Rep, CH4_flux_corrected, N2O_flux_corrected)
 
-Water_level_2022 <- read.csv("data/Piezo_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import water level (piezometer) data:
+Water_level_2022 <- read.csv("data/Other_vars/Piezo_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import water level (piezometer) data:
                     rename(Water_level_piezo = Water_level_cm)  
 
 Master_GHG_2022  <- merge(Emissions_2022, Water_level_2022, by.x = c("Sampling_date", "Treat", "Plot", "Rep"), by.y = c("Date", "Treat", "Plot", "Rep"), all.x= TRUE, all.y = TRUE) %>%  # with all.x= TRUE, all.y = TRUE, the resulting dataframe contains as well dates where either only water level or emissions were recorded.
                         select(Sampling_date, Treat, Plot, Rep, CH4_flux_corrected, N2O_flux_corrected, Water_level_piezo)
 
-Field_sheet_chrom_2022 <- read.csv("C:/Users/SECHEVERRIA/Documents/R/Chromatography_results/data/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Load field sheet 2022:
+Field_sheet_chrom_2022 <- read.csv("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/data/GHG/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Load field sheet 2022:
                           rename(Water_level_piezo = Water_level_cm)
 
 Field_sheet_other_factors_2022 <- Field_sheet_chrom_2022 %>% 
                           group_by(Sampling_date, Plot) %>% 
-                          summarize(Water_level_ruler = mean(Water_level_piezo), Temp_soil = mean(Temp_soil), Rice_cover_prop = mean(Rice_cover_prop), Env_temp_initial = mean(Env_temp_initial), Env_temp_final = mean(Env_temp_final)) # creates dataframe with all factors measured during chromatography campaign dates, besides GHG emissions.
+                          summarise(Water_level_ruler = mean(Water_level_piezo), Temp_soil = mean(Temp_soil), Rice_cover_prop = mean(Rice_cover_prop), Env_temp_initial = mean(Env_temp_initial), Env_temp_final = mean(Env_temp_final)) # creates dataframe with all factors measured during chromatography campaign dates, besides GHG emissions.
 
 #######  Water level correction:
 
 Master_GHG_2022  <- Master_GHG_2022  %>% 
                         left_join(Field_sheet_other_factors_2022, by = c("Sampling_date", "Plot"))
-Master_GHG_2022  <- Master_GHG_2022 [!(Master_GHG_2022 $Plot %in% c("P10","P11", "P12", "P13", "P14", "P15")), ] #Removes Rep 4 and Rep 5
 Master_GHG_2022 $Sampling_date <- as.Date(Master_GHG_2022 $Sampling_date)
+Master_GHG_2022  <- Master_GHG_2022 [!(Master_GHG_2022 $Plot %in% c("P10","P11", "P12", "P13", "P14", "P15")), ] #Removes Rep 4 and Rep 5
 Master_GHG_2022 $Row_Nr <- 1:nrow(Master_GHG_2022 ) # Adding a row number column
 Master_GHG_2022 $Water_level_corr <- NA # add column "Water_level_corr"
 Master_GHG_2022  <- Master_GHG_2022 [, c(13, 1, 2, 3, 4, 5, 6, 7, 8, 14, 9, 10, 11, 12)] # Reorder columns
@@ -55,35 +55,35 @@ Master_GHG_2022  <- Master_GHG_2022 [!(is.na(Master_GHG_2022$CH4_flux_corrected)
 
 ## This "for in loop" works already to apply conditions to the Master_GHG_2022, but it takes time to run:
 
-# for (i in 1:length(Master_GHG_2022 $Row_Nr)) {
-#   current_plot <- Master_GHG_2022 $Plot[i]
-#   current_rep <- Master_GHG_2022 $Rep[i]
-#   neg_piezo_indices <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Plot == current_plot)  
-#   neg_piezo_indices_CON <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Rep == current_rep & Master_GHG_2022 $Treat == "MSD")
-#   closest_neg_index <- ifelse(Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD"), neg_piezo_indices[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices])))], 1) # the ifelse (... , ... , 1) solves the "replacement of length zero" for cases CON / piezo: NA / ruler: 0
-#   closest_neg_index_CON <- neg_piezo_indices_CON[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices_CON])))]
-#   
-#   # Applying conditions for all cases (Opening each ifelse() in different LHS ~ RHS functions):   
-#   
-#   Master_GHG_2022 $Water_level_corr[i] <- case_when(
-#     !is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] == 0 ~ Master_GHG_2022 $Water_level_piezo[i], # a) part I
-#     !is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # a) part II
-#     is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) ~ Master_GHG_2022 $Water_level_piezo[i], # b)
-#     !is.na(Master_GHG_2022 $Water_level_ruler[i]) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # c)
-#     (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_ruler[i], # d.i) part I
-#     (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & !is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index], # d.i) part II
-#     (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_ruler[i], # d.ii) part I
-#     (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & !is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index_CON], # d.ii) part II    
-#     TRUE ~ NA_real_
-#   )
-# }   
+for (i in 1:length(Master_GHG_2022 $Row_Nr)) {
+  current_plot <- Master_GHG_2022 $Plot[i]
+  current_rep <- Master_GHG_2022 $Rep[i]
+  neg_piezo_indices <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Plot == current_plot)
+  neg_piezo_indices_CON <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Rep == current_rep & Master_GHG_2022 $Treat == "MSD")
+  closest_neg_index <- ifelse(Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD"), neg_piezo_indices[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices])))], 1) # the ifelse (... , ... , 1) solves the "replacement of length zero" for cases CON / piezo: NA / ruler: 0
+  closest_neg_index_CON <- neg_piezo_indices_CON[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices_CON])))]
+
+  # Applying conditions for all cases (Opening each ifelse() in different LHS ~ RHS functions):
+
+  Master_GHG_2022 $Water_level_corr[i] <- case_when(
+    !is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] == 0 ~ Master_GHG_2022 $Water_level_piezo[i], # a) part I
+    !is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # a) part II
+    is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) ~ Master_GHG_2022 $Water_level_piezo[i], # b)
+    !is.na(Master_GHG_2022 $Water_level_ruler[i]) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # c)
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_ruler[i], # d.i) part I
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & !is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index], # d.i) part II
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_ruler[i], # d.ii) part I
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & !is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index_CON], # d.ii) part II
+    TRUE ~ NA_real_
+  )
+}
 
 # write_xlsx(Master_GHG_2022 , "outputs/Master_GHG_2022.xlsx")
 
 save(Master_GHG_2022, file = "outputs/Master_GHG_2022.RData")
 
 # Including physicochemical parameters (recorded for water and soils during sampling dates):
-physchem_2022 <- read.csv("data/Other_factors_CERESTRES_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
+physchem_2022 <- read.csv("data/Other_vars/Other_factors_CERESTRES_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 physchem_2022$Sampling_date <- as.Date(physchem_2022$Sampling_date)
 Master_GHG_2022  <- Master_GHG_2022  %>% 
   left_join(physchem_2022, by = c("Sampling_date", "Plot", "Rep", "Treat"))

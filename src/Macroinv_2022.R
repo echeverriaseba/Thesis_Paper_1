@@ -15,7 +15,7 @@ library('unikn')
 library(rsvg)
 library(png)
 
-Macroinv_2022 <- read.csv("data/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
+Macroinv_2022 <- read.csv("data/BIO/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 
 ##############  1. Working initial sampling data #################
 
@@ -513,7 +513,7 @@ ColOdoHet_merged <- merge(ColOdoHet_merged, Sam.Date[, c("Sampling", "Date")], b
 ColOdoHet_merged <- merge(ColOdoHet_merged, Order.taxres_max[, c("Taxres_max", "Order_SubOrder")], by = "Taxres_max", all.x = TRUE) %>% 
                     select(Date, Plot, Treat, Order_SubOrder, Abundance)
 
-Abundance_2022 <- read.csv("data/Macrofauna_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import Macrofauna_2022 data
+Abundance_2022 <- read.csv("data/BIO/Macrofauna_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import Macrofauna_2022 data
                   filter(!(c(Organism == "Pelophylax perezi" & Stadium == "Adult"))) %>% # Removes frog adults (leaving only tadpoles) and rows with empty traps
                   filter(!(c(Type == "Coleoptera" & Stadium == "Adult"))) %>%  # Removes Coleoptera adults
                   filter(!(Type == "Cricket")) %>%  # Removes Crickets 

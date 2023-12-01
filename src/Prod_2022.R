@@ -4,7 +4,7 @@
 library(dplyr)
 library(ggplot2)
 
-Prod_2022 <- read.csv("data/Prod_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>%  # Import Prod_2022 data
+Prod_2022 <- read.csv("data/PROD/Prod_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>%  # Import Prod_2022 data
               subset(Experiment == "Cerestres") 
 
 Prod_2022_means <- Prod_2022 %>% 

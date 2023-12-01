@@ -19,7 +19,7 @@ library(DFIT)
 
 #### 1.1. Working physicochemical data ####
 
-physchem_2022 <- read.csv("data/Other_factors_CERESTRES_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
+physchem_2022 <- read.csv("data/Other_vars/Other_factors_CERESTRES_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 physchem_2022$Sampling_date <- as.Date(physchem_2022$Sampling_date)
 
 # To have a single value for each physicochemical variable representing the conditions in which organisms were developed within plots, the average of the three previous
@@ -213,83 +213,151 @@ hist(Hills_Physchem_nooutliers$O2_mg_l)
 
 #### ii) Variance inflation factors (VIF) ####
 
-## Method: Excluding variables with VIF > 8 stepwise, starting with the variable that has the highest VIF
+### Method: Excluding variables with VIF > 5 stepwise, starting with the variable that has the highest VIF
+### A VIF > 8 is applied inFeld et al., 2016. We lower the threshold as pH_water resulted in High collinearity in posterior tested GLMMs.
 
 ###  Considering outliers:
 
-# Step 1: all variables considered
+# Step 1a: all variables considered
 selected_vars <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
 data_selected <- (Hills_Physchem[, selected_vars])
 vif(data_selected,) 
 
-# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1309.181048)
+# Step 2a: Removing variable with highest VIF (and VIF>5) - O2_mg_l (VIF = 1309.181048)
 selected_vars_2 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
 data_selected_2 <- (Hills_Physchem[, selected_vars_2])
 vif(data_selected_2) 
 
-# Step 3: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
+# Step 3a: Removing next variable with highest VIF (and VIF>5) - Temp_10_cm  (VIF = 15.981256)
 selected_vars_3 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
 data_selected_3 <- (Hills_Physchem[, selected_vars_3])
 vif(data_selected_3) 
-## Removing O2_mg_l and Temp_10_cm achieves already a set where all variables have VIF < 8.
+
+# Step 4a: Removing next variable with highest VIF (and VIF>5) - pH_water  (VIF = 5.385582)
+selected_vars_4 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity')
+data_selected_4 <- (Hills_Physchem[, selected_vars_4])
+vif(data_selected_4) 
+
+## Removing O2_mg_l, Temp_10_cm and pH_water achieves already a set where all variables have VIF < 5.
 
 ### Removing outliers:
 
-# Step 1: all variables considered
-selected_vars_4 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
-data_selected_4 <- (Hills_Physchem_nooutliers[, selected_vars_4])
-vif(data_selected_4,) 
-
-# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1845.687620)
-selected_vars_5 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+# Step 1b: all variables considered
+selected_vars_5 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
 data_selected_5 <- (Hills_Physchem_nooutliers[, selected_vars_5])
-vif(data_selected_5) 
+vif(data_selected_5,) 
+
+# Step 2b: Removing variable with highest VIF (and VIF>5) - O2_mg_l (VIF = 1845.687620)
+selected_vars_6 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_6 <- (Hills_Physchem_nooutliers[, selected_vars_6])
+vif(data_selected_6) 
+
+# Step 3b: Removing next variable with highest VIF (and VIF>5) - Temp_10_cm  (VIF = 21.248961)
+selected_vars_7 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_7 <- (Hills_Physchem_nooutliers[, selected_vars_7])
+vif(data_selected_7) 
+
+# Step 4b Removing next variable with highest VIF (and VIF>5) - pH_water  (VIF = 5.754363)
+selected_vars_8 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity')
+data_selected_8 <- (Hills_Physchem_nooutliers[, selected_vars_8])
+vif(data_selected_8) 
+
+## Removing O2_mg_l, Temp_10_cm and pH_water achieves already a set where all variables have VIF < 5.
 
 #### iii) Data Dendrogram ####
+
+###  Considering outliers:
 
 # Dend 1: Considering all variables (without VIF removal)
 # Variable clustering:
 similarity="pearson"
-vclust <- varclus(x=as.matrix(data_selected),
+vclust_1 <- varclus(x=as.matrix(data_selected),
                   similarity=similarity,
                   type="data.matrix", 
                   method="complete",
                   na.action=na.retain,trans="abs")
-dend3 <- as.dendrogram(vclust)
+dend_1 <- as.dendrogram(vclust_1)
 # Random colors and plot dendrogram:
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector <- brewer.pal(n=8,"Paired")
-dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
-dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
+dend_1 <- color_labels(dend_1, h=1-0.7,col=col_vector)
+dend_1 <- color_branches(dend_1, h=1-0.7,col=col_vector)
 cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_1.pdf",width=7,height=4)
 par(mar=c(5,2,4,17)+0.1)
-plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+plot(dend_1,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
 
 # Dend 2: Considering only remaining variables after VIF removal
 # Variable clustering:
 similarity="pearson"
-vclust <- varclus(x=as.matrix(data_selected_3),
+vclust_2 <- varclus(x=as.matrix(data_selected_4),
                   similarity=similarity,
                   type="data.matrix", 
                   method="complete",
                   na.action=na.retain,trans="abs")
-dend3 <- as.dendrogram(vclust)
+dend_2 <- as.dendrogram(vclust_2)
 # Random colors and plot dendrogram:
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector <- brewer.pal(n=8,"Paired")
-dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
-dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
-cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_2.pdf",width=7,height=4)
+dend_2 <- color_labels(dend_2, h=1-0.7,col=col_vector)
+dend_2 <- color_branches(dend_2, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_2_VIFvarsremoval.pdf",width=7,height=4)
 par(mar=c(5,2,4,17)+0.1)
-plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
+plot(dend_2,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
+
+## Dend 2 (removing variables after the VIF analysis) achieves already that all variables stay a < 0.75 threshold.
+
+###  Removing outliers:
+
+# Dend 3: Considering all variables (without VIF removal)
+# Variable clustering:
+similarity="pearson"
+vclust_3 <- varclus(x=as.matrix(data_selected_5),
+                    similarity=similarity,
+                    type="data.matrix", 
+                    method="complete",
+                    na.action=na.retain,trans="abs")
+dend_3 <- as.dendrogram(vclust_3)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_3 <- color_labels(dend_3, h=1-0.7,col=col_vector)
+dend_3 <- color_branches(dend_3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_3_nooutliers.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Dend 4: Considering only remaining variables after VIF removal
+# Variable clustering:
+similarity="pearson"
+vclust_4 <- varclus(x=as.matrix(data_selected_8),
+                    similarity=similarity,
+                    type="data.matrix", 
+                    method="complete",
+                    na.action=na.retain,trans="abs")
+dend_4 <- as.dendrogram(vclust_4)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_4 <- color_labels(dend_4, h=1-0.7,col=col_vector)
+dend_4 <- color_branches(dend_4, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_4_VIFvarsremoval_nooutliers.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_4,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+## Dend 4 (removing variables after the VIF analysis) achieves already that all variables stay a < 0.75 threshold.
 
 #### 2.2. GLMMs ####
 
 Hills_Physchem$Rep_Treat <- paste0(Hills_Physchem$Rep, "_", Hills_Physchem$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
+Hills_Physchem_nooutliers$Rep_Treat <- paste0(Hills_Physchem_nooutliers$Rep, "_", Hills_Physchem_nooutliers$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
 
 # Testing effect of editing vector types: # These were a trial to check if changing dataframe structure would impact the GLMMs result. They sopped fitting...
 # Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)   
@@ -321,11 +389,13 @@ q1_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q1.obs))  +
 
 print(q1_Sampling) # Relation between q1 and Sampling seems to be quadratic, "Treat*I(Sampling^2)" interaction should be tested.
 
-##### Model 1: q0 - Poisson w/interaction  - Considering all original variables (without correlation analysis)  ####
+##### Model 1: q0 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis)  ####
 # Family: Poisson
 # Interacting independent variables: Treat*Sampling
 # Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
 # Random effect: Rep_Treat
+
+###  Considering outliers:
 
 glmm.q0.pois1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
@@ -338,11 +408,26 @@ performance::r2(glmm.q0.pois1)
 performance::check_collinearity(glmm.q0.pois1)
 performance::check_singularity(glmm.q0.pois1)
 
-##### Model 2: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
+###  Removing outliers:
+
+glmm.q0.pois1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois1.noout, plot = T)
+summary(glmm.q0.pois1.noout)
+car::Anova(glmm.q0.pois1.noout)
+performance::r2(glmm.q0.pois1.noout)
+performance::check_collinearity(glmm.q0.pois1.noout)
+performance::check_singularity(glmm.q0.pois1.noout)
+
+##### Model 2: q0 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis  ####
 # Family: Poisson
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
 # Random effect: Rep_Treat
+
+###  Considering outliers:
 
 glmm.q0.pois2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
@@ -355,34 +440,62 @@ performance::r2(glmm.q0.pois2)
 performance::check_collinearity(glmm.q0.pois2)
 performance::check_singularity(glmm.q0.pois2)
 
-##### Model 3: q0 - nbinom2 w/interaction  - Considering only remaining variables after correlation analysis  ####
-# Family: nbinom2
-# Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
-# Random effect: Rep_Treat
+###  Removing outliers:
 
-glmm.q0.nbinom3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Redox_pot + Water_temp +
-                           O2_percent + Salinity  + (1|Rep_Treat) , family = "nbinom2")
+glmm.q0.pois2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
 
 # Model diagnostics:
-DHARMa::simulateResiduals(glmm.q0.nbinom3, plot = T)
-summary(glmm.q0.nbinom3)
-car::Anova(glmm.q0.nbinom3)
-performance::r2(glmm.q0.nbinom3)
-performance::check_collinearity(glmm.q0.nbinom3)
-performance::check_singularity(glmm.q0.nbinom3)
+DHARMa::simulateResiduals(glmm.q0.pois2.noout, plot = T)
+summary(glmm.q0.pois2.noout)
+car::Anova(glmm.q0.pois2.noout)
+performance::r2(glmm.q0.pois2.noout)
+performance::check_collinearity(glmm.q0.pois2.noout)
+performance::check_singularity(glmm.q0.pois2.noout)
 
-# transf sqrt:
-Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs)
-
-##### Model 4: q0 - Poisson w/interaction  - Considering only remaining variables after correlation analysis  ####
+##### Model 3: q0 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis  ####
 # Family: Poisson
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity + pH_water
-# Random effect: Rep_Treat
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
 
-glmm.q0.pois4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Redox_pot + 
-                           O2_percent + Salinity  + (1|Rep) , family = "poisson")
+###  Considering outliers:
+
+glmm.q0.pois3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois3, plot = T)
+summary(glmm.q0.pois3)
+car::Anova(glmm.q0.pois3)
+performance::r2(glmm.q0.pois3)
+performance::check_collinearity(glmm.q0.pois3)
+performance::check_singularity(glmm.q0.pois3)
+visreg(glmm.q0.pois3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.pois3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + 
+                                 Salinity + (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois3.noout, plot = T)
+summary(glmm.q0.pois3.noout)
+car::Anova(glmm.q0.pois3.noout)
+performance::r2(glmm.q0.pois3.noout)
+performance::check_collinearity(glmm.q0.pois3.noout)
+performance::check_singularity(glmm.q0.pois3.noout)
+visreg(glmm.q0.pois3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 4: q0 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Removing High VIF vars from Model 3  ####
+# Vars removed from Model 3 (High VIF): pH_soil + Redox_pot + Conduct_microS_cm
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling and Treat*I(Sampling^2)
+# Additional independent variables: Conduct_microS_cm + Water_temp + O2_percent + Salinity 
+
+###  Considering outliers:
+
+glmm.q0.pois4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
 
 # Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois4, plot = T)
@@ -391,6 +504,240 @@ car::Anova(glmm.q0.pois4)
 performance::r2(glmm.q0.pois4)
 performance::check_collinearity(glmm.q0.pois4)
 performance::check_singularity(glmm.q0.pois4)
+visreg(glmm.q0.pois4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.pois4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                                 (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois4.noout, plot = T)
+summary(glmm.q0.pois4.noout)
+car::Anova(glmm.q0.pois4.noout)
+performance::r2(glmm.q0.pois4.noout)
+performance::check_collinearity(glmm.q0.pois4.noout)
+performance::check_singularity(glmm.q0.pois4.noout)
+visreg(glmm.q0.pois4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 5: q0 - nbinom2 - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: nbinom2
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q0.nbinom1 <-  glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                              (1|Rep) , family = "nbinom2")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.nbinom1, plot = T)
+summary(glmm.q0.nbinom1)
+car::Anova(glmm.q0.nbinom1)
+performance::r2(glmm.q0.nbinom1)
+performance::check_collinearity(glmm.q0.nbinom1)
+performance::check_singularity(glmm.q0.nbinom1)
+visreg(glmm.q0.nbinom1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.nbinom1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                                   (1|Rep) , family = "nbinom2")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.nbinom1.noout, plot = T)
+summary(glmm.q0.nbinom1.noout)
+car::Anova(glmm.q0.nbinom1.noout)
+performance::r2(glmm.q0.nbinom1)
+performance::check_collinearity(glmm.q0.nbinom1.noout)
+performance::check_singularity(glmm.q0.nbinom1.noout)
+visreg(glmm.q0.nbinom1.noout, scale="response") # Plotting conditional residuals
+
+# # transf sqrt:
+# Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs) # Test
+
+##### Model 6: q0 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q0.gaus1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus1, plot = T)
+summary(glmm.q0.gaus1)
+car::Anova(glmm.q0.gaus1)
+performance::r2(glmm.q0.gaus1)
+performance::check_collinearity(glmm.q0.gaus1)
+performance::check_singularity(glmm.q0.gaus1)
+visreg(glmm.q0.gaus1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus1.noout, plot = T)
+summary(glmm.q0.gaus1.noout)
+car::Anova(glmm.q0.gaus1.noout)
+performance::r2(glmm.q0.gaus1.noout)
+performance::check_collinearity(glmm.q0.gaus1.noout)
+performance::check_singularity(glmm.q0.gaus1.noout)
+visreg(glmm.q0.gaus1.noout, scale="response") # Plotting conditional residuals
+
+##### Model 7: q0 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q0.gaus2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus2, plot = T)
+summary(glmm.q0.gaus2)
+car::Anova(glmm.q0.gaus2)
+performance::r2(glmm.q0.gaus2)
+performance::check_collinearity(glmm.q0.gaus2)
+performance::check_singularity(glmm.q0.gaus2)
+visreg(glmm.q0.gaus2, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus2.noout, plot = T)
+summary(glmm.q0.gaus2.noout)
+car::Anova(glmm.q0.gaus2.noout)
+performance::r2(glmm.q0.gaus2.noout)
+performance::check_collinearity(glmm.q0.gaus2.noout)
+performance::check_singularity(glmm.q0.gaus2.noout)
+visreg(glmm.q0.gaus2.noout, scale="response") # Plotting conditional residuals
+
+##### Model 8: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q0.gaus3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus3, plot = T)
+summary(glmm.q0.gaus3)
+car::Anova(glmm.q0.gaus3)
+performance::r2(glmm.q0.gaus3)
+performance::check_collinearity(glmm.q0.gaus3)
+performance::check_singularity(glmm.q0.gaus3)
+visreg(glmm.q0.gaus3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus3.noout, plot = T)
+summary(glmm.q0.gaus3.noout)
+car::Anova(glmm.q0.gaus3.noout)
+performance::r2(glmm.q0.gaus3.noout)
+performance::check_collinearity(glmm.q0.gaus3.noout)
+performance::check_singularity(glmm.q0.gaus3.noout)
+visreg(glmm.q0.gaus3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 9: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q0.gaus4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus4, plot = T)
+summary(glmm.q0.gaus4)
+car::Anova(glmm.q0.gaus4)
+performance::r2(glmm.q0.gaus4)
+performance::check_collinearity(glmm.q0.gaus4)
+performance::check_singularity(glmm.q0.gaus4)
+visreg(glmm.q0.gaus4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus4.noout, plot = T)
+summary(glmm.q0.gaus4.noout)
+car::Anova(glmm.q0.gaus4.noout)
+performance::r2(glmm.q0.gaus4.noout)
+performance::check_collinearity(glmm.q0.gaus4.noout)
+performance::check_singularity(glmm.q0.gaus4.noout)
+visreg(glmm.q0.gaus4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 10: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 9 ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Water_temp + Salinity
+# Independent variables removed from model 9: Redox_pot 
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+## Mote: If I iterate this model and remove stepwise the highest VIF vars, finally I have to remove all variables, there's never a point without High correlations...
+
+glmm.q0.gaus5 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent + pH_soil + Water_temp + Conduct_microS_cm +
+                             Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus5, plot = T)
+summary(glmm.q0.gaus5)
+car::Anova(glmm.q0.gaus5)
+performance::r2(glmm.q0.gaus5)
+performance::check_collinearity(glmm.q0.gaus5)
+performance::check_singularity(glmm.q0.gaus5)
+visreg(glmm.q0.gaus5, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus5.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus5.noout, plot = T)
+summary(glmm.q0.gaus5.noout)
+car::Anova(glmm.q0.gaus5.noout)
+performance::r2(glmm.q0.gaus5.noout)
+performance::check_collinearity(glmm.q0.gaus5.noout)
+performance::check_singularity(glmm.q0.gaus5.noout)
+visreg(glmm.q0.gaus5.noout, scale="response") # Plotting conditional residuals
+
+
+
+
+
+
+
+
+
 
 ##### Model 5: q1 - Poisson w/interaction  (Sampling^2) - Considering only remaining variables after correlation analysis  ####
 # Dependent variable: q1
@@ -472,74 +819,3 @@ plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 
 
-#### 2.b. Second run: Removing outliers ####
-#### Removing Outliers and running correlation analysis again ##
-
-Hills_Physchem_nooutliers <-  Hills_Physchem %>%  # New data frame with a (1/0) Outliers column, then removing outlier rows
-                              mutate(Outliers =
-                              case_when(Salinity > 0.74  | Water_temp > 29 ~ 1,TRUE ~ 0)) %>% 
-                              filter(Outliers == 0)
-
-#### ii) Variance inflation factors (VIF) ####
-
-## Method: Excluing variavles with VIF > 8 stepwise, starting with the variable that has the highest VIF
-
-# Step 1: all variables considered
-selected_vars_4 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
-data_selected_4 <- (Hills_Physchem_nooutliers[, selected_vars_4])
-vif(data_selected_4) 
-print(data_selected_4)
-
-# Step 2: Removing Variable with highest VIF (and VIF>8) - O2_mg_l (VIF = 1309.181048)
-selected_vars_2 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
-data_selected_2 <- (Hills_Physchem[, selected_vars_2])
-vif(data_selected_2) 
-
-# Step 2: Removing next Variable with highest VIF (and VIF>8) - Temp_10_cm  (VIF = 15.981256)
-selected_vars_3 <- c('Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
-data_selected_3 <- (Hills_Physchem[, selected_vars_3])
-vif(data_selected_3) 
-## Removing O2_mg_l and Temp_10_cm achieves already a set where all variables have VIF < 8.
-
-
-#### iii) Data Dendrogram ####
-
-# Dend 3: Considering all variables (without VIF removal)
-# Variable clustering:
-similarity="pearson"
-vclust <- varclus(x=as.matrix(data_selected),
-                  similarity=similarity,
-                  type="data.matrix", 
-                  method="complete",
-                  na.action=na.retain,trans="abs")
-dend3 <- as.dendrogram(vclust)
-# Random colors and plot dendrogram:
-qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- brewer.pal(n=8,"Paired")
-dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
-dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
-cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_1.pdf",width=7,height=4)
-par(mar=c(5,2,4,17)+0.1)
-plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
-axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
-dev.off()
-
-# Dend 2: Considering only remaining variables after VIF removal
-# Variable clustering:
-similarity="pearson"
-vclust <- varclus(x=as.matrix(data_selected_3),
-                  similarity=similarity,
-                  type="data.matrix", 
-                  method="complete",
-                  na.action=na.retain,trans="abs")
-dend3 <- as.dendrogram(vclust)
-# Random colors and plot dendrogram:
-qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- brewer.pal(n=8,"Paired")
-dend3 <- color_labels(dend3, h=1-0.7,col=col_vector)
-dend3 <- color_branches(dend3, h=1-0.7,col=col_vector)
-cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_2.pdf",width=7,height=4)
-par(mar=c(5,2,4,17)+0.1)
-plot(dend3,horiz = TRUE,xlab="",axes = FALSE)
-axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
-dev.off()
