@@ -197,7 +197,7 @@ Avg_Master_GHG_2022_no_NA <- Master_GHG_2022_no_NA %>%
 CH4_flux_C <- CH4_flux_C +
                       geom_line(data = Avg_Master_GHG_2022_no_NA, aes(x = Sampling_date, y = CH4_flux_corrected, group = Treat))
 
-print(CH4_flux_C)
+print(CH4_flux_C) # CH4 emissions with plt rates in dotted lines
 
 CH4_water_C <- ggplot(CH4_melted_Avged_Master_GHG_2022, aes(x = Sampling_date, color = Treat, linetype = variable)) +
                     geom_line(aes(y = value, linetype = "avg_Water_level_corr", color = Treat),
@@ -218,13 +218,100 @@ CH4_water_C <- ggplot(CH4_melted_Avged_Master_GHG_2022, aes(x = Sampling_date, c
                           plot.margin = unit(c(0, 1, 1, 1), "lines")) +
                     scale_x_date(limits = c(as.Date("2022-05-15"), as.Date("2022-10-01")))
 
-print(CH4_water_C)
+print(CH4_water_C) # Water level all treats
 
 # Arrange plots:
 
 CH4_flux_water_C <- grid.arrange(arrangeGrob(CH4_flux_C, CH4_water_C, nrow = 2, ncol = 1))
 
-ggsave("outputs/Plots/GHG/CH4_flux_water_C.pdf", width = 7, height = 5, plot = CH4_flux_water_C)
+ggsave("outputs/Plots/GHG/CH4_flux_water_C.pdf", width = 7, height = 5, plot = CH4_flux_water_C) # Arrange CH4 emissions + Water level all treats
+
+# I.iv. CH4 Plots - One Treat's water level per arrange - BES 2023 Ppt 
+
+Water_CON <- CH4_melted_Avged_Master_GHG_2022 %>% 
+              filter(Treat == "CON")
+Water_MSD <- CH4_melted_Avged_Master_GHG_2022 %>% 
+              filter(Treat == "MSD")
+Water_AWD <- CH4_melted_Avged_Master_GHG_2022 %>% 
+              filter(Treat == "AWD")
+
+CH4_water_CON <- ggplot(Water_CON, aes(x = Sampling_date, color = Treat, linetype = variable)) +
+                    geom_line(aes(y = value, linetype = "avg_Water_level_corr", color = Treat),
+                              data = subset(Water_CON, variable == "avg_Water_level_corr"), show.legend = FALSE) +
+                    scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
+                    theme_bw() +
+                    labs(y = "Water level (cm)") +
+                    labs(x = "Sampling date") +
+                    geom_hline(yintercept=0, color = "grey") +
+                    scale_linetype_manual(name = "Variable",
+                                          values = c("avg_Water_level_corr" = "dashed"), labels = "Water level (cm)") +
+                    guides(linetype = guide_legend(override.aes = list(color = "black"))) +
+                    theme(axis.title.y = element_text(color = "black"),
+                          axis.text.y = element_text(color = "black"),
+                          axis.title.y.right = element_text(color = "black"),
+                          axis.text.y.right = element_text(color = "black"), strip.background = element_blank(),
+                          strip.placement = "outside",
+                          plot.margin = unit(c(0, 1, 1, 1), "lines")) +
+                    scale_x_date(limits = c(as.Date("2022-05-15"), as.Date("2022-10-01")))
+
+print(CH4_water_CON) # Water level for just CON treat
+
+CH4_water_MSD <- ggplot(Water_MSD, aes(x = Sampling_date, color = Treat, linetype = variable)) +
+                    geom_line(aes(y = value, linetype = "avg_Water_level_corr", color = Treat),
+                              data = subset(Water_MSD, variable == "avg_Water_level_corr"), show.legend = FALSE) +
+                    scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
+                    theme_bw() +
+                    labs(y = "Water level (cm)") +
+                    labs(x = "Sampling date") +
+                    geom_hline(yintercept=0, color = "grey") +
+                    scale_linetype_manual(name = "Variable",
+                                          values = c("avg_Water_level_corr" = "dashed"), labels = "Water level (cm)") +
+                    guides(linetype = guide_legend(override.aes = list(color = "black"))) +
+                    theme(axis.title.y = element_text(color = "black"),
+                          axis.text.y = element_text(color = "black"),
+                          axis.title.y.right = element_text(color = "black"),
+                          axis.text.y.right = element_text(color = "black"), strip.background = element_blank(),
+                          strip.placement = "outside",
+                          plot.margin = unit(c(0, 1, 1, 1), "lines")) +
+                    scale_x_date(limits = c(as.Date("2022-05-15"), as.Date("2022-10-01")))
+
+print(CH4_water_MSD) # Water level for just MSD treat
+
+
+CH4_water_AWD <- ggplot(Water_AWD, aes(x = Sampling_date, color = Treat, linetype = variable)) +
+                    geom_line(aes(y = value, linetype = "avg_Water_level_corr", color = Treat),
+                              data = subset(Water_AWD, variable == "avg_Water_level_corr"), show.legend = FALSE) +
+                    scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
+                    theme_bw() +
+                    labs(y = "Water level (cm)") +
+                    labs(x = "Sampling date") +
+                    geom_hline(yintercept=0, color = "grey") +
+                    scale_linetype_manual(name = "Variable",
+                                          values = c("avg_Water_level_corr" = "dashed"), labels = "Water level (cm)") +
+                    guides(linetype = guide_legend(override.aes = list(color = "black"))) +
+                    theme(axis.title.y = element_text(color = "black"),
+                          axis.text.y = element_text(color = "black"),
+                          axis.title.y.right = element_text(color = "black"),
+                          axis.text.y.right = element_text(color = "black"), strip.background = element_blank(),
+                          strip.placement = "outside",
+                          plot.margin = unit(c(0, 1, 1, 1), "lines")) +
+                    scale_x_date(limits = c(as.Date("2022-05-15"), as.Date("2022-10-01")))
+
+print(CH4_water_AWD) # Water level for just AWD treat
+
+# Arrange plots:
+
+# CH4 emissions + CON water level:
+CH4_flux_water_CON <- grid.arrange(arrangeGrob(CH4_flux_C, CH4_water_CON, nrow = 2, ncol = 1))
+ggsave("outputs/Plots/GHG/CH4_flux_water_CON.pdf", width = 7, height = 5, plot = CH4_flux_water_CON) # Arrange CH4 emissions + CON water level 
+
+# CH4 emissions + MSD water level:
+CH4_flux_water_MSD <- grid.arrange(arrangeGrob(CH4_flux_C, CH4_water_MSD, nrow = 2, ncol = 1))
+ggsave("outputs/Plots/GHG/CH4_flux_water_MSD.pdf", width = 7, height = 5, plot = CH4_flux_water_MSD) # Arrange CH4 emissions + CON water level 
+
+# CH4 emissions + AWD water level:
+CH4_flux_water_AWD <- grid.arrange(arrangeGrob(CH4_flux_C, CH4_water_AWD, nrow = 2, ncol = 1))
+ggsave("outputs/Plots/GHG/CH4_flux_water_AWD.pdf", width = 7, height = 5, plot = CH4_flux_water_AWD) # Arrange CH4 emissions + CON water level 
 
 #### II. N2O Plots: ####
 
