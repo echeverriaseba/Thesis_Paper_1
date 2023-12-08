@@ -523,8 +523,9 @@ colnames(Abundance_2022)[colnames(Abundance_2022) == "Type"] <- "Order_SubOrder"
 
 Abundance_2022 <- Abundance_2022 %>% 
                   select(Date, Plot, Treat, Order_SubOrder, Abundance)  
+
 Abundance_2022 <- rbind(Abundance_2022, ColOdoHet_merged) %>% 
-                  group_by(Date , Plot, Treat, Order_SubOrder) %>% 
+                  group_by(Date, Plot, Treat, Order_SubOrder) %>% 
                   summarise(Abundance = sum(Abundance)) %>% 
                   ungroup()
 
@@ -567,4 +568,3 @@ ggsave("outputs/Plots/BIO/Abundance_2022.pdf", plot = Abundance_2022_plot, width
 Abu.div_2022_plots <- grid.arrange(arrangeGrob(ColOdoHet_divplots, Abundance_2022_plot, ncol = 2, nrow = 1))
 
 # ggsave("outputs/Plots/BIO/Abu.div_2022_plots.pdf", plot = Abu.div_2022_plots, width = 20, height = 10)
-

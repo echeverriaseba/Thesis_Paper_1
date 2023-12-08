@@ -23,9 +23,9 @@ library(DFIT)
 ################ 2. STATS ###################
 
 ##### 2.1. Data validation ######
-# According to "Analysing the impact of multiple stressors in aquatic biomonitoring data: A ‘cookbook’ with applications in R" - Feld et al., 2016. ##
+# According to "Analyzing the impact of multiple stressors in aquatic biomonitoring data: A ‘cookbook’ with applications in R" - Feld et al., 2016. ##
 
-#### 2.1.1. Outlier analysis ####
+#### 2.1.1. Outline analysis ####
 
 summary(Master_GHG_2022$Temp_soil)
 boxplot(Master_GHG_2022$Temp_soil)
