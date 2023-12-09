@@ -14,6 +14,7 @@ library(ggplot2)
 library(visreg)
 # library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
+library(forcats) # to modify gray facet titles in facet_wrap(). 
 
 ##############  1. Preparing base data frames #################
 
@@ -359,7 +360,7 @@ plot(dend_4,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
 
-## Dend 5  Considering Sampling(removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
+## Dend 5  Considering Sampling (removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
 
 # Dend 5: Considering only remaining variables after VIF removal
 # Variable clustering:
@@ -1317,62 +1318,54 @@ performance::check_singularity(glmm.q1.gaus6.noout)
 visreg(glmm.q1.gaus6.noout, scale="response") # Plotting conditional residuals
 residuals()
 
+##### Selected model for q0: Model 11b (not removing outliers) ####
 
+## Selection criteria: 
+# 1. Considering only remaining variables after initial correlation analyses (Rem. high correlated vars. if Dendrogram > 0.75 and VIF > 5).
+# 2. Considers Treatments and Sampling^2 interaction.
+# 3. Considers Rep (Blocks) as random effect.
+# 4. Does not result in significant deviations or patterns for DHARMA residual diagnostics.
+# 5. Removes Water_temp as ind. variable after plotting Dend 5 (incl. Sampling), corr > 0.75 with Sampling.
+# As the model ANOVA indicates significant effect of the interaction  Treat*Sampling2 (a factorial and a continuous variable), post-hoc tests are not 
+# the most adequate analyses. The effect is referred to from ANOVA results and "q0 vs Treat for each Sampling" plots (with empirical data).
+# Selected model:
+# glmm.q0.gaus7 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*Sampling2 + Conduct_microS_cm + pH_soil + Redox_pot + 
+#                  O2_percent + Salinity + (1|Rep) , family = "gaussian")
 
+## Plot q0 vs Treat for each Sampling ##
+## Using empirical (not predicted) data
 
+q0.Treats_Sampling <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
+                              geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
+                              scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                              scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                              theme_bw() +
+                              ylab("") +
+                              ggtitle(expression("Species richness (q"[0]*")")) +
+                              theme(plot.title = element_text(size=20, hjust=0.5)) +
+                              theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                    axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                    axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                              geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
+                              geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
+                              geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
+                              scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2)) +
+                              facet_wrap(~Sampling, labeller = as_labeller(c("1" = "Sampling 1",
+                                                                             "2" = "Sampling 2",
+                                                                             "3" = "Sampling 3",
+                                                                             "4" = "Sampling 4"))) # adds the "Sampling" word to each gray facet title.
 
+print(q0.Treats_Sampling)
 
+ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling ,width = 10, height = 10)
 
+##### Selected model for q1: Model 20b (not removing outliers) ####
 
+# Same selection criteria as for q0.
+# ANOVA results in significant Treat effect, we move forward with post-hoc tests.
+# Selected model:
+# glmm.q1.gaus8 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
+#                            O2_percent + Salinity + (1|Rep) , family = "gaussian")
 
-
-
-
-
-
-
-
-
-
-
-
-##### Analysis from Stats meeting with Nestor and Carles (29.11.23) ####
-
-# Example model: q1 - gaussian w/interaction (Sampling^2) - Removing high correlation variables from model 6  #
-# Dependent variable: q1
-# Variables removed from model 6: Treat*Sampling + Redox_pot + O2_percent 
-# "Sampling" variable: I(Sampling^2)
-# Family: Gaussian
-# Interacting independent variables: Treat*Sampling + Treat*I(Sampling^2)
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
-# Random effect: Rep
-
-# glmm.q1.gaus7 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Treat*Conduct_microS_cm + Treat*Salinity + 
-#                            (1|Rep) , family = "gaussian")
-# 
-# # Model diagnostics:
-# DHARMa::simulateResiduals(glmm.q1.gaus7, plot = T)
-# summary(glmm.q1.gaus7)
-# car::Anova(glmm.q1.gaus7)
-# performance::r2(glmm.q1.gaus7)
-# performance::check_collinearity(glmm.q1.gaus7)
-# performance::check_singularity(glmm.q1.gaus7)
-# visreg(glmm.q1.gaus7, scale="response") # Plotting conditional residuals
-# 
-
-## Notes from meeting with Carles Alcaraz:
-# plot(Hills_Physchem$Treat, Hills_Physchem$q1.obs)
-# plot(Hills_Physchem$Salinity, Hills_Physchem$Conduct_microS_cm)
-# plot(Hills_Physchem$Water_temp, Hills_Physchem$Temp_10_cm)
-# 
-# glm.Sal_Cond <- glm(data = Hills_Physchem, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
-# dffits(glm.Sal_Cond)
-# plot(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
-# identify(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
-# 
-# glm.Sal_Cond_nooutl <- glm(data = Hills_Physchem_nooutliers, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
-# dffits(glm.Sal_Cond_nooutl)
-# plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
-# identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 
 
