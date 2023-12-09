@@ -841,10 +841,12 @@ visreg(glmm.q0.gaus6.noout, scale="response") # Plotting conditional residuals
 
 ###  Considering outliers:
 
-Hills_Physchem$Sampling2 <- (Hills_Physchem$Sampling)^2
+Hills_Physchem$Sampling2 <- (Hills_Physchem$Sampling)^2 # Sampling^2 variable created for plotting purposes.
 
 glmm.q0.gaus7 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*Sampling2 + Conduct_microS_cm + pH_soil + Redox_pot + 
                            O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Note: Model diagnostic results are the same when using Treat*I(Sampling^2) or Treat*Sampling2.
 
 # Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.gaus7, plot = T)
@@ -856,9 +858,9 @@ performance::check_singularity(glmm.q0.gaus7)
 visreg(glmm.q0.gaus7, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 visreg(glmm.q0.gaus7, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 
-
-
 ###  Removing outliers:
+
+Hills_Physchem_nooutliers$Sampling2 <- (Hills_Physchem_nooutliers$Sampling)^2 # Sampling^2 variable created for plotting purposes.
 
 glmm.q0.gaus7.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot +  
                                  O2_percent + Salinity + (1|Rep) , family = "gaussian")
@@ -871,9 +873,6 @@ performance::r2(glmm.q0.gaus7.noout)
 performance::check_collinearity(glmm.q0.gaus7.noout)
 performance::check_singularity(glmm.q0.gaus7.noout)
 visreg(glmm.q0.gaus7.noout, scale="response") # Plotting conditional residuals
-
-
-
 
 ##### Model 12: q1 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis)  ####
 
@@ -1348,32 +1347,32 @@ residuals()
 # Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
 # Random effect: Rep
 
-glmm.q1.gaus7 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Treat*Conduct_microS_cm + Treat*Salinity + 
-                           (1|Rep) , family = "gaussian")
+# glmm.q1.gaus7 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Treat*Conduct_microS_cm + Treat*Salinity + 
+#                            (1|Rep) , family = "gaussian")
+# 
+# # Model diagnostics:
+# DHARMa::simulateResiduals(glmm.q1.gaus7, plot = T)
+# summary(glmm.q1.gaus7)
+# car::Anova(glmm.q1.gaus7)
+# performance::r2(glmm.q1.gaus7)
+# performance::check_collinearity(glmm.q1.gaus7)
+# performance::check_singularity(glmm.q1.gaus7)
+# visreg(glmm.q1.gaus7, scale="response") # Plotting conditional residuals
+# 
 
-# Model diagnostics:
-DHARMa::simulateResiduals(glmm.q1.gaus7, plot = T)
-summary(glmm.q1.gaus7)
-car::Anova(glmm.q1.gaus7)
-performance::r2(glmm.q1.gaus7)
-performance::check_collinearity(glmm.q1.gaus7)
-performance::check_singularity(glmm.q1.gaus7)
-visreg(glmm.q1.gaus7, scale="response") # Plotting conditional residuals
-
-plot(Hills_Physchem$Treat, Hills_Physchem$q1.obs)
-plot(Hills_Physchem$Salinity, Hills_Physchem$Conduct_microS_cm)
-plot(Hills_Physchem$Water_temp, Hills_Physchem$Temp_10_cm)
-
-
-glm.Sal_Cond <- glm(data = Hills_Physchem, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
-dffits(glm.Sal_Cond)
-plot(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
-identify(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
-
-
-glm.Sal_Cond_nooutl <- glm(data = Hills_Physchem_nooutliers, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
-dffits(glm.Sal_Cond_nooutl)
-plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
-identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
+## Notes from meeting with Carles Alcaraz:
+# plot(Hills_Physchem$Treat, Hills_Physchem$q1.obs)
+# plot(Hills_Physchem$Salinity, Hills_Physchem$Conduct_microS_cm)
+# plot(Hills_Physchem$Water_temp, Hills_Physchem$Temp_10_cm)
+# 
+# glm.Sal_Cond <- glm(data = Hills_Physchem, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
+# dffits(glm.Sal_Cond)
+# plot(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
+# identify(row.names(na.omit(Hills_Physchem)), dffits(glm.Sal_Cond))
+# 
+# glm.Sal_Cond_nooutl <- glm(data = Hills_Physchem_nooutliers, q1.obs ~ Conduct_microS_cm + Salinity , family = "gaussian")
+# dffits(glm.Sal_Cond_nooutl)
+# plot(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
+# identify(row.names(na.omit(Hills_Physchem_nooutliers)), dffits(glm.Sal_Cond_nooutl))
 
 
