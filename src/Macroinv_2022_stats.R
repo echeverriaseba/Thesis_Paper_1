@@ -15,6 +15,8 @@ library(visreg)
 # library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
 library(forcats) # to modify gray facet titles in facet_wrap(). 
+install.packages("r2glmm")
+library(r2glmm)
 
 ##############  1. Preparing base data frames #################
 
@@ -1368,4 +1370,18 @@ ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling ,wi
 #                            O2_percent + Salinity + (1|Rep) , family = "gaussian")
 
 
+emmeans(glmm.q1.gaus8, ~Treat , type = "response")
+pairs(emmeans(glmm.q1.gaus8, ~Treat , type = "response"))
+
+
+
+emmeans(m.rare, ~sampling_month, type = "response")
+pairs(emmeans(m.rare, ~sampling_month, type = "response"))
+
+pairs(emmeans(m.rare, ~treatment|sampling_month, type = "response"))
+
+df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "response")) %>% 
+  mutate(divindex = rep("q0.obs",8),
+         emmean = rate) %>% 
+  select(-rate)
 
