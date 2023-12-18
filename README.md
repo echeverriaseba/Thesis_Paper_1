@@ -30,7 +30,7 @@
 - Creating "Chrom_results_2022" dataframe, which calculates GHG concentrations in mg m^-2^ from C-ppm chromatography results.
 - Calculating emission rates through lm(), also R^2^ for each lm() to apply posterior model corrections (see "Emission_rates_2022" dataframe).
 
-### GHG_rates_2022_w_corrections: Applying corrections to GHG (CH~4~, N~2~O and CO~2~) emission rates.   
+### GHG_rates_2022_w_corrections: Applying corrections to GHG (CH<sub>4</sub>, N~2~O and CO~2~) emission rates.   
 - Same procedure as "GHG_rates_2022" script but fitting 4 alternative "3-values" models (each one removing one time-step) and then selecting that which achieves higher R^2^ and positive rate (lm slope).
 - Output results saved in "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData" and in "/outputs/GHG/2022/Rates_corrected/Results_CH4_w_corrections.xlsx". 
 
