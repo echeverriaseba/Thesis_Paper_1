@@ -26,12 +26,12 @@
    - q0: Post-hoc tests do not proceed due to signifficant effect of Treat-Sampling2 in selected model. Post-hoc tests not applicable for Factor-Contiuous_variable interactions. Plotting q0 vs Treat for each Sampling using empirical (not predicted) data.
    - q1:  Post-hoc tests do proceed because of a signifficant effect of Treat variable. Post-hoc tests using emmeans package to test differences among Treat.
   
-### GHG_rates_2022: Calculating original CH~4~ emission rates from sampled GHG concentration through gas chromatography.
-- Creating "Chrom_results_2022" dataframe, which calculates GHG concentrations in mg m^-2^ from C-ppm chromatography results.
-- Calculating emission rates through lm(), also R^2^ for each lm() to apply posterior model corrections (see "Emission_rates_2022" dataframe).
+### GHG_rates_2022: Calculating original CH<sub>4</sub>emission rates from sampled GHG concentration through gas chromatography.
+- Creating "Chrom_results_2022" dataframe, which calculates GHG concentrations in mg m<sup>-2</sup> from C-ppm chromatography results.
+- Calculating emission rates through lm(), also R<sup>2</sup> for each lm() to apply posterior model corrections (see "Emission_rates_2022" dataframe).
 
-### GHG_rates_2022_w_corrections: Applying corrections to GHG (CH<sub>4</sub>, N~2~O and CO~2~) emission rates.   
-- Same procedure as "GHG_rates_2022" script but fitting 4 alternative "3-values" models (each one removing one time-step) and then selecting that which achieves higher R^2^ and positive rate (lm slope).
+### GHG_rates_2022_w_corrections: Applying corrections to GHG (CH<sub>4</sub>, N<sub>2</sub>O and CO<sub>2</sub>) emission rates.   
+- Same procedure as "GHG_rates_2022" script but fitting 4 alternative "3-values" models (each one removing one time-step) and then selecting that which achieves higher R<sup>2</sup> and positive rate (lm slope).
 - Output results saved in "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData" and in "/outputs/GHG/2022/Rates_corrected/Results_CH4_w_corrections.xlsx". 
 
 ### Emissions_2022: Working with GHG emission rates data.
