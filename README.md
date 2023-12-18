@@ -5,6 +5,7 @@
 4. /outputs: analysis outputs (e.g., plots, .csv, etc.)
 
 ## /src: R scripts:
+Here the main scripts used for data preparation, plotting and statistical analyses are described. Other scripts can be found in this folder containing coding tests. 
 
 ### Macroinv_2022: Working with biodiversity data. 
 - Field sampling data in "/data/BIO/Macroinv_2022.csv". 
@@ -35,5 +36,9 @@
 - Output results saved in "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData" and in "/outputs/GHG/2022/Rates_corrected/Results_CH4_w_corrections.xlsx". 
 
 ### Emissions_2022: Working with GHG emission rates data.
-- Creating "Master_GHG_2022" dataframe. Emission rates were previously calculated and corrected in script "GHG_rates_2022_w_corrections" and loaded from "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData".
+- Creating "Master_GHG_2022" dataframe. Emission rates were previously calculated and corrected in script "GHG_rates_2022_w_corrections" and loaded from "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData". This dataframe merges GHG emissions, physicochemical and water level data. Water level is "corrected", meaning that it takes the closest level data to the GHG sampling (see script for notes on script for correction conditions).
+- Plot Analyses: plotting Emissions vs water level. See outputs in "/outputs/Plots/GHG")
 
+### Prod_2022: Working with yield data.
+- Harvest data from "/data/PROD/Prod_2022.csv".
+- Plotting yield vs Treat. 
