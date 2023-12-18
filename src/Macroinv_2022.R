@@ -539,6 +539,8 @@ acc_Abundance_2022 <- Abundance_2022 %>% # Creates dataframe with accumulated ab
 
 #### 2.6 Plot abundance ####
 
+# i. Sum of all plots:
+
 Abundance_2022_plot <- ggplot(acc_Abundance_2022, aes(Treat, Abundance, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
                               geom_point(colour = "black", size = 13) +
                               geom_point(aes(colour = Order_SubOrder), size = 11) +
@@ -567,4 +569,62 @@ ggsave("outputs/Plots/BIO/Abundance_2022.pdf", plot = Abundance_2022_plot, width
 
 Abu.div_2022_plots <- grid.arrange(arrangeGrob(ColOdoHet_divplots, Abundance_2022_plot, ncol = 2, nrow = 1))
 
-# ggsave("outputs/Plots/BIO/Abu.div_2022_plots.pdf", plot = Abu.div_2022_plots, width = 20, height = 10)
+ggsave("outputs/Plots/BIO/Abu.div_2022_plots.pdf", plot = Abu.div_2022_plots, width = 20, height = 10)
+
+# ii. Plots' average:
+
+Abundance_2022_summary <- Abundance_2022 %>%
+                          group_by(Treat, Order_SubOrder) %>%
+                          summarise(mean_abu = mean(Abundance),se_abu = sd(Abundance) / sqrt(n()))
+
+Abundance_2022_plot_avg1 <- ggplot(Abundance_2022_summary, aes(Treat, mean_abu, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
+                              geom_point(colour = "black", size = 13) +
+                              geom_point(aes(colour = Order_SubOrder), size = 11) +
+                              scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70")) +
+                              scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70"), guide = "none") +
+                              geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5,  alpha = 0.5) +
+                              scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) +
+                              theme_bw() +
+                              labs(title = "Accumulated abundance", y = NULL) +
+                              theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                    axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
+                                    axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
+                                    legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
+                                    legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1),
+                                    plot.title = element_text(hjust = 0.5, size = 20)) +  
+                              # scale_y_continuous(breaks = seq(0, 30, by = 5)) +
+                              guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
+                              scale_y_sqrt() +
+                              # geom_point(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu), shape = 19, size = 10) +
+                              geom_errorbar(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.3, size = 1,  alpha = 0.5)
+
+print(Abundance_2022_plot_avg1)
+
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.pdf", plot = Abundance_2022_plot_avg1, width = 10, height = 15)
+
+
+
+Abundance_2022_plot_avg2 <- ggplot(Abundance_2022, aes(Treat, Abundance, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
+                              # geom_point(colour = "black", size = 13) +
+                              geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), aes(colour = Order_SubOrder), size = 11, alpha = 0.2) +
+                              scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70")) +
+                              scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70"), guide = "none") +
+                              geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5,  alpha = 0.5) +
+                              scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) +
+                              theme_bw() +
+                              labs(title = "Accumulated abundance", y = NULL) +
+                              theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                    axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
+                                    axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
+                                    legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
+                                    legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1),
+                                    plot.title = element_text(hjust = 0.5, size = 20)) +  
+                              # scale_y_continuous(breaks = seq(0, 30, by = 5)) +
+                              guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
+                              scale_y_sqrt() +
+                              geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), data = Abundance_2022_summary, aes(x = Treat, y = mean_abu), shape = 19, size = 10) +
+                              # geom_errorbar(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.3, size = 1,  alpha = 0.5)
+
+print(Abundance_2022_plot_avg2)
+
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.pdf", plot = Abundance_2022_plot_avg2, width = 10, height = 15)
