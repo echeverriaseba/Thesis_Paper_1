@@ -15,7 +15,7 @@ library(visreg)
 # library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
 library(forcats) # to modify gray facet titles in facet_wrap(). 
-install.packages("r2glmm")
+# install.packages("r2glmm")
 library(r2glmm)
 
 ##############  1. Preparing base data frames #################
@@ -1384,4 +1384,29 @@ df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "resp
   mutate(divindex = rep("q0.obs",8),
          emmean = rate) %>% 
   select(-rate)
+
+
+##### Abundance Models ####
+
+# Including Rep to each Plot:
+Plot <- c("P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15")
+Rep <- c("1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4", "5", "5", "5")
+Plot_Rep <- data.frame(Plot, Rep)
+Abundance_2022 <- merge(Abundance_2022, Plot_Rep, by.x="Plot", by.y="Plot")
+
+##### Model 1: Abund. - Gaussian - Treat*Order_SubOrder interaction - "Rep" Random factor ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Order_SubOrder
+# Random effect: Rep
+
+glmm.abu.gaus1 <- glmmTMB(data = Abundance_2022, Abundance ~ Treat*Order_SubOrder + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus1, plot = T)
+summary(glmm.abu.gaus1)
+car::Anova(glmm.abu.gaus1)
+performance::r2(glmm.abu.gaus1)
+performance::check_collinearity(glmm.abu.gaus1)
+performance::check_singularity(glmm.abu.gaus1)
+visreg(glmm.abu.gaus1, scale="response") # Plotting conditional residuals
 
