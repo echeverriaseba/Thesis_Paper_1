@@ -26,6 +26,7 @@ Here the main scripts used for data preparation, plotting and statistical analys
    - Testing models: Testing for best fitting model for q0 and q1 considering different variables, with/without outliers, different combinations of Treat*Sampling interactions, different disfribution families, etc.
    - q0: Post-hoc tests do not proceed due to signifficant effect of Treat-Sampling2 in selected model. Post-hoc tests not applicable for Factor-Contiuous_variable interactions. Plotting q0 vs Treat for each Sampling using empirical (not predicted) data.
    - q1:  Post-hoc tests do proceed because of a signifficant effect of Treat variable. Post-hoc tests using emmeans package to test differences among Treat.
+   - Abundance models.
   
 ### GHG_rates_2022: Calculating original CH<sub>4</sub>emission rates from sampled GHG concentration through gas chromatography.
 - Creating "Chrom_results_2022" dataframe, which calculates GHG concentrations in mg m<sup>-2</sup> from C-ppm chromatography results.
