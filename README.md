@@ -4,7 +4,7 @@
 3. /data: data inputs (e.g. .csv, .xlsx)
 4. /outputs: analysis outputs (e.g., plots, .csv, etc.)
 
-## /src: R scripts:
+## /src: R scripts
 Here the main scripts used for data preparation, plotting and statistical analyses are described. Other scripts can be found in this folder containing coding tests. 
 
 ### Macroinv_2022: Working with biodiversity data. 
