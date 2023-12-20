@@ -17,6 +17,7 @@ library(DFIT)
 library(forcats) # to modify gray facet titles in facet_wrap(). 
 # install.packages("r2glmm")
 library(r2glmm)
+library(MuMIn)
 
 ##############  1. Preparing base data frames #################
 
@@ -838,8 +839,8 @@ visreg(glmm.q0.gaus6.noout, scale="response") # Plotting conditional residuals
 
 ##### Model 11b: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
 # Family: Gaussian
-# Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Interacting independent variables: Treat*Sampling + Treat*Sampling2
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + O2_percent + Salinity
 # Random effect: Rep
 
 ###  Considering outliers:
@@ -855,6 +856,7 @@ glmm.q0.gaus7 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*
 DHARMa::simulateResiduals(glmm.q0.gaus7, plot = T)
 summary(glmm.q0.gaus7)
 car::Anova(glmm.q0.gaus7)
+r.squaredGLMM(glmm.q0.gaus7) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
 performance::r2(glmm.q0.gaus7)
 performance::check_collinearity(glmm.q0.gaus7)
 performance::check_singularity(glmm.q0.gaus7)
@@ -871,7 +873,8 @@ glmm.q0.gaus7.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*
 # Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.gaus7.noout, plot = T)
 summary(glmm.q0.gaus7.noout)
-car::Anova(glmm.q0.gaus7.noout)
+car::Anova(glmm.q0.gaus7.noout) 
+r.squaredGLMM(glmm.q0.gaus7.noout) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
 performance::r2(glmm.q0.gaus7.noout)
 performance::check_collinearity(glmm.q0.gaus7.noout)
 performance::check_singularity(glmm.q0.gaus7.noout)
@@ -1337,29 +1340,52 @@ residuals()
 ## Plot q0 vs Treat for each Sampling ##
 ## Using empirical (not predicted) data
 
+# 1st version: facet_wrap, 4 plots, each representing ine Sampling
+
 q0.Treats_Sampling <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
-                              geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
-                              scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
-                              scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
-                              theme_bw() +
-                              ylab("") +
-                              ggtitle(expression("Species richness (q"[0]*")")) +
-                              theme(plot.title = element_text(size=20, hjust=0.5)) +
-                              theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                    axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
-                                    axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
-                              geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
-                              geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
-                              geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
-                              scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2)) +
-                              facet_wrap(~Sampling, labeller = as_labeller(c("1" = "Sampling 1",
-                                                                             "2" = "Sampling 2",
-                                                                             "3" = "Sampling 3",
-                                                                             "4" = "Sampling 4"))) # adds the "Sampling" word to each gray facet title.
+                                geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
+                                scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                                scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                                theme_bw() +
+                                ylab("") +
+                                ggtitle(expression("Species richness (q"[0]*")")) +
+                                theme(plot.title = element_text(size=20, hjust=0.5)) +
+                                theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                      axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                      axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
+                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
+                                geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
+                                scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2)) +
+                                facet_wrap(~Sampling, labeller = as_labeller(c("1" = "Sampling 1",
+                                                                               "2" = "Sampling 2",
+                                                                               "3" = "Sampling 3",
+                                                                               "4" = "Sampling 4"))) # adds the "Sampling" word to each gray facet title.
 
 print(q0.Treats_Sampling)
 
 ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling ,width = 10, height = 10)
+
+# 2nd version: One plot q0 vs Sampling:
+
+ColOdoHet_summary_q0_Sampling <- Hills_Physchem %>% 
+                                q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
+                                geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
+                                scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                                scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                                theme_bw() +
+                                ylab("") +
+                                ggtitle(expression("Species richness (q"[0]*")")) +
+                                theme(plot.title = element_text(size=20, hjust=0.5)) +
+                                theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                      axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                      axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
+                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
+                                geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
+                                scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2))
+
+print(q0.Treats_Sampling2)
 
 ##### Selected model for q1: Model 20b (not removing outliers) ####
 
@@ -1385,7 +1411,6 @@ df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "resp
          emmean = rate) %>% 
   select(-rate)
 
-
 ##### Abundance Models ####
 
 # Including Rep to each Plot:
@@ -1409,4 +1434,21 @@ performance::r2(glmm.abu.gaus1)
 performance::check_collinearity(glmm.abu.gaus1)
 performance::check_singularity(glmm.abu.gaus1)
 visreg(glmm.abu.gaus1, scale="response") # Plotting conditional residuals
+
+##### Model 2: Abund. - Gaussian - Treat*Order_SubOrder interaction - No Random factor ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Order_SubOrder
+# Random effect: -
+
+glmm.abu.gaus2 <- glmmTMB(data = Abundance_2022, Abundance ~ Treat*Order_SubOrder , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus2, plot = T)
+summary(glmm.abu.gaus2)
+car::Anova(glmm.abu.gaus2)
+performance::r2(glmm.abu.gaus2)
+performance::check_collinearity(glmm.abu.gaus2)
+performance::check_singularity(glmm.abu.gaus2)
+visreg(glmm.abu.gaus2, scale="response") # Plotting conditional residuals
+
 
