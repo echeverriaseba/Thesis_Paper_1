@@ -1337,12 +1337,16 @@ residuals()
 # glmm.q0.gaus7 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*Sampling2 + Conduct_microS_cm + pH_soil + Redox_pot + 
 #                  O2_percent + Salinity + (1|Rep) , family = "gaussian")
 
-## Plot q0 vs Treat for each Sampling ##
-## Using empirical (not predicted) data
+## i) q0 - Plot q0 vs Treat for each Sampling ####
+# Using empirical (not predicted) data
+
+ColOdoHet_summary_q0_Sampling <- Hills_ColOdoHet %>%
+                                  group_by(Sampling, Treat) %>%
+                                  summarise(mean_q0.obs = mean(q0.obs),se_q0.obs = sd(q0.obs) / sqrt(n()))
 
 # 1st version: facet_wrap, 4 plots, each representing ine Sampling
 
-q0.Treats_Sampling <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
+q0.Treats_Sampling1 <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
                                 geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
                                 scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
                                 scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
@@ -1353,39 +1357,93 @@ q0.Treats_Sampling <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, c
                                 theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                       axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
                                       axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
-                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
-                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
-                                geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
+                                geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
+                                geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
+                                geom_errorbar(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
                                 scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2)) +
                                 facet_wrap(~Sampling, labeller = as_labeller(c("1" = "Sampling 1",
                                                                                "2" = "Sampling 2",
                                                                                "3" = "Sampling 3",
                                                                                "4" = "Sampling 4"))) # adds the "Sampling" word to each gray facet title.
 
-print(q0.Treats_Sampling)
+print(q0.Treats_Sampling1)
 
-ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling ,width = 10, height = 10)
+ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling1 ,width = 10, height = 10)
 
 # 2nd version: One plot q0 vs Sampling:
 
-ColOdoHet_summary_q0_Sampling <- Hills_Physchem %>% 
-                                q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
-                                geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
-                                scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
-                                scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
-                                theme_bw() +
-                                ylab("") +
-                                ggtitle(expression("Species richness (q"[0]*")")) +
-                                theme(plot.title = element_text(size=20, hjust=0.5)) +
-                                theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                      axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
-                                      axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
-                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
-                                geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
-                                geom_errorbar(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
-                                scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2))
+q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
+                                  geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
+                                  scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                                  scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                                  theme_bw() +
+                                  ylab("") +
+                                  ggtitle(expression("Species richness (q"[0]*")")) +
+                                  theme(plot.title = element_text(size=20, hjust=0.5)) +
+                                  theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                        axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                        axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                                  # geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Sampling, y = mean_q0.obs), position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), shape = 19, colour = "black", size = 12) +
+                                  geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Sampling, y = mean_q0.obs), position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), shape = 19, size = 10) +
+                                  scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2))
 
 print(q0.Treats_Sampling2)
+
+# Note: with these plots, there seems to be Treat difference for Samplin 2 but not for 1, 3, 4. In ii sub-models are fit per Sampling to test this.
+
+## ii) q0 - GLMM sub-models and ANOVA per Sampling ####
+
+# Subsetting per Sampling:
+
+Hills_Physchem_Samp1 <- subset(Hills_Physchem, Hills_Physchem$Sampling == "1")
+Hills_Physchem_Samp2 <- subset(Hills_Physchem, Hills_Physchem$Sampling == "2")
+Hills_Physchem_Samp3 <- subset(Hills_Physchem, Hills_Physchem$Sampling == "3")
+Hills_Physchem_Samp4 <- subset(Hills_Physchem, Hills_Physchem$Sampling == "4")
+
+# Sampling 1: 
+
+glmm.q0.gaus7_Samp1 <- glmmTMB(data = Hills_Physchem_Samp1, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp1, plot = T)
+summary(glmm.q0.gaus7_Samp1)
+car::Anova(glmm.q0.gaus7_Samp1)
+r.squaredGLMM(glmm.q0.gaus7_Samp1) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp1)
+performance::check_collinearity(glmm.q0.gaus7_Samp1)
+performance::check_singularity(glmm.q0.gaus7_Samp1)
+visreg(glmm.q0.gaus7_Samp1, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp1, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+
+# Note: No Treat effect detected.
+
+# Sampling 2: 
+
+# Note:For sub-model "glmm.q0.gaus7_Samp2" water physicochemical variables O2_percent and Salinity are removed due to lack of data for most of AWD and MSD
+# plots as the Sampling was done after drainage for both treats, so the average of the three previous physicochemical samplings does not apply (no water 
+# to assess)
+
+glmm.q0.gaus7_Samp2 <- glmmTMB(data = Hills_Physchem_Samp2, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
+                               (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp2, plot = T)
+summary(glmm.q0.gaus7_Samp2)
+car::Anova(glmm.q0.gaus7_Samp2)
+r.squaredGLMM(glmm.q0.gaus7_Samp2) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp2)
+performance::check_collinearity(glmm.q0.gaus7_Samp2)
+performance::check_singularity(glmm.q0.gaus7_Samp2)
+visreg(glmm.q0.gaus7_Samp2, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+
+# Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
+
+emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
+pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
+
+# Note: Significant Treat effects on q0 identified for pairs: CON - MSD and CON - AWD
 
 ##### Selected model for q1: Model 20b (not removing outliers) ####
 
