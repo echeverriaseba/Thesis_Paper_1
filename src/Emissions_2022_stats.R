@@ -123,3 +123,114 @@ Master_GHG_2022_no_NA_nooutliers <-  Master_GHG_2022_no_NA %>%  # New data frame
                                Salinity < 0.4 | Salinity > 1.1 ~ 1,TRUE ~ 0)) %>% 
                                filter(Outliers == 0)
 
+#### 2.1.2. Testing correlations ####
+
+#### i) Spearman rank correlation ####
+
+## The Spearman rank correlation is a non-parametric measure of association between two variables. 
+## It assesses the strength and direction of the monotonic relationship (whether it goes up or down) between two variables. 
+
+### Considering outliers:
+
+cor_matrix_GHG <- Master_GHG_2022_no_NA %>% 
+  select(CH4_flux_corrected, Water_level_corr, Temp_soil, Rice_cover_prop, Env_temp_initial, Env_temp_final,
+         Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water) %>% 
+  na.omit
+
+corr_GHG <- round(cor(cor_matrix_GHG, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
+
+pdf("outputs/Plots/GHG/Corr_plot_GHG.pdf", width = 11)
+corrplot::corrplot.mixed(corr_GHG, order = 'hclust', addrect = 2)
+dev.off()
+
+### Removing outliers:
+
+cor_matrix_GHG_nooutliers <- Master_GHG_2022_no_NA_nooutliers %>% 
+  select(CH4_flux_corrected, Water_level_corr, Temp_soil, Rice_cover_prop, Env_temp_initial, Env_temp_final,
+         Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water) %>% 
+  na.omit
+
+corr_GHG_nooutliers <- round(cor(cor_matrix_GHG_nooutliers, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
+
+pdf("outputs/Plots/GHG/Corr_plot_GHG_nooutliers.pdf", width = 11)
+corrplot::corrplot.mixed(corr_GHG_nooutliers, order = 'hclust', addrect = 2)
+dev.off()
+
+#### ii) Variance inflation factors (VIF) ####
+
+### Method: Excluding variables with VIF > 5 stepwise, starting with the variable that has the highest VIF
+### A VIF > 8 is applied in Feld et al., 2016. We lower the threshold as pH_water resulted in High collinearity in posterior tested GLMMs.
+
+###  Considering outliers:
+
+# Step 1a: all variables considered
+selected_vars_GHG <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+                       'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_GHG  <- (Master_GHG_2022_no_NA[, selected_vars_GHG])
+vif(data_selected_GHG,) 
+
+# Step 2a: Removing variable with highest VIF (and VIF>5) - O2_mg_l (VIF = 22.642541)
+selected_vars_GHG_2 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+                       'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_GHG_2  <- (Master_GHG_2022_no_NA[, selected_vars_GHG_2])
+vif(data_selected_GHG_2,) 
+
+# Step 3a: Removing next variable with highest VIF (and VIF>5) - Env_temp_initial  (VIF = 13.342621)
+selected_vars_GHG_3 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final',
+                         'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'Salinity', 'pH_water')
+data_selected_GHG_3  <- (Master_GHG_2022_no_NA[, selected_vars_GHG_3])
+vif(data_selected_GHG_3,) 
+
+#Note: Candidate variables for removal from posterior analyses:  O2_mg_l, Env_temp_initial.
+
+### Removing outliers:
+
+# Step 1b: all variables considered
+selected_vars_GHG_4 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+                       'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_GHG_4  <- (Master_GHG_2022_no_NA_nooutliers[, selected_vars_GHG_4])
+vif(data_selected_GHG_4,) 
+
+# Step 2b: Removing variable with highest VIF (and VIF>5) - O2_percent (VIF = 44.548571)
+selected_vars_GHG_5 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+                         'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_GHG_5  <- (Master_GHG_2022_no_NA_nooutliers[, selected_vars_GHG_5])
+vif(data_selected_GHG_5,) 
+
+# Step 3b: Removing next variable with highest VIF (and VIF>5) - Env_temp_initial   (VIF = 12.771963)
+selected_vars_GHG_6 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final',
+                         'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_GHG_6  <- (Master_GHG_2022_no_NA_nooutliers[, selected_vars_GHG_6])
+vif(data_selected_GHG_6,) 
+
+# Step 4b Removing next variable with highest VIF (and VIF>5) - Temp_10_cm   (VIF = 5.357361)
+selected_vars_GHG_7 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final',
+                         'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity', 'pH_water')
+data_selected_GHG_7  <- (Master_GHG_2022_no_NA_nooutliers[, selected_vars_GHG_7])
+vif(data_selected_GHG_7,) 
+
+#Note: Candidate variables for removal from posterior analyses:  O2_percent, Env_temp_initial, Temp_10_cm.
+
+#### iii) Data Dendrogram ####
+
+###  Considering outliers:
+
+# Dend 1: Considering all variables (without VIF removal)
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_1 <- varclus(x=as.matrix(data_selected_GHG),
+                    similarity=similarity,
+                    type="data.matrix", 
+                    method="complete",
+                    na.action=na.retain,trans="abs")
+dend_GHG_1 <- as.dendrogram(vclust_GHG_1)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_1 <- color_labels(dend_GHG_1, h=1-0.7,col=col_vector)
+dend_GHG_1 <- color_branches(dend_GHG_1, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_1.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_1,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()

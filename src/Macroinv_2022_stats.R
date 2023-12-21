@@ -319,7 +319,7 @@ plot(dend_2,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
 
-## Dend 2 (removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
+## Dend 3 (removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
 
 ###  Removing outliers:
 
