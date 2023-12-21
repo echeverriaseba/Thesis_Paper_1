@@ -14,7 +14,7 @@ library(writexl)
 
 # First, a csv file merging Joan's raw data and sample references has to be created as initial input (see "Field_sheet_chrom_2022").
 
-Chrom_results_w_corrections_2022 <- read.csv("data/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
+Chrom_results_w_corrections_2022 <- read.csv("data/GHG/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 summary(Chrom_results_w_corrections_2022)
 head(Chrom_results_w_corrections_2022)
 

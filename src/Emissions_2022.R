@@ -14,7 +14,7 @@ library(gridExtra)
 
 ############### 1. Create Master_GHG_2022 Dataframe #########################
 
-load("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections:  
+load("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections (calculated previously in script "GHG_rates_2022_w_corrections"):  
 
 ## Master_GHG_2022 taking corrected CH4. Original data for N2O and CO2: 
 Emissions_2022 <- select(Emission_rates_w_corrections_2022, Sampling_date, Plot, Treat, Rep, CH4_flux_corrected, N2O_flux_corrected)
@@ -44,7 +44,7 @@ Master_GHG_2022  <- Master_GHG_2022 [, c(13, 1, 2, 3, 4, 5, 6, 7, 8, 14, 9, 10, 
 Master_GHG_2022  <- Master_GHG_2022 [!(is.na(Master_GHG_2022$CH4_flux_corrected) & is.na(Master_GHG_2022$N2O_flux_corrected) & is.na(Master_GHG_2022$Water_level_piezo)), ] # Removes rows without emissions and piezometer records.
 
 # The created water level column must fulfill the following conditions:
-  # a) If there is a valid value in Water_level_ruler and Water_level_piezo, take the Water_level_ruler value, unless the Water_level_ruler value is 0, then take the Water_level_piezo value; 
+  # a) If there is a valid value in Water_level_ruler and Water_level_piezo, take the Water_level_ruler value, unless the Water_level_ruler value is 0, then take the Water_level_piezo value. 
   # b) If there is only a Water_level_piezo value, take it.
   # c) If there is only a Water_level_ruler value > 0 then take it. 
   # d) If there is no Water_level_piezo and Water_level_ruler is either absent or = 0:
@@ -55,13 +55,13 @@ Master_GHG_2022  <- Master_GHG_2022 [!(is.na(Master_GHG_2022$CH4_flux_corrected)
 
 ## This "for in loop" works already to apply conditions to the Master_GHG_2022, but it takes time to run:
 
-for (i in 1:length(Master_GHG_2022 $Row_Nr)) {
-  current_plot <- Master_GHG_2022 $Plot[i]
-  current_rep <- Master_GHG_2022 $Rep[i]
-  neg_piezo_indices <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Plot == current_plot)
-  neg_piezo_indices_CON <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022 $Rep == current_rep & Master_GHG_2022 $Treat == "MSD")
-  closest_neg_index <- ifelse(Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD"), neg_piezo_indices[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices])))], 1) # the ifelse (... , ... , 1) solves the "replacement of length zero" for cases CON / piezo: NA / ruler: 0
-  closest_neg_index_CON <- neg_piezo_indices_CON[which.min(abs(as.numeric(Master_GHG_2022 $Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices_CON])))]
+for (i in 1:length(Master_GHG_2022$Row_Nr)) {
+  current_plot <- Master_GHG_2022$Plot[i]
+  current_rep <- Master_GHG_2022$Rep[i]
+  neg_piezo_indices <- which(Master_GHG_2022$Water_level_piezo <= 0 & Master_GHG_2022$Plot == current_plot)
+  neg_piezo_indices_CON <- which(Master_GHG_2022 $Water_level_piezo <= 0 & Master_GHG_2022$Rep == current_rep & Master_GHG_2022$Treat == "MSD")
+  closest_neg_index <- ifelse(Master_GHG_2022$Treat[i] %in% c("AWD", "MSD"), neg_piezo_indices[which.min(abs(as.numeric(Master_GHG_2022$Sampling_date[i] - Master_GHG_2022 $Sampling_date[neg_piezo_indices])))], 1) # the ifelse (... , ... , 1) solves the "replacement of length zero" for cases CON / piezo: NA / ruler: 0
+  closest_neg_index_CON <- neg_piezo_indices_CON[which.min(abs(as.numeric(Master_GHG_2022$Sampling_date[i] - Master_GHG_2022$Sampling_date[neg_piezo_indices_CON])))]
 
   # Applying conditions for all cases (Opening each ifelse() in different LHS ~ RHS functions):
 
@@ -70,10 +70,10 @@ for (i in 1:length(Master_GHG_2022 $Row_Nr)) {
     !is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # a) part II
     is.na(Master_GHG_2022 $Water_level_ruler[i]) & !is.na(Master_GHG_2022 $Water_level_piezo[i]) ~ Master_GHG_2022 $Water_level_piezo[i], # b)
     !is.na(Master_GHG_2022 $Water_level_ruler[i]) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Water_level_ruler[i] != 0 ~ Master_GHG_2022 $Water_level_ruler[i], # c)
-    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_ruler[i], # d.i) part I
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & is.na(closest_neg_index) ~ Master_GHG_2022$Water_level_ruler[i], # d.i) part I
     (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% c("AWD", "MSD") & !is.na(closest_neg_index) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index], # d.i) part II
-    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_ruler[i], # d.ii) part I
-    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & !is.na(closest_neg_index_CON) ~ Master_GHG_2022 $Water_level_piezo[closest_neg_index_CON], # d.ii) part II
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & is.na(closest_neg_index_CON) ~ Master_GHG_2022$Water_level_ruler[i], # d.ii) part I
+    (is.na(Master_GHG_2022 $Water_level_ruler[i]) | Master_GHG_2022 $Water_level_ruler[i] == 0) & is.na(Master_GHG_2022 $Water_level_piezo[i]) & Master_GHG_2022 $Treat[i] %in% "CON" & !is.na(closest_neg_index_CON) ~ Master_GHG_2022$Water_level_piezo[closest_neg_index_CON], # d.ii) part II
     TRUE ~ NA_real_
   )
 }
@@ -197,7 +197,7 @@ Avg_Master_GHG_2022_no_NA <- Master_GHG_2022_no_NA %>%
 CH4_flux_C <- CH4_flux_C +
                       geom_line(data = Avg_Master_GHG_2022_no_NA, aes(x = Sampling_date, y = CH4_flux_corrected, group = Treat))
 
-print(CH4_flux_C) # CH4 emissions with plt rates in dotted lines
+print(CH4_flux_C) # CH4 emissions with plot (empirical plot data) rates in dotted lines
 
 CH4_water_C <- ggplot(CH4_melted_Avged_Master_GHG_2022, aes(x = Sampling_date, color = Treat, linetype = variable)) +
                     geom_line(aes(y = value, linetype = "avg_Water_level_corr", color = Treat),
