@@ -424,6 +424,8 @@ print(ColOdoHet_plot_SpRich_indiv)
 
 ggsave("outputs/Plots/BIO/SpRich_indiv.pdf", plot = ColOdoHet_plot_SpRich_indiv ,width = 10, height = 10)
 
+plot(x = Hills_ColOdoHet$Treat, y = Hills_ColOdoHet$q1.obs) # Simple plot to have an idea of how ggplot must then look
+
 ColOdoHet_plot_Shannon_indiv <- ggplot(Hills_ColOdoHet, 
                                  aes(Treat, q1.obs, group = Treat, colour = Treat, fill = Treat)) +
                             geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+

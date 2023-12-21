@@ -899,6 +899,7 @@ car::Anova(glmm.q1.pois1)
 performance::r2(glmm.q1.pois1)
 performance::check_collinearity(glmm.q1.pois1)
 performance::check_singularity(glmm.q1.pois1)
+visreg(glmm.q1.pois1, scale="response") # Plotting conditional residuals
 
 ###  Removing outliers:
 
@@ -1205,12 +1206,15 @@ performance::check_collinearity(glmm.q1.gaus8)
 performance::check_singularity(glmm.q1.gaus8)
 visreg(glmm.q1.gaus8, scale="response") # Plotting conditional residuals
 
-visreg(glmm.q1.gaus8, overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
-visreg(glmm.q1.gaus8) # Plotting conditional residuals
-car::residualPlots(glmm.q1.gaus8, terms = "Treat")
-predict(glmm.q1.gaus8, type = "response")
-residuals(glmm.q1.gaus8) # Trying to plot partial residuals
-terms(glmm.q1.gaus8)
+# visreg(glmm.q1.gaus8, scale="response", "Sampling", by = "Treat") 
+# visreg(glmm.q1.gaus8, scale="response", "Treat", by = "Sampling") 
+# visreg(glmm.q1.gaus8, "Treat") 
+# visreg(glmm.q1.gaus8, overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+# visreg(glmm.q1.gaus8) # Plotting conditional residuals
+# car::residualPlots(glmm.q1.gaus8, terms = "Treat")
+# predict(glmm.q1.gaus8, type = "response")
+# residuals(glmm.q1.gaus8) # Trying to plot partial residuals
+# terms(glmm.q1.gaus8)
 
 glmm.q1.gaus25 <- glm(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
                            O2_percent + Salinity + (1/Rep)+1 , family = "gaussian")
@@ -1242,8 +1246,6 @@ performance::r2(glmm.q1.gaus8.noout)
 performance::check_collinearity(glmm.q1.gaus8.noout)
 performance::check_singularity(glmm.q1.gaus8.noout)
 visreg(glmm.q1.gaus8.noout, scale="response") # Plotting conditional residuals
-
-
 
 ##### Model 21: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 20 ####
 # Family: Gaussian
@@ -1323,6 +1325,8 @@ performance::check_singularity(glmm.q1.gaus6.noout)
 visreg(glmm.q1.gaus6.noout, scale="response") # Plotting conditional residuals
 residuals()
 
+
+
 ##### Selected model for q0: Model 11b (not removing outliers) ####
 
 ## Selection criteria: 
@@ -1373,7 +1377,7 @@ ggsave("outputs/Plots/BIO/q0.Treats_Sampling.pdf", plot = q0.Treats_Sampling1 ,w
 # 2nd version: One plot q0 vs Sampling:
 
 q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Treat, colour = Treat, fill = Treat)) +
-                                  geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
+                                  geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.1,shape = 21,colour = "black",size = 10)+
                                   scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
                                   scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
                                   theme_bw() +
@@ -1389,7 +1393,7 @@ q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Trea
 
 print(q0.Treats_Sampling2)
 
-# Note: with these plots, there seems to be Treat difference for Samplin 2 but not for 1, 3, 4. In ii sub-models are fit per Sampling to test this.
+# Note: with these plots, there seems to be Treat difference for Sampling 2 but not for 1, 3, 4. In ii, sub-models are fit per Sampling to test this.
 
 ## ii) q0 - GLMM sub-models and ANOVA per Sampling ####
 
@@ -1457,17 +1461,17 @@ pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
 emmeans(glmm.q1.gaus8, ~Treat , type = "response")
 pairs(emmeans(glmm.q1.gaus8, ~Treat , type = "response"))
 
+# Next steps, from example script:
+# emmeans(m.rare, ~sampling_month, type = "response")
+# pairs(emmeans(m.rare, ~sampling_month, type = "response"))
+# 
+# pairs(emmeans(m.rare, ~treatment|sampling_month, type = "response"))
+# 
+# df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "response")) %>% 
+#   mutate(divindex = rep("q0.obs",8),
+#          emmean = rate) %>% 
+#   select(-rate)
 
-
-emmeans(m.rare, ~sampling_month, type = "response")
-pairs(emmeans(m.rare, ~sampling_month, type = "response"))
-
-pairs(emmeans(m.rare, ~treatment|sampling_month, type = "response"))
-
-df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "response")) %>% 
-  mutate(divindex = rep("q0.obs",8),
-         emmean = rate) %>% 
-  select(-rate)
 
 ##### Abundance Models ####
 
@@ -1508,5 +1512,9 @@ performance::r2(glmm.abu.gaus2)
 performance::check_collinearity(glmm.abu.gaus2)
 performance::check_singularity(glmm.abu.gaus2)
 visreg(glmm.abu.gaus2, scale="response") # Plotting conditional residuals
+
+emmeans(glmm.abu.gaus2, ~Treat , type = "response")
+pairs(emmeans(glmm.abu.gaus2, ~Treat , type = "response"))
+
 
 
