@@ -146,9 +146,9 @@ dev.off()
 ### Removing outliers:
 
 cor_matrix_GHG_nooutliers <- Master_GHG_2022_no_NA_nooutliers %>% 
-  select(CH4_flux_corrected, Water_level_corr, Temp_soil, Rice_cover_prop, Env_temp_initial, Env_temp_final,
-         Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water) %>% 
-  na.omit
+                              select(CH4_flux_corrected, Water_level_corr, Temp_soil, Rice_cover_prop, Env_temp_initial, Env_temp_final,
+                                     Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water) %>% 
+                              na.omit
 
 corr_GHG_nooutliers <- round(cor(cor_matrix_GHG_nooutliers, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
 
@@ -360,3 +360,135 @@ dev.off()
 # 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final', 'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity'
 
 
+#### 2.2. GLMMs ####
+
+# Creating a "Sampling" column that assigns a number to each unique Sampling_date. This way we can have "Sampling" as a model variable. 
+Master_GHG_2022_no_NA <- Master_GHG_2022_no_NA %>%
+                          arrange(Sampling_date) %>%
+                          mutate(Sampling = match(Sampling_date, unique(Sampling_date)))
+
+Master_GHG_2022_no_NA_nooutliers <- Master_GHG_2022_no_NA_nooutliers %>%
+                          arrange(Sampling_date) %>%
+                          mutate(Sampling = match(Sampling_date, unique(Sampling_date)))
+
+##### Model 1: Gaussian - Treat*Sampling interaction - "Rep" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+# 'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water'
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.CH4.gaus1 <- glmmTMB(data = Master_GHG_2022_no_NA, CH4_flux_corrected ~ Treat*Sampling + Water_level_corr + Temp_soil + Rice_cover_prop + 
+                          Env_temp_initial + Env_temp_final + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + 
+                          O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus1, plot = T)
+summary(glmm.CH4.gaus1)
+car::Anova(glmm.CH4.gaus1)
+performance::r2(glmm.CH4.gaus1)
+performance::check_collinearity(glmm.CH4.gaus1)
+performance::check_singularity(glmm.CH4.gaus1)
+visreg(glmm.CH4.gaus1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.CH4.gaus1.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliers, CH4_flux_corrected ~ Treat*Sampling + Water_level_corr + Temp_soil + Rice_cover_prop + 
+                            Env_temp_initial + Env_temp_final + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + 
+                            O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus1.noout, plot = T)
+summary(glmm.CH4.gaus1.noout)
+car::Anova(glmm.CH4.gaus1.noout)
+performance::r2(glmm.CH4.gaus1.noout)
+performance::check_collinearity(glmm.CH4.gaus1.noout)
+performance::check_singularity(glmm.CH4.gaus1.noout)
+visreg(glmm.CH4.gaus1.noout, scale="response") # Plotting conditional residuals
+
+##### Model 2: Gaussian - Treat*Sampling interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+# 'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water'
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.CH4.gaus2 <- glmmTMB(data = Master_GHG_2022_no_NA, CH4_flux_corrected ~ Treat*Sampling + Water_level_corr + Temp_soil + Rice_cover_prop + 
+                            Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_mg_l + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus2, plot = T)
+summary(glmm.CH4.gaus2)
+car::Anova(glmm.CH4.gaus2)
+performance::r2(glmm.CH4.gaus2)
+performance::check_collinearity(glmm.CH4.gaus2)
+performance::check_singularity(glmm.CH4.gaus2)
+visreg(glmm.CH4.gaus2, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.CH4.gaus2.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliers, CH4_flux_corrected ~ Treat*Sampling + Water_level_corr + Temp_soil + 
+                                  Env_temp_final + Rice_cover_prop + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_mg_l + Salinity + 
+                                  (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus2.noout, plot = T)
+summary(glmm.CH4.gaus2.noout)
+car::Anova(glmm.CH4.gaus2.noout)
+performance::r2(glmm.CH4.gaus2.noout)
+performance::check_collinearity(glmm.CH4.gaus2.noout)
+performance::check_singularity(glmm.CH4.gaus2.noout)
+visreg(glmm.CH4.gaus2.noout, scale="response") # Plotting conditional residuals
+
+##### Model 3: Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_initial', 'Env_temp_final',
+# 'Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water'
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.CH4.gaus3 <- glmmTMB(data = Master_GHG_2022_no_NA, CH4_flux_corrected ~ Treat*Sampling + Treat*I(Sampling^2) + Water_level_corr + Temp_soil + Rice_cover_prop + 
+                            Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_mg_l + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus3, plot = T)
+summary(glmm.CH4.gaus3)
+car::Anova(glmm.CH4.gaus3)
+performance::r2(glmm.CH4.gaus3)
+performance::check_collinearity(glmm.CH4.gaus3)
+performance::check_singularity(glmm.CH4.gaus3)
+visreg(glmm.CH4.gaus3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.CH4.gaus3.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliers, CH4_flux_corrected ~ Treat*Sampling + Treat*I(Sampling^2) + Water_level_corr + Temp_soil + 
+                                  Env_temp_final + Rice_cover_prop + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_mg_l + Salinity + 
+                                  (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus3.noout, plot = T)
+summary(glmm.CH4.gaus3.noout)
+car::Anova(glmm.CH4.gaus3.noout)
+performance::r2(glmm.CH4.gaus3.noout)
+performance::check_collinearity(glmm.CH4.gaus3.noout)
+performance::check_singularity(glmm.CH4.gaus3.noout)
+visreg(glmm.CH4.gaus3.noout, scale="response") # Plotting conditional residuals
+
+
+##### Selected model: Model 2 (not removing outliers) ####
+
+emmeans(glmm.CH4.gaus2, ~Treat , type = "response")
+pairs(emmeans(glmm.CH4.gaus2, ~Treat , type = "response"))
+
+# Check if the following makes sense:
+
+# emmeans(glmm.CH4.gaus2, ~Sampling, type = "response")
+# pairs(emmeans(glmm.CH4.gaus2, ~Sampling, type = "response"))
+# 
+# pairs(emmeans(glmm.CH4.gaus2, ~Treat|Sampling, type = "response"))
