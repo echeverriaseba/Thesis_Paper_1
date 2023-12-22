@@ -319,7 +319,7 @@ plot(dend_2,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
 
-## Dend 3 (removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
+# Note: Dend 2 (removing variables after the VIF analysis) achieves already that all variables stay underneath a 0.75 threshold.
 
 ###  Removing outliers:
 
@@ -379,7 +379,7 @@ qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector <- brewer.pal(n=8,"Paired")
 dend_5 <- color_labels(dend_5, h=1-0.7,col=col_vector)
 dend_5 <- color_branches(dend_5, h=1-0.7,col=col_vector)
-cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_4_VIFvarsremoval_nooutliers.pdf",width=7,height=4)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_4_VIFvarsremoval_nooutliers2.pdf",width=7,height=4)
 par(mar=c(5,2,4,17)+0.1)
 plot(dend_5,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))

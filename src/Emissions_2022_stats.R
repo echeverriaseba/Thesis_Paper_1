@@ -234,3 +234,129 @@ par(mar=c(5,2,4,17)+0.1)
 plot(dend_GHG_1,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
+
+# Dend 2: Considering only remaining variables after VIF removal
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_2 <- varclus(x=as.matrix(data_selected_GHG_3),
+                    similarity=similarity,
+                    type="data.matrix", 
+                    method="complete",
+                    na.action=na.retain,trans="abs")
+dend_GHG_2 <- as.dendrogram(vclust_GHG_2)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_2 <- color_labels(dend_GHG_2, h=1-0.7,col=col_vector)
+dend_GHG_2 <- color_branches(dend_GHG_2, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_2_VIFvarsremoval.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_2,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Note: Dend 2 (removing variables after the VIF analysis) does not achieve that all variables stay underneath a 0.75 threshold. 
+# We proceed to remove Env_temp_final and pH_water and re-check with Dend 3
+
+# Dend 3: Considering only remaining variables after VIF removal and removing correlated vars. acording to Dend 2
+
+selected_vars_GHG_8 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop',
+                         'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity')
+data_selected_GHG_8 <- (Master_GHG_2022_no_NA[, selected_vars_GHG_8])
+
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_3 <- varclus(x=as.matrix(data_selected_GHG_8),
+                        similarity=similarity,
+                        type="data.matrix", 
+                        method="complete",
+                        na.action=na.retain,trans="abs")
+dend_GHG_3 <- as.dendrogram(vclust_GHG_3)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_3 <- color_labels(dend_GHG_3, h=1-0.7,col=col_vector)
+dend_GHG_3 <- color_branches(dend_GHG_3, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_2_VIFvarsremoval_2.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_3,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Note: Remaining (non-correlated) variables after VIF and dendrogram analyses not removing outliers: 
+# 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity'
+
+###  Removing outliers:
+
+# Dend 4: Considering all variables (without VIF removal)
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_4 <- varclus(x=as.matrix(data_selected_GHG_4),
+                        similarity=similarity,
+                        type="data.matrix", 
+                        method="complete",
+                        na.action=na.retain,trans="abs")
+dend_GHG_4 <- as.dendrogram(vclust_GHG_4)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_4 <- color_labels(dend_GHG_4, h=1-0.7,col=col_vector)
+dend_GHG_4 <- color_branches(dend_GHG_4, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_nooutliers.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_4,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Dend 5: Considering only remaining variables after VIF removal
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_5 <- varclus(x=as.matrix(data_selected_GHG_7),
+                        similarity=similarity,
+                        type="data.matrix", 
+                        method="complete",
+                        na.action=na.retain,trans="abs")
+dend_GHG_5 <- as.dendrogram(vclust_GHG_5)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_5 <- color_labels(dend_GHG_5, h=1-0.7,col=col_vector)
+dend_GHG_5 <- color_branches(dend_GHG_5, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_VIFvarsremoval_nooutliers.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_5,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Note: Dend 5 (removing variables after the VIF analysis) does not achieve that all variables stay underneath a 0.75 threshold. 
+# We proceed to remove pH_water and re-check with Dend 6
+
+# Dend 6: Considering only remaining variables after VIF removal and removing correlated vars. acording to Dend 5
+
+selected_vars_GHG_9 <- c('Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final',
+                         'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity')
+data_selected_GHG_9  <- (Master_GHG_2022_no_NA_nooutliers[, selected_vars_GHG_9])
+
+# Variable clustering:
+similarity="pearson"
+vclust_GHG_6 <- varclus(x=as.matrix(data_selected_GHG_9),
+                        similarity=similarity,
+                        type="data.matrix", 
+                        method="complete",
+                        na.action=na.retain,trans="abs")
+dend_GHG_6 <- as.dendrogram(vclust_GHG_6)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_GHG_6 <- color_labels(dend_GHG_6, h=1-0.7,col=col_vector)
+dend_GHG_6 <- color_branches(dend_GHG_6, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/GHG/Cluster_variables_pearson_GHG_VIFvarsremoval_nooutliers2.pdf",width=7,height=4)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_GHG_6,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
+
+# Note: Remaining (non-correlated) variables after VIF and dendrogram analyses removing outliers: 
+# 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final', 'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity'
+
+
