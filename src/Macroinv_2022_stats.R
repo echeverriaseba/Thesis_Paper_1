@@ -1516,8 +1516,6 @@ visreg(glmm.abu.gaus2, scale="response") # Plotting conditional residuals
 emmeans(glmm.abu.gaus2, ~Treat , type = "response")
 pairs(emmeans(glmm.abu.gaus2, ~Treat , type = "response"))
 
-emmeans(glmm.abu.gaus2, ~Order_SubOrder, type = "response")
-pairs(emmeans(glmm.abu.gaus2, ~Order_SubOrder, type = "response"))
-
+emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response")
 pairs(emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response"))
 
