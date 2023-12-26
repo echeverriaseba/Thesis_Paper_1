@@ -481,14 +481,14 @@ performance::check_singularity(glmm.CH4.gaus3.noout)
 visreg(glmm.CH4.gaus3.noout, scale="response") # Plotting conditional residuals
 
 
-##### Selected model: Model 2 (not removing outliers) ####
+##### Selected model: Model 2 (removing outliers) ####
 
-emmeans(glmm.CH4.gaus2, ~Treat , type = "response")
-pairs(emmeans(glmm.CH4.gaus2, ~Treat , type = "response"))
+emmeans(glmm.CH4.gaus2.noout, ~Treat , type = "response")
+pairs(emmeans(glmm.CH4.gaus2.noout, ~Treat , type = "response"))
 
 # Check if the following makes sense:
 
-# emmeans(glmm.CH4.gaus2, ~Sampling, type = "response")
-# pairs(emmeans(glmm.CH4.gaus2, ~Sampling, type = "response"))
-# 
-# pairs(emmeans(glmm.CH4.gaus2, ~Treat|Sampling, type = "response"))
+emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response")
+pairs(emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response"))
+
+pairs(emmeans(glmm.CH4.gaus2.noout, ~Treat|Sampling, type = "response"))
