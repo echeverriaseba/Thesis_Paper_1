@@ -18,6 +18,7 @@ library(forcats) # to modify gray facet titles in facet_wrap().
 # install.packages("r2glmm")
 library(r2glmm)
 library(MuMIn)
+library(gridExtra)
 
 ##############  1. Preparing base data frames #################
 
@@ -34,7 +35,7 @@ Sampling <- c("1", "2", "3", "4")
 Treat <- c("AWD", "MSD", "CON", "MSD", "AWD", "CON", "MSD", "CON", "AWD", "AWD", "MSD", "CON", "MSD", "AWD", "CON")
 Rep <- c("1", "1", "1", "2", "2", "2", "3", "3", "3", "4", "4", "4", "5", "5", "5")
 
-## Subseting physchem_2022, only considering three Sampling dates previous to each biodiversity samplings.
+## Subsetting physchem_2022, only considering three Sampling dates previous to each biodiversity samplings.
 ## Sampling column indicating to which biodiversity sampling each physicochemical sampling is assigned.
 ## Biodiversity sampling date 1: "2022-06-10" -> 3 previous dates: "2022-06-09", "2022-06-02", "2022-05-26"
 ## Biodiversity sampling date 2: "2022-07-15" -> 3 previous dates: "2022-07-14", "2022-07-07", "2022-07-05"
@@ -1356,14 +1357,14 @@ q0.Treats_Sampling1 <- ggplot(Hills_Physchem, aes(Treat, q0.obs, group = Treat, 
                                 scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
                                 theme_bw() +
                                 ylab("") +
-                                ggtitle(expression("Species richness (q"[0]*")")) +
+                                ggtitle("") +
                                 theme(plot.title = element_text(size=20, hjust=0.5)) +
                                 theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                      axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                      axis.title.y =  element_blank(), axis.title.x = element_blank(), legend.position = "none", 
                                       axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
                                 geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
                                 geom_point(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
-                                geom_errorbar(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.3, size = 1) +
+                                geom_errorbar(data = ColOdoHet_summary_q0_Sampling, aes(x = Treat, y = mean_q0.obs, ymin = mean_q0.obs - se_q0.obs, ymax = mean_q0.obs + se_q0.obs), width = 0.7, size = 1) +
                                 scale_y_continuous(limits = c(1, 12), breaks = seq(2, 12, by = 2)) +
                                 facet_wrap(~Sampling, labeller = as_labeller(c("1" = "Sampling 1",
                                                                                "2" = "Sampling 2",
@@ -1394,6 +1395,19 @@ q0.Treats_Sampling2 <- ggplot(Hills_Physchem, aes(Sampling, q0.obs, group = Trea
 print(q0.Treats_Sampling2)
 
 # Note: with these plots, there seems to be Treat difference for Sampling 2 but not for 1, 3, 4. In ii, sub-models are fit per Sampling to test this.
+
+# Arranging q0 individual plot and per-sampling plots (1st version):
+
+ColOdoHet_plot_SpRich_indiv_arr <- readRDS("outputs/Plots/BIO/SpRich_indiv.rds") + # Calling individual plot created in Macroinv_2022 Script.
+                                annotate(geom="text", x=0.55, y=1, label="(a)", color="black", size = 10, family = "serif", fontface = "bold")
+
+q0.Treats_Sampling1_arr <- q0.Treats_Sampling1 + 
+                            geom_text(data = subset(Hills_Physchem, Sampling == 3), 
+                                      aes(label = "(b)", x = 0.7, y = 1.7), color="black", size = 8, family = "serif", fontface = "bold")
+
+Arr.q0_ind.samp <- grid.arrange(ColOdoHet_plot_SpRich_indiv_arr, q0.Treats_Sampling1_arr, nrow = 1)
+
+ggsave("outputs/Plots/BIO/Arr.q0_ind.samp.pdf", plot = Arr.q0_ind.samp ,width = 20, height = 10)
 
 ## ii) q0 - GLMM sub-models and ANOVA per Sampling ####
 
@@ -1456,7 +1470,6 @@ pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
 # Selected model:
 # glmm.q1.gaus8 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
 #                            O2_percent + Salinity + (1|Rep) , family = "gaussian")
-
 
 emmeans(glmm.q1.gaus8, ~Treat , type = "response")
 pairs(emmeans(glmm.q1.gaus8, ~Treat , type = "response"))

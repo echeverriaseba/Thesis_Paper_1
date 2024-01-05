@@ -409,11 +409,11 @@ ColOdoHet_plot_SpRich_indiv <- ggplot(Hills_ColOdoHet,
                             scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
                             scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
                             theme_bw() +
-                            ylab("") +
-                            ggtitle(expression("Species richness (q"[0]*")")) +
+                            ylab(expression("Species richness (q"[0]*")")) +
+                            ggtitle("") +
                             theme(plot.title = element_text(size=20, hjust=0.5)) +
                             theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                  axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
+                                  axis.title.y = element_text(size = 20, margin = margin(r = 1)), axis.title.x = element_blank(), legend.position = "none", 
                                   axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
                             geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, colour = "black", size = 12) +
                             geom_point(data = ColOdoHet_summary_q0, aes(x = Treat, y = mean_q0.obs), shape = 19, size = 10) +
@@ -423,6 +423,7 @@ ColOdoHet_plot_SpRich_indiv <- ggplot(Hills_ColOdoHet,
 print(ColOdoHet_plot_SpRich_indiv)
 
 ggsave("outputs/Plots/BIO/SpRich_indiv.pdf", plot = ColOdoHet_plot_SpRich_indiv ,width = 10, height = 10)
+saveRDS(ColOdoHet_plot_SpRich_indiv, "outputs/Plots/BIO/SpRich_indiv.rds") # This RDS file can be called from other scripts (e.g. from stats to make an arrange)
 
 plot(x = Hills_ColOdoHet$Treat, y = Hills_ColOdoHet$q1.obs) # Simple plot to have an idea of how ggplot must then look
 
@@ -436,8 +437,7 @@ ColOdoHet_plot_Shannon_indiv <- ggplot(Hills_ColOdoHet,
                             # xlab("Treatment") +
                             ylab("") +
                             ggtitle(expression("Shannon diversity (q"[1]*")")) +
-                            theme(plot.title = element_text(size=20, hjust=0.5)) +
-                            theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                            theme(plot.title = element_text(size=20, hjust=0.5), axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                   axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
                                   axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
                             geom_point(data = ColOdoHet_summary_q1, aes(x = Treat, y = mean_q1.obs), shape = 19, colour = "black", size = 12) +

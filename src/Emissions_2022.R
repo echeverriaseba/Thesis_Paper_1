@@ -14,7 +14,7 @@ library(gridExtra)
 
 ############### 1. Create Master_GHG_2022 Dataframe #########################
 
-load("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections (calculated previously in script "GHG_rates_2022_w_corrections"):  
+load("outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections (calculated previously in script "GHG_rates_2022_w_corrections"):  
 
 ## Master_GHG_2022 taking corrected CH4. Original data for N2O and CO2: 
 Emissions_2022 <- select(Emission_rates_w_corrections_2022, Sampling_date, Plot, Treat, Rep, CH4_flux_corrected, N2O_flux_corrected)
@@ -25,7 +25,7 @@ Water_level_2022 <- read.csv("data/Other_vars/Piezo_2022.csv", fileEncoding="lat
 Master_GHG_2022  <- merge(Emissions_2022, Water_level_2022, by.x = c("Sampling_date", "Treat", "Plot", "Rep"), by.y = c("Date", "Treat", "Plot", "Rep"), all.x= TRUE, all.y = TRUE) %>%  # with all.x= TRUE, all.y = TRUE, the resulting dataframe contains as well dates where either only water level or emissions were recorded.
                         select(Sampling_date, Treat, Plot, Rep, CH4_flux_corrected, N2O_flux_corrected, Water_level_piezo)
 
-Field_sheet_chrom_2022 <- read.csv("C:/Users/SECHEVERRIA/R_git/Thesis_Paper_1_git/data/GHG/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Load field sheet 2022:
+Field_sheet_chrom_2022 <- read.csv("data/GHG/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Load field sheet 2022:
                           rename(Water_level_piezo = Water_level_cm)
 
 Field_sheet_other_factors_2022 <- Field_sheet_chrom_2022 %>% 
