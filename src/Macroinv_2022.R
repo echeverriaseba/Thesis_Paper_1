@@ -15,9 +15,9 @@ library('unikn')
 library(rsvg)
 library(png)
 
-Macroinv_2022 <- read.csv("data/BIO/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
-
 ##############  1. Working initial sampling data #################
+
+Macroinv_2022 <- read.csv("data/BIO/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 
 ## Assigning repetitions to plots
 Plot <- c("P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15")
@@ -485,7 +485,7 @@ ColOdoHet_plot_Shannon <- ggplot(Hills_ColOdoHet,
                             # scale_y_sqrt() +
                             theme_bw() +
                             # xlab("Treatment") +
-                            ylab(expression("Shannon index (q"[1]*")")) +
+                            ylab(expression("Shannon diversity (q"[1]*")")) +
                             theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                   axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
                                   axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
@@ -494,6 +494,8 @@ ColOdoHet_plot_Shannon <- ggplot(Hills_ColOdoHet,
                             geom_errorbar(data = ColOdoHet_summary_q1, aes(x = Treat, y = mean_q1.obs, ymin = mean_q1.obs - se_q1.obs, ymax = mean_q1.obs + se_q1.obs), width = 0.3, size = 1) 
 
 print(ColOdoHet_plot_Shannon)
+
+ggsave("outputs/Plots/BIO/Shannon_indiv2.pdf", plot = ColOdoHet_plot_Shannon ,width = 10, height = 10)
 
 # Arrange plots:
 
@@ -588,7 +590,8 @@ Abundance_2022_plot_avg1 <- ggplot(Abundance_2022_summary, aes(Treat, mean_abu, 
                                     # geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5,  alpha = 0.5) +
                                     scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) +
                                     theme_bw() +
-                                    labs(title = "Accumulated abundance", y = NULL) +
+                                    ylab("Accumulated abundance") +
+                                    ggtitle("") +
                                     theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                           axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
                                           axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
@@ -599,7 +602,7 @@ Abundance_2022_plot_avg1 <- ggplot(Abundance_2022_summary, aes(Treat, mean_abu, 
                                     guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
                                     scale_y_sqrt() +
                                     # geom_point(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu), shape = 19, size = 10) +
-                                    geom_errorbar(position=position_dodge(width=0.3), data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.5, size = 1, alpha = 0.6)
+                                    geom_errorbar(position=position_dodge(width=0.3), data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.7, size = 1, alpha = 0.6)
 
 print(Abundance_2022_plot_avg1)
 
@@ -631,3 +634,25 @@ Abundance_2022_plot_avg2 <- ggplot(Abundance_2022, aes(Treat, Abundance, group =
 print(Abundance_2022_plot_avg2)
 
 ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.2.pdf", plot = Abundance_2022_plot_avg2, width = 10, height = 12)
+
+# ii. version 3:
+
+Abundance_2022_plot_avg3 <-  ggplot(Abundance_2022,aes(Treat, Abundance,colour = Order_SubOrder, fill = Order_SubOrder)) +
+                                    geom_bar(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, fill = Order_SubOrder), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
+                                    geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Order_SubOrder), position = "dodge", size = 1) +
+                                    scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#CEDEBD")) +
+                                    scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#CEDEBD"), guide = "none") +
+                                    theme_bw() +
+                                    ylab("Accumulated abundance (nº individuals)") +
+                                    ggtitle("")+
+                                    geom_vline(xintercept = 1.5) +
+                                    geom_vline(xintercept = 2.5) +
+                                    theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
+                                          axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
+                                          axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.87, 0.9), legend.title = element_blank(),
+                                          legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
+                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) 
+   
+print(Abundance_2022_plot_avg3)
+
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.3.pdf", plot = Abundance_2022_plot_avg3, width = 8, height = 10)

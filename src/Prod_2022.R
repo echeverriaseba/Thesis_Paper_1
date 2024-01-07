@@ -32,5 +32,3 @@ Prod_2022_plot <- ggplot(Prod_2022, aes(Treat, Yield_kg_ha, group = Treat, colou
 print(Prod_2022_plot)
 
 ggsave("outputs/Plots/PROD/Prod_2022_plot.pdf", plot = Prod_2022_plot, width = 8, height = 10)
-
- xz

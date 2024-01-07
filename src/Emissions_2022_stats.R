@@ -480,7 +480,6 @@ performance::check_collinearity(glmm.CH4.gaus3.noout)
 performance::check_singularity(glmm.CH4.gaus3.noout)
 visreg(glmm.CH4.gaus3.noout, scale="response") # Plotting conditional residuals
 
-
 ##### Selected model: Model 2 (removing outliers) ####
 
 emmeans(glmm.CH4.gaus2.noout, ~Treat , type = "response")
@@ -492,3 +491,12 @@ emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response")
 pairs(emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response"))
 
 pairs(emmeans(glmm.CH4.gaus2.noout, ~Treat|Sampling, type = "response"))
+
+## Comparing overall emission averages per Treat ####
+
+Allseason.CH4.avg <- Master_GHG_2022_no_NA_nooutliers %>% 
+                      group_by(Treat) %>% 
+                      summarise(Avg_flux_year = mean(CH4_flux_corrected), se_flux = sd(CH4_flux_corrected) / sqrt(n()))
+
+(Allseason.CH4.avg[2,2]-Allseason.CH4.avg[1,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs AWD 
+(Allseason.CH4.avg[2,2]-Allseason.CH4.avg[3,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs MSD 

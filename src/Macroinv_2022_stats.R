@@ -1431,6 +1431,7 @@ r.squaredGLMM(glmm.q0.gaus7_Samp1) # Calculates Pseudo-R-squared for Generalized
 performance::r2(glmm.q0.gaus7_Samp1)
 performance::check_collinearity(glmm.q0.gaus7_Samp1)
 performance::check_singularity(glmm.q0.gaus7_Samp1)
+visreg(glmm.q0.gaus7_Samp1, scale="response")
 visreg(glmm.q0.gaus7_Samp1, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 visreg(glmm.q0.gaus7_Samp1, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 
@@ -1453,6 +1454,7 @@ r.squaredGLMM(glmm.q0.gaus7_Samp2) # Calculates Pseudo-R-squared for Generalized
 performance::r2(glmm.q0.gaus7_Samp2)
 performance::check_collinearity(glmm.q0.gaus7_Samp2)
 performance::check_singularity(glmm.q0.gaus7_Samp2)
+visreg(glmm.q0.gaus7_Samp2, scale="response")
 visreg(glmm.q0.gaus7_Samp2, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 
@@ -1462,6 +1464,15 @@ emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
 pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
 
 # Note: Significant Treat effects on q0 identified for pairs: CON - MSD and CON - AWD
+
+## iii) q0 - Comparing overall species richness averages per Treat (for Sampling 2) ####
+
+q0.Sampling2.avg <- Hills_Physchem_Samp2 %>% 
+                      group_by(Treat) %>% 
+                      summarise(Avg_q0.obs = mean(q0.obs), se_q0.obs = sd(q0.obs) / sqrt(n()))
+
+(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[3,2])/q0.Sampling2.avg[1,2] # Emission % decrease CON vs AWD 
+(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[2,2])/q0.Sampling2.avg[1,2] # Emission % decrease CON vs MSD
 
 ##### Selected model for q1: Model 20b (not removing outliers) ####
 
