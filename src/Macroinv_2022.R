@@ -656,3 +656,28 @@ Abundance_2022_plot_avg3 <-  ggplot(Abundance_2022,aes(Treat, Abundance,colour =
 print(Abundance_2022_plot_avg3)
 
 ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.3.pdf", plot = Abundance_2022_plot_avg3, width = 8, height = 10)
+
+# ii. version 4:
+
+Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance, colour = Treat, fill = Treat)) +
+                                    geom_bar(data = Abundance_2022_summary, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
+                                    geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Treat), position = "dodge", size = 1) +
+                                    scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                                    scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                                    theme_bw() +
+                                    ylab("Accumulated abundance (nº individuals)") +
+                                    ggtitle("")+
+                                    geom_vline(xintercept = 1.5) +
+                                    geom_vline(xintercept = 2.5) +
+                                    geom_vline(xintercept = 3.5) +
+                                    geom_vline(xintercept = 4.5) +
+                                    geom_vline(xintercept = 5.5) +
+                                    theme(axis.title = element_text(size = 15), axis.text = element_text(size = 15), strip.text = element_text(size = 15),
+                                          axis.title.y = element_text(size = 15, margin = margin(r = 8)), axis.title.x = element_blank(),
+                                          axis.text.y = element_text(size = 15, margin = margin(r = 0), angle = 90), legend.position = "top", 
+                                          legend.background = element_rect(fill="white", size = 0.7), legend.title = element_text(size = 15),
+                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 13), panel.border = element_rect(size = 1)) 
+
+print(Abundance_2022_plot_avg4)
+
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.4.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10)
