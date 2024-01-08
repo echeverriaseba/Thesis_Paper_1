@@ -1196,7 +1196,7 @@ visreg(glmm.q1.gaus4.noout, scale="response") # Plotting conditional residuals
 ###  Considering outliers:
 
 glmm.q1.gaus8 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
-                           O2_percent + Salinity + (1|Rep) , family = "gaussian")
+                           O2_percent + (1|Rep) , family = "gaussian")
 
 # Model diagnostics:
 DHARMa::simulateResiduals(glmm.q1.gaus8, plot = T)
@@ -1206,6 +1206,9 @@ performance::r2(glmm.q1.gaus8)
 performance::check_collinearity(glmm.q1.gaus8)
 performance::check_singularity(glmm.q1.gaus8)
 visreg(glmm.q1.gaus8, scale="response") # Plotting conditional residuals
+
+ggplot(data = Hills_Physchem, aes(Treat, Conduct_microS_cm)) +
+  geom_point() + stat_summary(fun = "mean", geom = "point", size = 5)
 
 # visreg(glmm.q1.gaus8, scale="response", "Sampling", by = "Treat") 
 # visreg(glmm.q1.gaus8, scale="response", "Treat", by = "Sampling") 
@@ -1460,8 +1463,31 @@ visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", sc
 
 # Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
 
+# Sampling 3: 
+# 
+emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response")
+pairs(emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response"))
+
+glmm.q0.gaus7_Samp3 <- glmmTMB(data = Hills_Physchem_Samp3, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp2, plot = T)
+summary(glmm.q0.gaus7_Samp2)
+car::Anova(glmm.q0.gaus7_Samp2)
+r.squaredGLMM(glmm.q0.gaus7_Samp2) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp2)
+performance::check_collinearity(glmm.q0.gaus7_Samp2)
+performance::check_singularity(glmm.q0.gaus7_Samp2)
+visreg(glmm.q0.gaus7_Samp2, scale="response")
+visreg(glmm.q0.gaus7_Samp2, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+
+# Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
+
 emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
 pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
+
 
 # Note: Significant Treat effects on q0 identified for pairs: CON - MSD and CON - AWD
 
