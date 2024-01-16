@@ -23,7 +23,7 @@ Here the main scripts used for data preparation, plotting and statistical analys
    - Testing correlations: Spearman rank correlation, Variance inflation factors (VIF) and Data Dendrogram
  - GLMMs:
    - Checking Hill metrics vs Samplings: Testing for linear or quadratic relation. Cuadratic relation identified for q0 and q1.
-   - Testing models: Testing for best fitting model for q0 and q1 considering different variables, with/without outliers, different combinations of Treat*Sampling interactions, different disfribution families, etc.
+   - Testing models: Testing for best fitting model for q0 and q1 considering different variables, with/without outliers, different combinations of Treat*Sampling interactions, different disfribution families, etc. This script contains only selected models, for all alternative tested models see. script "Macroinv_2022_stats_alt_models".
    - q0: Post-hoc tests do not proceed due to signifficant effect of Treat-Sampling2 in selected model. Post-hoc tests not applicable for Factor-Contiuous_variable interactions. Plotting q0 vs Treat for each Sampling using empirical (not predicted) data.
    - q1:  Post-hoc tests do proceed because of a signifficant effect of Treat variable. Post-hoc tests using emmeans package to test differences among Treat.
    - Abundance models.
