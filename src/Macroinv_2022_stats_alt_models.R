@@ -100,147 +100,909 @@ hist(Hills_Physchem$q0.obs)
 
 Hills_Physchem$Rep_Treat <- paste0(Hills_Physchem$Rep, "_", Hills_Physchem$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
 
-# Testing effect of editing vector types:
-# Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)
-# Hills_Physchem$Treat <- as.character(Hills_Physchem$Treat)
+##### Model 1: q0 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis)  ####
 
-##### Model 1: Poisson w/interaction ####
 # Family: Poisson
 # Interacting independent variables: Treat*Sampling
 # Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
 # Random effect: Rep_Treat
 
+###  Considering outliers:
+
 glmm.q0.pois1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois1, plot = T)
 summary(glmm.q0.pois1)
 car::Anova(glmm.q0.pois1)
 performance::r2(glmm.q0.pois1)
 performance::check_collinearity(glmm.q0.pois1)
+performance::check_singularity(glmm.q0.pois1)
 
-##### Model 1.2: Poisson w/interaction (VIF>5 vars. removed)####
+###  Removing outliers:
+
+glmm.q0.pois1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois1.noout, plot = T)
+summary(glmm.q0.pois1.noout)
+car::Anova(glmm.q0.pois1.noout)
+performance::r2(glmm.q0.pois1.noout)
+performance::check_collinearity(glmm.q0.pois1.noout)
+performance::check_singularity(glmm.q0.pois1.noout)
+
+##### Model 2: q0 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis  ####
 # Family: Poisson
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
 # Random effect: Rep_Treat
 
-glmm.q0.pois1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+###  Considering outliers:
 
-DHARMa::simulateResiduals(glmm.q0.pois1, plot = T)
-summary(glmm.q0.pois1)
-car::Anova(glmm.q0.pois1)
-performance::r2(glmm.q0.pois1)
-performance::check_collinearity(glmm.q0.pois1)
+glmm.q0.pois2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
 
-
-##### Model 2: Poisson wo/interaction ####
-# Family: Poisson
-# Interacting independent variables: -
-# Additional independent variables: Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
-# Random effect: Rep_Treat
-
-glmm.q0.pois2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
-
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.pois2, plot = T)
 summary(glmm.q0.pois2)
 car::Anova(glmm.q0.pois2)
 performance::r2(glmm.q0.pois2)
 performance::check_collinearity(glmm.q0.pois2)
+performance::check_singularity(glmm.q0.pois2)
 
-##### Model 3: Negative binomial 1 w/interaction ####
-# Family: Negative binomial1
+###  Removing outliers:
+
+glmm.q0.pois2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois2.noout, plot = T)
+summary(glmm.q0.pois2.noout)
+car::Anova(glmm.q0.pois2.noout)
+performance::r2(glmm.q0.pois2.noout)
+performance::check_collinearity(glmm.q0.pois2.noout)
+performance::check_singularity(glmm.q0.pois2.noout)
+
+##### Model 3: q0 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
-# Random effect: Rep_Treat
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
 
-glmm.q0.nb1.1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "nbinom1")
+###  Considering outliers:
 
-DHARMa::simulateResiduals(glmm.q0.nb1.1, plot = T)
-summary(glmm.q0.nb1.1)
-car::Anova(glmm.q0.nb1.1)
-performance::r2(glmm.q0.nb1.1)
-performance::check_collinearity(glmm.q0.nb1.1)
+glmm.q0.pois3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
 
-##### Model 4: Negative binomial 1 wo/interaction ####
-# Family: Negative binomial1
-# Interacting independent variables: -
-# Additional independent variables: Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
-# Random effect: Rep_Treat
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois3, plot = T)
+summary(glmm.q0.pois3)
+car::Anova(glmm.q0.pois3)
+performance::r2(glmm.q0.pois3)
+performance::check_collinearity(glmm.q0.pois3)
+performance::check_singularity(glmm.q0.pois3)
+visreg(glmm.q0.pois3, scale="response") # Plotting conditional residuals
 
-glmm.q0.nb1.2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "nbinom1")
+###  Removing outliers:
 
-DHARMa::simulateResiduals(glmm.q0.nb1.2, plot = T)
-summary(glmm.q0.nb1.2)
-car::Anova(glmm.q0.nb1.2)
-performance::r2(glmm.q0.nb1.2)
-performance::check_collinearity(glmm.q0.nb1.2)
+glmm.q0.pois3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + 
+                                 Salinity + (1|Rep) , family = "poisson")
 
-##### Model 5: Negative binomial 2 w/interaction ####
-# Family: Negative binomial1
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois3.noout, plot = T)
+summary(glmm.q0.pois3.noout)
+car::Anova(glmm.q0.pois3.noout)
+performance::r2(glmm.q0.pois3.noout)
+performance::check_collinearity(glmm.q0.pois3.noout)
+performance::check_singularity(glmm.q0.pois3.noout)
+visreg(glmm.q0.pois3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 4: q0 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Removing High VIF vars from Model 3  ####
+# Vars removed from Model 3 (High VIF): pH_soil + Redox_pot + Conduct_microS_cm
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling and Treat*I(Sampling^2)
+# Additional independent variables: Conduct_microS_cm + Water_temp + O2_percent + Salinity 
+
+###  Considering outliers:
+
+glmm.q0.pois4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois4, plot = T)
+summary(glmm.q0.pois4)
+car::Anova(glmm.q0.pois4)
+performance::r2(glmm.q0.pois4)
+performance::check_collinearity(glmm.q0.pois4)
+performance::check_singularity(glmm.q0.pois4)
+visreg(glmm.q0.pois4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.pois4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                                 (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois4.noout, plot = T)
+summary(glmm.q0.pois4.noout)
+car::Anova(glmm.q0.pois4.noout)
+performance::r2(glmm.q0.pois4.noout)
+performance::check_collinearity(glmm.q0.pois4.noout)
+performance::check_singularity(glmm.q0.pois4.noout)
+visreg(glmm.q0.pois4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 4b: q0 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Removing High VIF vars from Model 3  ####
+# Vars removed from Model 3 (High VIF): pH_soil + Redox_pot + Conduct_microS_cm
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling and Treat*I(Sampling^2)
+# Additional independent variables: Conduct_microS_cm + Water_temp + O2_percent + Salinity 
+
+###  Considering outliers:
+
+glmm.q0.pois5 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois5, plot = T)
+summary(glmm.q0.pois5)
+car::Anova(glmm.q0.pois5)
+performance::r2(glmm.q0.pois5)
+performance::check_collinearity(glmm.q0.pois5)
+performance::check_singularity(glmm.q0.pois5)
+visreg(glmm.q0.pois5, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.pois5.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent + Salinity +
+                                 (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.pois5.noout, plot = T)
+summary(glmm.q0.pois5.noout)
+car::Anova(glmm.q0.pois5.noout)
+performance::r2(glmm.q0.pois5.noout)
+performance::check_collinearity(glmm.q0.pois5.noout)
+performance::check_singularity(glmm.q0.pois5.noout)
+visreg(glmm.q0.pois5.noout, scale="response") # Plotting conditional residuals
+
+##### Model 5: q0 - nbinom2 - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: nbinom2
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
 # Random effect: Rep_Treat
 
-glmm.q0.nb2.1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "nbinom2")
+###  Considering outliers:
 
-DHARMa::simulateResiduals(glmm.q0.nb2.1, plot = T)
-summary(glmm.q0.nb2.1)
-car::Anova(glmm.q0.nb2.1)
-performance::r2(glmm.q0.nb2.1)
-performance::check_collinearity(glmm.q0.nb2.1)
+glmm.q0.nbinom1 <-  glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                              (1|Rep) , family = "nbinom2")
 
-##### Model 6: Negative binomial 2 wo/interaction ####
-# Family: Negative binomial1
-# Interacting independent variables: -
-# Additional independent variables: Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
-# Random effect: Rep_Treat
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.nbinom1, plot = T)
+summary(glmm.q0.nbinom1)
+car::Anova(glmm.q0.nbinom1)
+performance::r2(glmm.q0.nbinom1)
+performance::check_collinearity(glmm.q0.nbinom1)
+performance::check_singularity(glmm.q0.nbinom1)
+visreg(glmm.q0.nbinom1, scale="response") # Plotting conditional residuals
 
-glmm.q0.nb2.2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "nbinom2")
+###  Removing outliers:
 
-DHARMa::simulateResiduals(glmm.q0.nb2.2, plot = T)
-summary(glmm.q0.nb2.2)
-car::Anova(glmm.q0.nb2.2)
-performance::r2(glmm.q0.nb2.2)
-performance::check_collinearity(glmm.q0.nb2.2)
+glmm.q0.nbinom1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                                   (1|Rep) , family = "nbinom2")
 
-##### Model 7: Gaussian w/interaction ####
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.nbinom1.noout, plot = T)
+summary(glmm.q0.nbinom1.noout)
+car::Anova(glmm.q0.nbinom1.noout)
+performance::r2(glmm.q0.nbinom1)
+performance::check_collinearity(glmm.q0.nbinom1.noout)
+performance::check_singularity(glmm.q0.nbinom1.noout)
+visreg(glmm.q0.nbinom1.noout, scale="response") # Plotting conditional residuals
+
+# # transf sqrt:
+# Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs) # Test
+
+##### Model 6: q0 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
 # Family: Gaussian
 # Interacting independent variables: Treat*Sampling
 # Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
 # Random effect: Rep_Treat
 
+###  Considering outliers:
+
 glmm.q0.gaus1 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
                            O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
 
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.gaus1, plot = T)
 summary(glmm.q0.gaus1)
 car::Anova(glmm.q0.gaus1)
 performance::r2(glmm.q0.gaus1)
 performance::check_collinearity(glmm.q0.gaus1)
+performance::check_singularity(glmm.q0.gaus1)
+visreg(glmm.q0.gaus1, scale="response") # Plotting conditional residuals
 
-##### Model 8: Gaussian wo/interaction ####
+###  Removing outliers:
+
+glmm.q0.gaus1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus1.noout, plot = T)
+summary(glmm.q0.gaus1.noout)
+car::Anova(glmm.q0.gaus1.noout)
+performance::r2(glmm.q0.gaus1.noout)
+performance::check_collinearity(glmm.q0.gaus1.noout)
+performance::check_singularity(glmm.q0.gaus1.noout)
+visreg(glmm.q0.gaus1.noout, scale="response") # Plotting conditional residuals
+
+##### Model 7: q0 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis ####
 # Family: Gaussian
-# Interacting independent variables: -
-# Additional independent variables: Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
 # Random effect: Rep_Treat
 
-glmm.q0.gaus2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat + Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
-                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+###  Considering outliers:
 
+glmm.q0.gaus2 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
 DHARMa::simulateResiduals(glmm.q0.gaus2, plot = T)
 summary(glmm.q0.gaus2)
 car::Anova(glmm.q0.gaus2)
 performance::r2(glmm.q0.gaus2)
 performance::check_collinearity(glmm.q0.gaus2)
+performance::check_singularity(glmm.q0.gaus2)
+visreg(glmm.q0.gaus2, scale="response") # Plotting conditional residuals
 
-##### Model comparison using AIC ####
-models.glmm.q0 <- list(glmm.q0.pois1, glmm.q0.pois2, glmm.q0.nb1.1, glmm.q0.nb1.2, glmm.q0.nb2.1, glmm.q0.nb2.2, glmm.q0.gaus1, glmm.q0.gaus2)
-mod.names <- c('glmm.q0.pois1', 'glmm.q0.pois2', 'glmm.q0.nb1.1', 'glmm.q0.nb1.2', 'glmm.q0.nb2.1', 'glmm.q0.nb2.2', 'glmm.q0.gaus1', 'glmm.q0.gaus2')
-aictab(cand.set = models.glmm.q0, modnames = mod.names)
+###  Removing outliers:
+
+glmm.q0.gaus2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus2.noout, plot = T)
+summary(glmm.q0.gaus2.noout)
+car::Anova(glmm.q0.gaus2.noout)
+performance::r2(glmm.q0.gaus2.noout)
+performance::check_collinearity(glmm.q0.gaus2.noout)
+performance::check_singularity(glmm.q0.gaus2.noout)
+visreg(glmm.q0.gaus2.noout, scale="response") # Plotting conditional residuals
+
+##### Model 8: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.q0.gaus3 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus3, plot = T)
+summary(glmm.q0.gaus3)
+car::Anova(glmm.q0.gaus3)
+performance::r2(glmm.q0.gaus3)
+performance::check_collinearity(glmm.q0.gaus3)
+performance::check_singularity(glmm.q0.gaus3)
+visreg(glmm.q0.gaus3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus3.noout, plot = T)
+summary(glmm.q0.gaus3.noout)
+car::Anova(glmm.q0.gaus3.noout)
+performance::r2(glmm.q0.gaus3.noout)
+performance::check_collinearity(glmm.q0.gaus3.noout)
+performance::check_singularity(glmm.q0.gaus3.noout)
+visreg(glmm.q0.gaus3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 9: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.q0.gaus4 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus4, plot = T)
+summary(glmm.q0.gaus4)
+car::Anova(glmm.q0.gaus4)
+performance::r2(glmm.q0.gaus4)
+performance::check_collinearity(glmm.q0.gaus4)
+performance::check_singularity(glmm.q0.gaus4)
+visreg(glmm.q0.gaus4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus4.noout, plot = T)
+summary(glmm.q0.gaus4.noout)
+car::Anova(glmm.q0.gaus4.noout)
+performance::r2(glmm.q0.gaus4.noout)
+performance::check_collinearity(glmm.q0.gaus4.noout)
+performance::check_singularity(glmm.q0.gaus4.noout)
+visreg(glmm.q0.gaus4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 10: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 9 ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Water_temp + Salinity
+# Independent variables removed from model 9: Redox_pot 
+# Random effect: Rep
+
+###  Considering outliers:
+
+## Note: If I iterate this model and remove stepwise the highest VIF vars, finally I have to remove all variables, there's never a point without High correlations...
+
+glmm.q0.gaus5 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent + pH_soil + Water_temp + Conduct_microS_cm +
+                           Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus5, plot = T)
+summary(glmm.q0.gaus5)
+car::Anova(glmm.q0.gaus5)
+performance::r2(glmm.q0.gaus5)
+performance::check_collinearity(glmm.q0.gaus5)
+performance::check_singularity(glmm.q0.gaus5)
+visreg(glmm.q0.gaus5, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus5.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus5.noout, plot = T)
+summary(glmm.q0.gaus5.noout)
+car::Anova(glmm.q0.gaus5.noout)
+performance::r2(glmm.q0.gaus5.noout)
+performance::check_collinearity(glmm.q0.gaus5.noout)
+performance::check_singularity(glmm.q0.gaus5.noout)
+visreg(glmm.q0.gaus5.noout, scale="response") # Plotting conditional residuals
+
+##### Model 11: q0 - Gaussian - All interactions bet. vars. - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 9 ####
+
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Water_temp + Salinity
+# Independent variables removed from model 9: Redox_pot 
+# Random effect: Rep
+
+###  Considering outliers:
+
+## Note: If I iterate this model and remove stepwise the highest VIF vars, finally I have to remove all variables, there's never a point without High correlations...
+
+glmm.q0.gaus6 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent*pH_soil + O2_percent*Water_temp + O2_percent*Conduct_microS_cm +
+                           O2_percent*Salinity + pH_soil*Water_temp + pH_soil*Conduct_microS_cm + pH_soil*Salinity + Water_temp*Conduct_microS_cm  +  Water_temp*Salinity +
+                           Conduct_microS_cm*Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus6, plot = T)
+summary(glmm.q0.gaus6)
+car::Anova(glmm.q0.gaus6)
+performance::r2(glmm.q0.gaus6)
+performance::check_collinearity(glmm.q0.gaus6)
+performance::check_singularity(glmm.q0.gaus6)
+visreg(glmm.q0.gaus6, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q0.gaus6.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent*pH_soil + O2_percent*Water_temp + O2_percent*Conduct_microS_cm +
+                                 O2_percent*Salinity + pH_soil*Water_temp + pH_soil*Conduct_microS_cm + pH_soil*Salinity + Water_temp*Conduct_microS_cm  +  Water_temp*Salinity +
+                                 Conduct_microS_cm*Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus6.noout, plot = T)
+summary(glmm.q0.gaus6.noout)
+car::Anova(glmm.q0.gaus6.noout)
+performance::r2(glmm.q0.gaus6.noout)
+performance::check_collinearity(glmm.q0.gaus6.noout)
+performance::check_singularity(glmm.q0.gaus6.noout)
+visreg(glmm.q0.gaus6.noout, scale="response") # Plotting conditional residuals
+
+##### Model 11b: q0 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling + Treat*Sampling2
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + O2_percent + Salinity
+# Random effect: Rep
+
+###  Considering outliers:
+
+Hills_Physchem$Sampling2 <- (Hills_Physchem$Sampling)^2 # Sampling^2 variable created for plotting purposes.
+
+glmm.q0.gaus7 <- glmmTMB(data = Hills_Physchem, q0.obs ~ Treat*Sampling + Treat*Sampling2 + Conduct_microS_cm + pH_soil + Redox_pot + 
+                           O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Note: Model diagnostic results are the same when using Treat*I(Sampling^2) or Treat*Sampling2.
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7, plot = T)
+summary(glmm.q0.gaus7)
+car::Anova(glmm.q0.gaus7)
+r.squaredGLMM(glmm.q0.gaus7) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7)
+performance::check_collinearity(glmm.q0.gaus7)
+performance::check_singularity(glmm.q0.gaus7)
+visreg(glmm.q0.gaus7, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+Hills_Physchem_nooutliers$Sampling2 <- (Hills_Physchem_nooutliers$Sampling)^2 # Sampling^2 variable created for plotting purposes.
+
+glmm.q0.gaus7.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot +  
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7.noout, plot = T)
+summary(glmm.q0.gaus7.noout)
+car::Anova(glmm.q0.gaus7.noout) 
+r.squaredGLMM(glmm.q0.gaus7.noout) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7.noout)
+performance::check_collinearity(glmm.q0.gaus7.noout)
+performance::check_singularity(glmm.q0.gaus7.noout)
+visreg(glmm.q0.gaus7.noout, scale="response") # Plotting conditional residuals
+
+##### Model 12: q1 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis)  ####
+
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q1.pois1 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois1, plot = T)
+summary(glmm.q1.pois1)
+car::Anova(glmm.q1.pois1)
+performance::r2(glmm.q1.pois1)
+performance::check_collinearity(glmm.q1.pois1)
+performance::check_singularity(glmm.q1.pois1)
+visreg(glmm.q1.pois1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.pois1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois1.noout, plot = T)
+summary(glmm.q1.pois1.noout)
+car::Anova(glmm.q1.pois1.noout)
+performance::r2(glmm.q1.pois1.noout)
+performance::check_collinearity(glmm.q1.pois1.noout)
+performance::check_singularity(glmm.q1.pois1.noout)
+
+##### Model 13: q1 - Poisson - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q1.pois2 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois2, plot = T)
+summary(glmm.q1.pois2)
+car::Anova(glmm.q1.pois2)
+performance::r2(glmm.q1.pois2)
+performance::check_collinearity(glmm.q1.pois2)
+performance::check_singularity(glmm.q1.pois2)
+
+###  Removing outliers:
+
+glmm.q1.pois2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity  + (1|Rep_Treat) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois2.noout, plot = T)
+summary(glmm.q1.pois2.noout)
+car::Anova(glmm.q1.pois2.noout)
+performance::r2(glmm.q1.pois2.noout)
+performance::check_collinearity(glmm.q1.pois2.noout)
+performance::check_singularity(glmm.q1.pois2.noout)
+
+##### Model 14: q1 - Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis  ####
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity 
+
+###  Considering outliers:
+
+glmm.q1.pois3 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois3, plot = T)
+summary(glmm.q1.pois3)
+car::Anova(glmm.q1.pois3)
+performance::r2(glmm.q1.pois3)
+performance::check_collinearity(glmm.q1.pois3)
+performance::check_singularity(glmm.q1.pois3)
+visreg(glmm.q1.pois3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.pois3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q0.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + 
+                                 Salinity + (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois3.noout, plot = T)
+summary(glmm.q1.pois3.noout)
+car::Anova(glmm.q1.pois3.noout)
+performance::r2(glmm.q1.pois3.noout)
+performance::check_collinearity(glmm.q1.pois3.noout)
+performance::check_singularity(glmm.q1.pois3.noout)
+visreg(glmm.q1.pois3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 15: q1- Poisson - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Removing High VIF vars from Model 14  ####
+# Vars removed from Model 14 (High VIF): pH_soil + Redox_pot + Conduct_microS_cm
+# Family: Poisson
+# Interacting independent variables: Treat*Sampling and Treat*I(Sampling^2)
+# Additional independent variables: Water_temp + O2_percent + Salinity 
+
+###  Considering outliers:
+
+glmm.q1.pois4 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                           (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois4, plot = T)
+summary(glmm.q1.pois4)
+car::Anova(glmm.q1.pois4)
+performance::r2(glmm.q1.pois4)
+performance::check_collinearity(glmm.q1.pois4)
+performance::check_singularity(glmm.q1.pois4)
+visreg(glmm.q1.pois4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.pois4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Water_temp + O2_percent + Salinity +
+                                 (1|Rep) , family = "poisson")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.pois4.noout, plot = T)
+summary(glmm.q1.pois4.noout)
+car::Anova(glmm.q1.pois4.noout)
+performance::r2(glmm.q1.pois4.noout)
+performance::check_collinearity(glmm.q1.pois4.noout)
+performance::check_singularity(glmm.q1.pois4.noout)
+visreg(glmm.q1.pois4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 16: q1 - nbinom2 - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: nbinom2
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q1.nbinom1 <-  glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                              (1|Rep) , family = "nbinom2")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.nbinom1, plot = T)
+summary(glmm.q1.nbinom1)
+car::Anova(glmm.q1.nbinom1)
+performance::r2(glmm.q1.nbinom1)
+performance::check_collinearity(glmm.q1.nbinom1)
+performance::check_singularity(glmm.q1.nbinom1)
+visreg(glmm.q1.nbinom1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.nbinom1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity +
+                                   (1|Rep) , family = "nbinom2")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.nbinom1.noout, plot = T)
+summary(glmm.q1.nbinom1.noout)
+car::Anova(glmm.q1.nbinom1.noout)
+performance::r2(glmm.q1.nbinom1.noout)
+performance::check_collinearity(glmm.q1.nbinom1.noout)
+performance::check_singularity(glmm.q1.nbinom1.noout)
+visreg(glmm.q1.nbinom1.noout, scale="response") # Plotting conditional residuals
+
+# # transf sqrt:
+# Hills_Physchem$q0.sqrt <- sqrt(Hills_Physchem$q0.obs) # Test
+
+##### Model 17: q1 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q1.gaus1 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus1, plot = T)
+summary(glmm.q1.gaus1)
+car::Anova(glmm.q1.gaus1)
+performance::r2(glmm.q1.gaus1)
+performance::check_collinearity(glmm.q1.gaus1)
+performance::check_singularity(glmm.q1.gaus1)
+visreg(glmm.q1.gaus1, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus1.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus1.noout, plot = T)
+summary(glmm.q1.gaus1.noout)
+car::Anova(glmm.q1.gaus1.noout)
+performance::r2(glmm.q1.gaus1.noout)
+performance::check_collinearity(glmm.q1.gaus1.noout)
+performance::check_singularity(glmm.q1.gaus1.noout)
+visreg(glmm.q1.gaus1.noout, scale="response") # Plotting conditional residuals
+
+##### Model 18: q1 - Gaussian - Treat*Sampling interaction - "Rep_Treat" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+glmm.q1.gaus2 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus2, plot = T)
+summary(glmm.q1.gaus2)
+car::Anova(glmm.q1.gaus2)
+performance::r2(glmm.q1.gaus2)
+performance::check_collinearity(glmm.q1.gaus2)
+performance::check_singularity(glmm.q1.gaus2)
+visreg(glmm.q1.gaus2, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus2.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep_Treat) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus2.noout, plot = T)
+summary(glmm.q1.gaus2.noout)
+car::Anova(glmm.q1.gaus2.noout)
+performance::r2(glmm.q1.gaus2.noout)
+performance::check_collinearity(glmm.q1.gaus2.noout)
+performance::check_singularity(glmm.q1.gaus2.noout)
+visreg(glmm.q1.gaus2.noout, scale="response") # Plotting conditional residuals
+
+##### Model 19: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering all original variables (not considering all prev. correlation analysis) ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp + O2_percent + O2_mg_l + Salinity + pH_water
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.q1gaus3 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                          O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1gaus3, plot = T)
+summary(glmm.q1gaus3)
+car::Anova(glmm.q1gaus3)
+performance::r2(glmm.q1gaus3)
+performance::check_collinearity(glmm.q1gaus3)
+performance::check_singularity(glmm.q1gaus3)
+visreg(glmm.q1gaus3, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus3.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + Temp_10_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + O2_mg_l + Salinity + pH_water + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus3.noout, plot = T)
+summary(glmm.q1.gaus3.noout)
+car::Anova(glmm.q1.gaus3.noout)
+performance::r2(glmm.q1.gaus3.noout)
+performance::check_collinearity(glmm.q1.gaus3.noout)
+performance::check_singularity(glmm.q1.gaus3.noout)
+visreg(glmm.q1.gaus3.noout, scale="response") # Plotting conditional residuals
+
+##### Model 20: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.q1.gaus4 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                           O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus4, plot = T)
+summary(glmm.q1.gaus4)
+car::Anova(glmm.q1.gaus4)
+performance::r2(glmm.q1.gaus4)
+performance::check_collinearity(glmm.q1.gaus4)
+performance::check_singularity(glmm.q1.gaus4)
+visreg(glmm.q1.gaus4, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus4.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus4.noout, plot = T)
+summary(glmm.q1.gaus4.noout)
+car::Anova(glmm.q1.gaus4.noout)
+performance::r2(glmm.q1.gaus4.noout)
+performance::check_collinearity(glmm.q1.gaus4.noout)
+performance::check_singularity(glmm.q1.gaus4.noout)
+visreg(glmm.q1.gaus4.noout, scale="response") # Plotting conditional residuals
+
+##### Model 20b: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis - Removing Water_temp ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Random effect: Rep
+
+###  Considering outliers:
+
+glmm.q1.gaus8 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
+                           O2_percent + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus8, plot = T)
+summary(glmm.q1.gaus8)
+car::Anova(glmm.q1.gaus8)
+performance::r2(glmm.q1.gaus8)
+performance::check_collinearity(glmm.q1.gaus8)
+performance::check_singularity(glmm.q1.gaus8)
+visreg(glmm.q1.gaus8, scale="response") # Plotting conditional residuals
+
+ggplot(data = Hills_Physchem, aes(Treat, Conduct_microS_cm)) +
+  geom_point() + stat_summary(fun = "mean", geom = "point", size = 5)
+
+# visreg(glmm.q1.gaus8, scale="response", "Sampling", by = "Treat") 
+# visreg(glmm.q1.gaus8, scale="response", "Treat", by = "Sampling") 
+# visreg(glmm.q1.gaus8, "Treat") 
+# visreg(glmm.q1.gaus8, overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+# visreg(glmm.q1.gaus8) # Plotting conditional residuals
+# car::residualPlots(glmm.q1.gaus8, terms = "Treat")
+# predict(glmm.q1.gaus8, type = "response")
+# residuals(glmm.q1.gaus8) # Trying to plot partial residuals
+# terms(glmm.q1.gaus8)
+
+glmm.q1.gaus25 <- glm(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
+                        O2_percent + Salinity + (1/Rep)+1 , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus25, plot = T)
+summary(glmm.q1.gaus25)
+car::Anova(glmm.q1.gaus25)
+performance::r2(glmm.q1.gaus25)
+performance::check_collinearity(glmm.q1.gaus25)
+performance::check_singularity(glmm.q1.gaus25)
+visreg(glmm.q1.gaus25, scale="response") # Plotting conditional residuals
+
+predict(glmm.q1.gaus25, type = "terms")
+residuals(glmm.q1.gaus8, type = "partials") # Trying to plot partial residuals
+terms(glmm.q1.gaus8)
+
+
+###  Removing outliers:
+
+glmm.q1.gaus8.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Redox_pot +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus8.noout, plot = T)
+summary(glmm.q1.gaus8.noout)
+car::Anova(glmm.q1.gaus8.noout)
+performance::r2(glmm.q1.gaus8.noout)
+performance::check_collinearity(glmm.q1.gaus8.noout)
+performance::check_singularity(glmm.q1.gaus8.noout)
+visreg(glmm.q1.gaus8.noout, scale="response") # Plotting conditional residuals
+
+##### Model 21: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 20 ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Water_temp + Salinity
+# Independent variables removed from model 9: Redox_pot 
+# Random effect: Rep
+
+###  Considering outliers:
+
+## Note: If I iterate this model and remove stepwise the highest VIF vars, finally I have to remove all variables, there's never a point without High correlations...
+
+glmm.q1.gaus5 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent + pH_soil + Water_temp + Conduct_microS_cm +
+                           Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus5, plot = T)
+summary(glmm.q1.gaus5)
+car::Anova(glmm.q1.gaus5)
+performance::r2(glmm.q1.gaus5)
+performance::check_collinearity(glmm.q1.gaus5)
+performance::check_singularity(glmm.q1.gaus5)
+visreg(glmm.q1.gaus5, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus5.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling  + Treat*I(Sampling^2)  + Conduct_microS_cm + pH_soil + Water_temp +
+                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus5.noout, plot = T)
+summary(glmm.q1.gaus5.noout)
+car::Anova(glmm.q1.gaus5.noout)
+performance::r2(glmm.q1.gaus5.noout)
+performance::check_collinearity(glmm.q1.gaus5.noout)
+performance::check_singularity(glmm.q1.gaus5.noout)
+visreg(glmm.q1.gaus5.noout, scale="response") # Plotting conditional residuals
+
+##### Model 22: q1 - Gaussian - All interactions bet. vars. - "Rep" Random factor - Only vars after correlation analysis and removing High VIF stepwise from Mod. 20 ####
+
+# Family: Gaussian
+# Interacting independent variables: Treat*Sampling
+# Additional independent variables: Conduct_microS_cm + pH_soil + Water_temp + Salinity + O2_percent
+# Independent variables removed from model 9: Redox_pot 
+# Random effect: Rep_Treat
+
+###  Considering outliers:
+
+## Note: If I iterate this model and remove stepwise the highest VIF vars, finally I have to remove all variables, there's never a point without High correlations...
+
+glmm.q1.gaus6 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent*pH_soil + O2_percent*Water_temp + O2_percent*Conduct_microS_cm +
+                           O2_percent*Salinity + pH_soil*Water_temp + pH_soil*Conduct_microS_cm + pH_soil*Salinity + Water_temp*Conduct_microS_cm  +  Water_temp*Salinity +
+                           Conduct_microS_cm*Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus6, plot = T)
+summary(glmm.q1.gaus6)
+car::Anova(glmm.q1.gaus6)
+performance::r2(glmm.q1.gaus6)
+performance::check_collinearity(glmm.q1.gaus6)
+performance::check_singularity(glmm.q1.gaus6)
+visreg(glmm.q1.gaus6, scale="response") # Plotting conditional residuals
+
+###  Removing outliers:
+
+glmm.q1.gaus6.noout <- glmmTMB(data = Hills_Physchem_nooutliers, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + O2_percent*pH_soil + O2_percent*Water_temp + O2_percent*Conduct_microS_cm +
+                                 O2_percent*Salinity + pH_soil*Water_temp + pH_soil*Conduct_microS_cm + pH_soil*Salinity + Water_temp*Conduct_microS_cm  +  Water_temp*Salinity +
+                                 Conduct_microS_cm*Salinity + (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q1.gaus6.noout, plot = T)
+summary(glmm.q1.gaus6.noout)
+car::Anova(glmm.q1.gaus6.noout)
+performance::r2(glmm.q1.gaus6.noout)
+performance::check_collinearity(glmm.q1.gaus6.noout)
+performance::check_singularity(glmm.q1.gaus6.noout)
+visreg(glmm.q1.gaus6.noout, scale="response") # Plotting conditional residuals
+residuals()

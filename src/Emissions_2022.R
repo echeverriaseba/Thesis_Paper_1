@@ -22,7 +22,7 @@ Emissions_2022 <- select(Emission_rates_w_corrections_2022, Sampling_date, Plot,
 Water_level_2022 <- read.csv("data/Other_vars/Piezo_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import water level (piezometer) data:
                     rename(Water_level_piezo = Water_level_cm)  
 
-Master_GHG_2022  <- merge(Emissions_2022, Water_level_2022, by.x = c("Sampling_date", "Treat", "Plot", "Rep"), by.y = c("Date", "Treat", "Plot", "Rep"), all.x= TRUE, all.y = TRUE) %>%  # with all.x= TRUE, all.y = TRUE, the resulting dataframe contains as well dates where either only water level or emissions were recorded.
+Master_GHG_2022 <- merge(Emissions_2022, Water_level_2022, by.x = c("Sampling_date", "Treat", "Plot", "Rep"), by.y = c("Date", "Treat", "Plot", "Rep"), all.x= TRUE, all.y = TRUE) %>%  # with all.x= TRUE, all.y = TRUE, the resulting dataframe contains as well dates where either only water level or emissions were recorded.
                         select(Sampling_date, Treat, Plot, Rep, CH4_flux_corrected, N2O_flux_corrected, Water_level_piezo)
 
 Field_sheet_chrom_2022 <- read.csv("data/GHG/Field_sheet_chrom_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Load field sheet 2022:
@@ -34,14 +34,14 @@ Field_sheet_other_factors_2022 <- Field_sheet_chrom_2022 %>%
 
 #######  Water level correction:
 
-Master_GHG_2022  <- Master_GHG_2022  %>% 
+Master_GHG_2022 <- Master_GHG_2022  %>% 
                         left_join(Field_sheet_other_factors_2022, by = c("Sampling_date", "Plot"))
-Master_GHG_2022 $Sampling_date <- as.Date(Master_GHG_2022 $Sampling_date)
-Master_GHG_2022  <- Master_GHG_2022 [!(Master_GHG_2022 $Plot %in% c("P10","P11", "P12", "P13", "P14", "P15")), ] #Removes Rep 4 and Rep 5
-Master_GHG_2022 $Row_Nr <- 1:nrow(Master_GHG_2022 ) # Adding a row number column
-Master_GHG_2022 $Water_level_corr <- NA # add column "Water_level_corr"
-Master_GHG_2022  <- Master_GHG_2022 [, c(13, 1, 2, 3, 4, 5, 6, 7, 8, 14, 9, 10, 11, 12)] # Reorder columns
-Master_GHG_2022  <- Master_GHG_2022 [!(is.na(Master_GHG_2022$CH4_flux_corrected) & is.na(Master_GHG_2022$N2O_flux_corrected) & is.na(Master_GHG_2022$Water_level_piezo)), ] # Removes rows without emissions and piezometer records.
+Master_GHG_2022$Sampling_date <- as.Date(Master_GHG_2022 $Sampling_date)
+Master_GHG_2022 <- Master_GHG_2022 [!(Master_GHG_2022 $Plot %in% c("P10","P11", "P12", "P13", "P14", "P15")), ] #Removes Rep 4 and Rep 5
+Master_GHG_2022$Row_Nr <- 1:nrow(Master_GHG_2022 ) # Adding a row number column
+Master_GHG_2022$Water_level_corr <- NA # add column "Water_level_corr"
+Master_GHG_2022 <- Master_GHG_2022 [, c(13, 1, 2, 3, 4, 5, 6, 7, 8, 14, 9, 10, 11, 12)] # Reorder columns
+Master_GHG_2022 <- Master_GHG_2022 [!(is.na(Master_GHG_2022$CH4_flux_corrected) & is.na(Master_GHG_2022$N2O_flux_corrected) & is.na(Master_GHG_2022$Water_level_piezo)), ] # Removes rows without emissions and piezometer records.
 
 # The created water level column must fulfill the following conditions:
   # a) If there is a valid value in Water_level_ruler and Water_level_piezo, take the Water_level_ruler value, unless the Water_level_ruler value is 0, then take the Water_level_piezo value. 

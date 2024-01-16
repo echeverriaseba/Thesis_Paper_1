@@ -492,7 +492,11 @@ pairs(emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response"))
 
 pairs(emmeans(glmm.CH4.gaus2.noout, ~Treat|Sampling, type = "response"))
 
-## Comparing overall emission averages per Treat ####
+
+
+################ 3. Other analyses ####################
+
+## 3.1. Comparing overall emission averages per Treat ####
 
 Allseason.CH4.avg <- Master_GHG_2022_no_NA_nooutliers %>% 
                       group_by(Treat) %>% 
@@ -500,3 +504,8 @@ Allseason.CH4.avg <- Master_GHG_2022_no_NA_nooutliers %>%
 
 (Allseason.CH4.avg[2,2]-Allseason.CH4.avg[1,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs AWD 
 (Allseason.CH4.avg[2,2]-Allseason.CH4.avg[3,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs MSD 
+
+## 3.2. Calculating global accumulated emissions (kg CH4 ha-1) ####
+
+
+
