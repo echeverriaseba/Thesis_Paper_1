@@ -12,13 +12,12 @@ library(RColorBrewer)
 library(usdm)
 library(ggplot2)
 library(visreg)
-# library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
 library(forcats) # to modify gray facet titles in facet_wrap(). 
-# install.packages("r2glmm")
 library(r2glmm)
 library(MuMIn)
 library(gridExtra)
+library(psych)
 
 ##############  1. Preparing base data frames #################
 
@@ -620,50 +619,91 @@ q0.Sampling2.avg <- Hills_Physchem_Samp2 %>%
 (q0.Sampling2.avg[1,2]-q0.Sampling2.avg[2,2])/q0.Sampling2.avg[1,2] # Emission % decrease CON vs MSD
 
 
-### 2.2.2. Selected model for q1: Model 20b (not removing outliers) ####
+### 2.2.2. Selected model for q1: Model 20c (not removing outliers) ####
 
 # Same selection criteria as for q0.
 # ANOVA results in significant Treat effect, we move forward with post-hoc tests.
 # Selected model:
 
-## Model 20b: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis - Removing Water_temp ###
+## Model 20c: q1 - Gaussian - Treat*Sampling and Treat*I(Sampling^2) interaction - "Rep" Random factor - Considering only remaining variables after correlation analysis - Removing Water_temp ###
 # Family: Gaussian
 # Interacting independent variables: Treat*Sampling
-# Additional independent variables: Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
+# Additional independent variables: pH_soil + Redox_pot + Water_temp + O2_percent + Salinity
 # Random effect: Rep
 
 ###  Considering outliers:
 
-glmm.q1.gaus8 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + Conduct_microS_cm + pH_soil + Redox_pot + 
+glmm.q1.gaus9 <- glmmTMB(data = Hills_Physchem, q1.obs ~ Treat*Sampling + Treat*I(Sampling^2) + pH_soil + Redox_pot + 
                            O2_percent + (1|Rep) , family = "gaussian")
 
 # Model diagnostics:
-DHARMa::simulateResiduals(glmm.q1.gaus8, plot = T)
-summary(glmm.q1.gaus8)
-car::Anova(glmm.q1.gaus8)
-performance::r2(glmm.q1.gaus8)
-performance::check_collinearity(glmm.q1.gaus8)
-performance::check_singularity(glmm.q1.gaus8)
-visreg(glmm.q1.gaus8, scale="response") # Plotting conditional residuals
+DHARMa::simulateResiduals(glmm.q1.gaus9, plot = T)
+summary(glmm.q1.gaus9)
+car::Anova(glmm.q1.gaus9)
+performance::r2(glmm.q1.gaus9)
+performance::check_collinearity(glmm.q1.gaus9)
+performance::check_singularity(glmm.q1.gaus9)
+visreg(glmm.q1.gaus9, scale="response") # Plotting conditional residuals
 
 # Paired tests:
 
-emmeans(glmm.q1.gaus8, ~Treat , type = "response")
-pairs(emmeans(glmm.q1.gaus8, ~Treat , type = "response"))
-
-# Next steps, from example script:
-# emmeans(m.rare, ~sampling_month, type = "response")
-# pairs(emmeans(m.rare, ~sampling_month, type = "response"))
-# 
-# pairs(emmeans(m.rare, ~treatment|sampling_month, type = "response"))
-# 
-# df.rare <- as.data.frame(emmeans(m.rare, ~treatment|sampling_month, type = "response")) %>% 
-#   mutate(divindex = rep("q0.obs",8),
-#          emmean = rate) %>% 
-#   select(-rate)
+emmeans(glmm.q1.gaus9, ~Treat , type = "response")
+pairs(emmeans(glmm.q1.gaus9, ~Treat , type = "response"))
 
 
-##### Abundance Models ####
+
+# Conduct_microS_cm - Treat correlation:
+
+Cond_Treat_plot <- ggplot(data = Hills_Physchem, aes(Treat, Conduct_microS_cm,  group = Treat, colour = Treat, fill = Treat)) +
+                          geom_point() + 
+                          stat_summary(fun = "mean", geom = "point", size = 5) +
+                          scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                          scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                          theme_bw() +
+                          theme(
+                            axis.title.x = element_blank(), legend.position = "top") +
+                          ylab(expression(paste("Soil electrical conductivity (μS cm"^"−1",")"))) 
+
+print(Cond_Treat_plot)
+
+# All physicochemical variables interaction with Treat:
+
+# Note: with ths analisis, a string interaction between Treat and Conductivity is identified, leading to its removal from the final q1 model.
+
+Phys_ind_vars<- c("Conduct_microS_cm", "Temp_10_cm", "pH_soil", "Redox_pot","Water_temp", "O2_percent", "O2_mg_l", "Salinity", "pH_water") # independent variables for scatterplots
+
+custom_ylabs <- c( # Defining specific ylabs for scatterplots
+  expression(paste("Soil electrical conductivity (μS cm"^"-1",")")),
+  expression("Soil temperature at 10cm (ºC)"),
+  expression("Soil pH"),
+  expression("Redox potential"),
+  expression("Water temperature (ºC)"),
+  expression("Oxigen (%)"),
+  expression(paste("Oxigen (mg l"^"-1",")")),
+  expression(paste("Salinity")),
+  expression("Water pH")
+)
+
+pdf("outputs/Plots/BIO/Ind_vars_Treat_inter.pdf", width = 10, height = 10)
+
+par(mfrow = c(3, 3), mar = c(1, 6, 2, 0)) # Adjust the margin to reduce space
+
+for (i in seq_along(Phys_ind_vars)) { # Loop through each independent variable and create a scatterplot with custom y-axis label
+  var <- Phys_ind_vars[i]
+
+  plot(Hills_Physchem$Treat, Hills_Physchem[, var], 
+       # xlab = xlab,
+       # ylab = custom_ylabs[i],
+       main = "")
+  mtext(custom_ylabs[i], side = 2, line = 3)
+
+}
+
+par(mfrow = c(1, 1))
+
+dev.off()
+
+# 2.2.3. Abundance Models ####
 
 # Including Rep to each Plot:
 Plot <- c("P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15")

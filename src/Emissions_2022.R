@@ -173,7 +173,7 @@ CH4_flux_C <- ggplot(Master_GHG_2022_no_NA, aes(x = Sampling_date, y = CH4_flux_
                       geom_line(alpha = 0.5, linetype = "dotted") +  # Adjust transparency by setting alpha
                       scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
                       theme_bw() +
-                      labs(y = expression(paste(CH[4], " flux (mg ", m^-2, " ", h^-1, ")"))) +
+                      labs(y = expression(paste(C-CH[4], " flux (mg ", m^-2, " ", h^-1, ")"))) +
                       geom_hline(yintercept = 0, color = "grey") +
                       guides(linetype = guide_legend(override.aes = list(color = c("black", "black")))) +
                       theme(

@@ -14,6 +14,7 @@ library(ggplot2)
 library(visreg)
 # library(car) # It changes vif(). Use as "car::" when needed. 
 library(DFIT)
+library(gridExtra)
 
 ################ 1. GHG_emissions-physchem data frame ###################
 # "Master_GHG_2022_no_NA" dataframe already contains "CH4_flux_corrected" and physicochemical data and excludes all NA values (due to non GHG measurement dates, only physchem). 
@@ -505,7 +506,44 @@ Allseason.CH4.avg <- Master_GHG_2022_no_NA_nooutliers %>%
 (Allseason.CH4.avg[2,2]-Allseason.CH4.avg[1,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs AWD 
 (Allseason.CH4.avg[2,2]-Allseason.CH4.avg[3,2])/Allseason.CH4.avg[2,2] # Emission % decrease CON vs MSD 
 
-## 3.2. Calculating global accumulated emissions (kg CH4 ha-1) ####
+## 3.2. Calculating global cumulative C-CH4 emissions (kg C-CH4 ha-1) ####
+
+Accum_CH4 <- Master_GHG_2022_no_NA %>% 
+              select("Row_Nr", "Sampling_date", "Treat", "Plot", "Rep", "CH4_flux_corrected") %>% 
+              arrange(Plot, Sampling_date) %>% 
+              group_by(Plot) %>% 
+              mutate(Days_passed = as.integer(Sampling_date - lag(Sampling_date))) %>% 
+              mutate(Hours_passed = Days_passed * 24) %>% 
+              mutate(CH4_mgm2 = CH4_flux_corrected * Hours_passed) %>% 
+              mutate(CH4_kgha = CH4_mgm2 / 100) # *10.000 from m-2 to ha-1 ; /1.000.000 from mg to kg
+
+Accum_CH4$CH4_kgha <- ifelse(is.na(Accum_CH4$CH4_kgha), 0, Accum_CH4$CH4_kgha)
+
+Accum_CH4_tot <- Accum_CH4 %>% 
+              group_by(Treat, Plot) %>%
+              summarise(CH4_kgha_tot = sum(CH4_kgha)) 
+
+Accum_CH4_tot$Treat <- factor(Accum_CH4_tot$Treat, levels = c('CON', 'MSD', 'AWD')) # Treat to factor to reorder below's ggplot x axis
+
+# Plotting cumulative C-CH4:
+
+Accum_CH4_plot <- ggplot(Accum_CH4_tot, aes(x = Treat, y = CH4_kgha_tot, fill = Treat, color = Treat)) + 
+                          geom_boxplot(width = 0.4, size = 0.2, show.legend = FALSE) + 
+                          labs(x = "", y = expression(paste("Cumulative ",C-CH[4], " emissions (kg ", ha^-1, ")"))) +
+                          theme_bw()+
+                          scale_fill_manual(values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D"), guide = "none") +
+                          scale_colour_manual(name = "Treatment", values = c("#820300", "#820300", "#820300"), breaks=c('CON', 'MSD', 'AWD')) +
+                          theme(plot.margin = margin(l = 0, r = 5, t = 42, b = 14, unit = "pt")) + # Adjust margins to correct arrange below.
+                          scale_y_continuous(position = "right")
+  
+print(Accum_CH4_plot)
+
+# Arrange plots: CH4 emissions + Water level all treats + cumulative C-CH4
+
+CH4_flux_water_acc <- grid.arrange(arrangeGrob(CH4_flux_water_C, Accum_CH4_plot, nrow = 1, ncol = 2, widths = c(0.8, 0.2)))
+
+ggsave("outputs/Plots/GHG/CH4_flux_water_acc.pdf", width = 10, height = 5, plot = CH4_flux_water_acc) 
+ 
 
 
 
