@@ -545,5 +545,30 @@ CH4_flux_water_acc <- grid.arrange(arrangeGrob(CH4_flux_water_C, Accum_CH4_plot,
 ggsave("outputs/Plots/GHG/CH4_flux_water_acc.pdf", width = 10, height = 5, plot = CH4_flux_water_acc) 
  
 
+## 3.3. Model only for CON - Phys. drivers analysis ####
+
+###  Removing outliers:
+
+# Note: this model is used to compare with article "Neglecting the fallow season can significantly underestimate annual methane 
+# emissions in Mediterranean rice fields" (Martínen- Eixarch, 2018) due to non significance of phys. params in selected models. 
+# This study considered: "agronomic (water flooding, water layer depth, plant cover and timing of straw incorporation) and 
+# environmental (temperature, soil pH, conductivity and redox potential) measurements were done at ca. 10 cm depth...". 
+# Only coinciding variables are considered for this analysis. 
+
+Master_GHG_2022_no_NA_nooutliersCON <- Master_GHG_2022_no_NA_nooutliers %>% 
+                                       filter(Treat == "CON")
+
+glmm.CH4.gaus4.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliersCON, CH4_flux_corrected ~ Water_level_corr + Temp_soil + 
+                                  Env_temp_final + Rice_cover_prop + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +   
+                                  (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.CH4.gaus4.noout, plot = T)
+summary(glmm.CH4.gaus4.noout)
+car::Anova(glmm.CH4.gaus4.noout)
+performance::r2(glmm.CH4.gaus4.noout)
+performance::check_collinearity(glmm.CH4.gaus4.noout)
+performance::check_singularity(glmm.CH4.gaus4.noout)
+visreg(glmm.CH4.gaus4.noout, scale="response") # Plotting conditional residuals
 
 
