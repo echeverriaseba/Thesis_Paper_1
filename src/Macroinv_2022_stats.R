@@ -652,7 +652,7 @@ pairs(emmeans(glmm.q1.gaus9, ~Treat , type = "response"))
 
 
 
-# Conduct_microS_cm - Treat correlation:
+## i) q1 - Conduct_microS_cm - Treat correlation ####
 
 Cond_Treat_plot <- ggplot(data = Hills_Physchem, aes(Treat, Conduct_microS_cm,  group = Treat, colour = Treat, fill = Treat)) +
                           geom_point() + 
@@ -702,6 +702,18 @@ for (i in seq_along(Phys_ind_vars)) { # Loop through each independent variable a
 par(mfrow = c(1, 1))
 
 dev.off()
+
+## ii) q1 - Calculating pi: The proportion of the entire community made up of species i ####
+
+# This analysis looks into the cause of lower MSD in comparison with CON and AWD.
+
+Tax_treat <- ColOdoHet %>% 
+              group_by(Treat, Taxres_max) %>% 
+              summarise(Abundance = sum(Abundance)) %>% 
+  group_by(Treat) %>%
+  mutate(prop = Abundance / sum(Abundance)) %>%
+  ungroup()
+
 
 # 2.2.3. Abundance Models ####
 

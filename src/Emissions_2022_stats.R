@@ -558,8 +558,8 @@ ggsave("outputs/Plots/GHG/CH4_flux_water_acc.pdf", width = 10, height = 5, plot 
 Master_GHG_2022_no_NA_nooutliersCON <- Master_GHG_2022_no_NA_nooutliers %>% 
                                        filter(Treat == "CON")
 
-glmm.CH4.gaus4.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliersCON, CH4_flux_corrected ~ Water_level_corr + Temp_soil + 
-                                  Env_temp_final + Rice_cover_prop + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp +   
+glmm.CH4.gaus4.noout <- glmmTMB(data = Master_GHG_2022_no_NA_nooutliersCON, CH4_flux_corrected ~ Water_level_corr + Temp_soil + Env_temp_final +  
+                                  Salinity + Rice_cover_prop + Conduct_microS_cm + pH_soil + Redox_pot + Water_temp + O2_mg_l + 
                                   (1|Rep) , family = "gaussian")
 
 # Model diagnostics:
