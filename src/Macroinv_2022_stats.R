@@ -18,6 +18,7 @@ library(r2glmm)
 library(MuMIn)
 library(gridExtra)
 library(psych)
+library(readr)
 
 ##############  1. Preparing base data frames #################
 
@@ -668,7 +669,7 @@ print(Cond_Treat_plot)
 
 # All physicochemical variables interaction with Treat:
 
-# Note: with ths analisis, a string interaction between Treat and Conductivity is identified, leading to its removal from the final q1 model.
+# Note: with this analysis, a strong interaction between Treat and Conductivity is identified, leading to its removal from the final q1 model.
 
 Phys_ind_vars<- c("Conduct_microS_cm", "Temp_10_cm", "pH_soil", "Redox_pot","Water_temp", "O2_percent", "O2_mg_l", "Salinity", "pH_water") # independent variables for scatterplots
 
@@ -710,10 +711,50 @@ dev.off()
 Tax_treat <- ColOdoHet %>% 
               group_by(Treat, Taxres_max) %>% 
               summarise(Abundance = sum(Abundance)) %>% 
-  group_by(Treat) %>%
-  mutate(prop = Abundance / sum(Abundance)) %>%
-  ungroup()
+              group_by(Treat) %>%
+              mutate(prop = Abundance / sum(Abundance)) %>%
+              ungroup()
 
+Tax_treat_Plots <- ColOdoHet %>% 
+              group_by(Treat, Sampling, Plot, Taxres_max) %>% 
+              summarise(Abundance = sum(Abundance)) %>% 
+              group_by(Treat, Sampling, Plot) %>%
+              mutate(prop = Abundance / sum(Abundance)) %>%
+              ungroup()
+
+write_csv(Tax_treat_Plots, "outputs/csv/BIO/Tax_treat_Plots.csv")
+
+## iii) q1 - plots: Species per (Sampling-Treat-Plot) ####
+
+unique_siteID <- unique(ColOdoHet$siteID) # Vector containing all unique siteID within ColOdoHet
+
+plot_list <- list() # Initialize an empty list to store the plots
+
+for (i in 1:length(unique_siteID)) { # Loop through each independent variable and create a scatterplot with custom y-axis label
+  q1.siteID_i <- unique_siteID[i]
+  q1.subset_i <- subset(ColOdoHet, ColOdoHet$siteID == q1.siteID_i) # if returned as Time-Series, re-run library(dplyr)
+  q1.samp_i <- q1.subset_i$Sampling[1]
+  q1.treat_i <- q1.subset_i$Treat[1]
+  q1.plot_i <- q1.subset_i$Plot[1]
+  q1.ggplot_i <- ggplot(data = q1.subset_i, aes(x = Taxres_max, y = Abundance)) +
+                        geom_bar(stat = "identity") + 
+                        ggtitle(paste("Samp. = ", q1.samp_i, "; Treat = ", q1.treat_i, "; Plot = ", q1.plot_i)) +
+                        ylab("") + 
+                        xlab("") +
+                        theme(text = element_text(size = 2),
+                              plot.title = element_text(size = 2),
+                              axis.text.x = element_text(angle = 45, hjust = 1))+
+                        coord_cartesian(ylim = c(0, 60))
+  print(q1.ggplot_i)
+  
+  # Append each plot to the list
+  plot_list[[i]] <- q1.ggplot_i
+}
+
+# Arrange all plots in one grid
+q1.arrange <- grid.arrange(grobs = plot_list, nrow = 4, ncol = 15)  
+
+ggsave("outputs/Plots/BIO/q1.arrange.pdf", q1.arrange, width = 12, height = 8)
 
 # 2.2.3. Abundance Models ####
 
