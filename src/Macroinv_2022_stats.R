@@ -187,9 +187,18 @@ cor_matrix_nooutliers <- Hills_Physchem_nooutliers %>%
 
 corr_nooutliers <- round(cor(cor_matrix_nooutliers, method =  "spearman"), 1) # Calculates the Spearman rank correlation matrix
 
-pdf("outputs/Plots/BIO/Corr_plot_nooutliers.pdf", width = 11)
-corrplot::corrplot.mixed(corr_nooutliers, order = 'hclust', addrect = 2)
-dev.off()
+  pdf("outputs/Plots/BIO/Corr_plot_nooutliers.pdf", width = 11)
+  corrplot::corrplot.mixed(
+    corr_nooutliers,
+    order = 'hclust',
+    addrect = 2,
+    tl.col = "black", # Set text color to black
+    tl.srt = 45,      # Rotate text by 45 degrees
+    mar = c(1, 1, 1, 1), # Adjusting the margin
+    tl.pos = "lt"     # Set text label position to "left-top"
+  )
+  
+  dev.off()
 
 ## Comparing corrplots the effect of removing rows with outliers for Water_temp and Salinity can be seen in correlation between other variables, for having discarded as 
 ## well data regarding them that was contained in these rows.
@@ -386,6 +395,29 @@ plot(dend_5,horiz = TRUE,xlab="",axes = FALSE)
 axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
 dev.off()
 
+## Dend 6  Made to show initial dendrogram, with all variables and also considering Sampling (removing variables after the VIF analysis) 
+
+selected_vars_10 <- c('Conduct_microS_cm', 'Temp_10_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_percent', 'O2_mg_l', 'Salinity', 'pH_water', 'Sampling')
+data_selected_10 <- (Hills_Physchem[, selected_vars_10])
+
+# Variable clustering:
+similarity="pearson"
+vclust_6 <- varclus(x=as.matrix(data_selected_10),
+                    similarity=similarity,
+                    type="data.matrix", 
+                    method="complete",
+                    na.action=na.retain,trans="abs")
+dend_6 <- as.dendrogram(vclust_6)
+# Random colors and plot dendrogram:
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector <- brewer.pal(n=8,"Paired")
+dend_6 <- color_labels(dend_6, h=1-0.7,col=col_vector)
+dend_6 <- color_branches(dend_6, h=1-0.7,col=col_vector)
+cairo_pdf("outputs/Plots/BIO/Cluster_variables_pearson_5_nooutliers2.pdf",width=10,height=5)
+par(mar=c(5,2,4,17)+0.1)
+plot(dend_6,horiz = TRUE,xlab="",axes = FALSE)
+axis(1,at=1-seq(0,1,0.2),labels=seq(0,1,0.2))
+dev.off()
 
 #### 2.2. GLMMs ####
 
@@ -687,14 +719,14 @@ custom_ylabs <- c( # Defining specific ylabs for scatterplots
 
 pdf("outputs/Plots/BIO/Ind_vars_Treat_inter.pdf", width = 10, height = 10)
 
-par(mfrow = c(3, 3), mar = c(1, 6, 2, 0)) # Adjust the margin to reduce space
+par(mfrow = c(3, 3), mar = c(2, 6, 2, 0)) # Adjust the margin to reduce space
 
 for (i in seq_along(Phys_ind_vars)) { # Loop through each independent variable and create a scatterplot with custom y-axis label
   var <- Phys_ind_vars[i]
 
   plot(Hills_Physchem$Treat, Hills_Physchem[, var], 
        # xlab = xlab,
-       # ylab = custom_ylabs[i],
+       ylab = "",
        main = "")
   mtext(custom_ylabs[i], side = 2, line = 3)
 
@@ -905,4 +937,6 @@ pairs(emmeans(glmm.abu.gaus2, ~Treat , type = "response"))
 
 emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response")
 pairs(emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response"))
+
+
 

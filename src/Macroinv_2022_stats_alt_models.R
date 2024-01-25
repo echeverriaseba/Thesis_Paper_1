@@ -55,9 +55,9 @@ Sam.Date$Sampling_date <- as.Date(Sam.Date$Sampling_date)
 physchem_avg_2022 <- merge(physchem_avg_2022, Sam.Date, by.x="Sampling", by.y="Sampling") # Assigning Sampling values
 physchem_avg_2022$siteID <- paste0(physchem_avg_2022$Plot, "_", physchem_avg_2022$Sampling, "_", physchem_avg_2022$Treat) # Creates siteID to merge later with Hills_ColOdoHet data frame
 physchem_avg_2022 <- physchem_avg_2022 %>% 
-  arrange(Sampling_date, Plot) %>% # Sorts by Sampling_date and then by Plot
-  select(Sampling_date, Sampling, Plot, Treat, Rep, Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, sampdateID, siteID) %>%  # Re-orders.
-  mutate(across(c(Water_temp, O2_percent, O2_mg_l, Salinity, pH_water), ~ifelse(is.nan(.), NA, .))) # Replaces NaN for NA values.
+                      arrange(Sampling_date, Plot) %>% # Sorts by Sampling_date and then by Plot
+                      select(Sampling_date, Sampling, Plot, Treat, Rep, Conduct_microS_cm, Temp_10_cm, pH_soil, Redox_pot, Water_temp, O2_percent, O2_mg_l, Salinity, pH_water, sampdateID, siteID) %>%  # Re-orders.
+                      mutate(across(c(Water_temp, O2_percent, O2_mg_l, Salinity, pH_water), ~ifelse(is.nan(.), NA, .))) # Replaces NaN for NA values.
 
 #### 1.2. Creating base biodiv-physchem data frame ####
 
