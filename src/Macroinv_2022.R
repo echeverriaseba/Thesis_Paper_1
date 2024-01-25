@@ -662,10 +662,12 @@ ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.3.pdf", plot = Abundance_2022_p
 Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance, colour = Treat, fill = Treat)) +
                                     geom_bar(data = Abundance_2022_summary, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
                                     geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Treat), position = "dodge", size = 1) +
+                                    geom_point(data = Abundance_2022, position = position_dodge(width = 1)) +
                                     scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D")) +
                                     scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
                                     theme_bw() +
                                     ylab("Accumulated abundance (nº individuals)") +
+                                    scale_y_log10(breaks = c(5, 10, 20, 30, 50, 100)) +
                                     ggtitle("")+
                                     geom_vline(xintercept = 1.5) +
                                     geom_vline(xintercept = 2.5) +
@@ -680,4 +682,4 @@ Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance
 
 print(Abundance_2022_plot_avg4)
 
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.4.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10)
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.5.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10)

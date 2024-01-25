@@ -21,13 +21,18 @@ Prod_2022_plot <- ggplot(Prod_2022, aes(Treat, Yield_kg_ha, group = Treat, colou
                           scale_colour_manual(name = "Treatment", values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D")) +
                           scale_fill_manual(values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D"), guide = "none") +
                           theme_bw() +
+                          # scale_y_sqrt() +
+                          # scale_y_log() +
+                          # scale_y_continuous(trans = "log10") +
+                          # ylim(6000, 10000) +
                           ylab(expression("Yield (kg ha"^-1*")")) +
                           ggtitle("") +
                           theme(plot.title = element_text(size=20, hjust=0.5)) +
                           theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                 axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
-                                axis.text.y = element_text(size = 20, margin = margin(r = 10), angle = 90), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) + 
-                          scale_y_continuous(expand = c(0, 0), limits = c(0, 9100), breaks = seq(1000, 9000, by = 1000)) 
+                                axis.text.y = element_text(size = 20, margin = margin(r = 10), angle = 90), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                          scale_y_continuous(expand = c(0, 0), limits = c(0, 9100), breaks = seq(1000, 9000, by = 1000))
+                          # scale_y_continuous(expand = c(0, 0), limits = c(6000, 9100), breaks = seq(7000, 9000, by = 1000))
 
 print(Prod_2022_plot)
 
