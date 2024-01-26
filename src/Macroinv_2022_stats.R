@@ -648,9 +648,8 @@ q0.Sampling2.avg <- Hills_Physchem_Samp2 %>%
                       group_by(Treat) %>% 
                       summarise(Avg_q0.obs = mean(q0.obs), se_q0.obs = sd(q0.obs) / sqrt(n()))
 
-(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[3,2])/q0.Sampling2.avg[1,2] # Emission % decrease CON vs AWD 
-(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[2,2])/q0.Sampling2.avg[1,2] # Emission % decrease CON vs MSD
-
+(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[3,2])/q0.Sampling2.avg[1,2] # q0 % decrease CON vs AWD 
+(q0.Sampling2.avg[1,2]-q0.Sampling2.avg[2,2])/q0.Sampling2.avg[1,2] # q0 % decrease CON vs MSD
 
 ### 2.2.2. Selected model for q1: Model 20c (not removing outliers) ####
 
