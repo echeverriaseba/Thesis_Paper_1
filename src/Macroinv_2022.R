@@ -662,7 +662,7 @@ ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.3.pdf", plot = Abundance_2022_p
 Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance, colour = Treat, fill = Treat)) +
                                     geom_bar(data = Abundance_2022_summary, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
                                     geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Treat), position = "dodge", size = 1) +
-                                    geom_point(data = Abundance_2022, position = position_dodge(width = 1)) +
+                                    geom_point(data = Abundance_2022, position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0)) +
                                     scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D")) +
                                     scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
                                     theme_bw() +
@@ -682,4 +682,108 @@ Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance
 
 print(Abundance_2022_plot_avg4)
 
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.5.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10)
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.7.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10) # Abu.div_2022_avg_plots.5.pdf is the same without...
+# ...jitter of points: geom_point(data = Abundance_2022, position = position_dodge(width = 1)) 
+
+# ii. version 5:
+
+Abundance_2022$Date <- as.Date(Abundance_2022$Date)
+
+Abundance_2022_plot_avg5 <- ggplot(Abundance_2022, aes(x = Date, y = Abundance, color = Treat, group = Plot)) +
+                                    geom_line(alpha = 0.5, linetype = "dotted") +  # Adjust transparency by setting alpha
+                                    scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
+                                    theme_bw() +
+                                    ylab("Accumulated abundance (nº individuals)") +
+                                    geom_hline(yintercept = 0, color = "grey") +
+                                    guides(linetype = guide_legend(override.aes = list(color = c("black", "black")))) +
+                                    theme(
+                                      axis.title.y = element_text(color = "black"), legend.margin=margin(0,0,0,0),
+                                      axis.text.y = element_text(color = "black"),
+                                      axis.title.y.right = element_text(color = "black"),
+                                      axis.text.y.right = element_text(color = "black"),
+                                      strip.background = element_blank(),
+                                      strip.placement = "outside",
+                                      legend.position="top",
+                                      plot.margin = unit(c(1, 1, 0, 1), "lines")) +
+                                    facet_wrap(~Order_SubOrder)
+
+Abundance_2022avg2 <- Abundance_2022 %>% 
+                      group_by(Date, Order_SubOrder, Treat) %>% 
+                      summarise(Abundance = sum(Abundance))
+
+Abundance_2022_plot_avg5 <- Abundance_2022_plot_avg5 +
+  geom_line(data = Abundance_2022avg2, aes(x = Date, y = Abundance, group = Treat))
+
+print(Abundance_2022_plot_avg5) 
+
+ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.6.pdf", plot = Abundance_2022_plot_avg5, width = 7, height = 5)
+
+# 2nd version Abundance models:
+
+Abundance_2022_2 <- read.csv("data/BIO/Macrofauna_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import Macrofauna_2022 data
+                      filter(!(c(Organism == "Pelophylax perezi" & Stadium == "Adult"))) %>% # Removes frog adults (leaving only tadpoles) and rows with empty traps
+                      filter(!(c(Type == "Coleoptera"))) %>%  # Removes Coleoptera adults
+                      filter(!(Type == "Cricket")) %>%  # Removes Crickets 
+                      filter(!(Type == "Diptera")) %>% # Removes Diptera
+                      filter(!(c(Type == "Odonata"))) %>% 
+                      filter(!(c(Type == "Heteroptera"))) 
+
+colnames(Abundance_2022_2)[colnames(Abundance_2022_2) == "Type"] <- "Order_SubOrder" 
+
+Abundance_2022_2 <- Abundance_2022_2 %>% 
+                      select(Date, Plot, Treat, Order_SubOrder, Abundance)  
+
+Abundance_2022_2 <- rbind(Abundance_2022_2, ColOdoHet_merged) %>% 
+                    group_by(Plot, Treat, Order_SubOrder) %>% 
+                    summarise(Abundance = sum(Abundance)) %>% 
+                    ungroup()
+
+Abundance_2022_2$Treat <- factor(Abundance_2022_2$Treat, levels = c("CON", "MSD", "AWD")) # Reorder the Treat variable
+
+write_csv2(Abundance_2022_2, "outputs/csv/BIO/Abundance_2022_2.csv")
+
+# acc_Abundance_2022_2 <- Abundance_2022_2 %>% # Creates dataframe with accumulated abundances per Treat and Order_SubOrder
+#                         group_by(Treat, Order_SubOrder) %>% 
+#                         summarise(Abundance = sum(Abundance))
+ Abu_correctmatrix <- data.frame(Plot = c("P01", "P07", "P09", "P12", "P14"),
+                                 Treat =c("AWD", "MSD", "AWD", "CON", "AWD"),
+                                 Order_SubOrder = c("Tadpole", "Fish", "Tadpole", "Tadpole", "Tadpole"),
+                                 Abundance = rep(0,5))
+ Abundance_2022_2 <- rbind(Abundance_2022_2, Abu_correctmatrix)
+ 
+ 
+ # ii. Plots' average:
+ 
+ Abundance_2022_summary_2 <- Abundance_2022_2 %>%
+                             group_by(Treat, Order_SubOrder) %>%
+                             summarise(mean_abu = mean(Abundance),se_abu = sd(Abundance) / sqrt(n()))
+ 
+ # ii. version 6:
+ 
+Abundance_2022_plot_avg6 <- ggplot(Abundance_2022_2,aes(Order_SubOrder, Abundance,  fill = Treat)) +
+                                     geom_bar(data = Abundance_2022_summary_2, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = position_dodge(0.95), show.legend = FALSE) +
+                                     geom_errorbar(data = Abundance_2022_summary_2, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Treat), position = position_dodge(0.95), size = 0.7, width = 0.6) +
+                                     geom_jitter(data = Abundance_2022_2, position = position_jitterdodge(jitter.height = .0, jitter.width = .2),
+                                                 colour = "lightgrey", pch = 21, size =4, alpha = 0.5) +
+                                     scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D")) +
+                                     scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
+                                     theme_bw() +
+                                     ylab("Accumulated abundance (nº individuals)") +
+                                     # scale_y_log10(breaks = c(5, 10, 20, 30, 50, 100)) +
+                                     scale_y_sqrt() +
+                                     ggtitle("")+
+                                     geom_vline(xintercept = 1.5) +
+                                     geom_vline(xintercept = 2.5) +
+                                     geom_vline(xintercept = 3.5) +
+                                     geom_vline(xintercept = 4.5) +
+                                     geom_vline(xintercept = 5.5) +
+                                     theme(axis.title = element_text(size = 15), axis.text = element_text(size = 15), strip.text = element_text(size = 15),
+                                           axis.title.y = element_text(size = 15, margin = margin(r = 8)), axis.title.x = element_blank(),
+                                           axis.text.y = element_text(size = 15, margin = margin(r = 0), angle = 90), legend.position = "top", 
+                                           legend.background = element_rect(fill="white", size = 0.7), legend.title = element_text(size = 15),
+                                           legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 13), panel.border = element_rect(size=1))
+ 
+ print(Abundance_2022_plot_avg6)
+ 
+ ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.8.pdf", plot = Abundance_2022_plot_avg6, width = 8, height = 10) 
+ 

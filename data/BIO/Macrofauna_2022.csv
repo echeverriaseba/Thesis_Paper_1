@@ -1,426 +1,426 @@
 Date,Plot,Treat,trapID,Organism,Type,Abundance,Stadium,Obs
-6/8/2022,P01,AWD,A,,,,,
-6/8/2022,P01,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P03,CON,A,Carassius carassius,Fish,3,,foto 1 y 2
-6/8/2022,P03,CON,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
-6/8/2022,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P03,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P03,CON,B,,,,,
-6/8/2022,P05,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-6/8/2022,P05,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-6/8/2022,P05,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P07,MSD,A,,,,,
-6/8/2022,P07,MSD,B,,,,,
-6/8/2022,P09,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-6/8/2022,P09,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P09,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-6/8/2022,P09,AWD,B,,,,,
-6/8/2022,P11,MSD,A,,,,,
-6/8/2022,P11,MSD,B,,,,,
-6/8/2022,P13,MSD,A,Carassius carassius,Fish,1,Adult,adulta
-6/8/2022,P13,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P13,MSD,B,,,,,
-6/8/2022,P15,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P15,CON,B,,,,,
-6/8/2022,P14,AWD,A,,,,,
-6/8/2022,P14,AWD,B,,,,,
-6/8/2022,P12,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P12,CON,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
-6/8/2022,P12,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P10,AWD,A,,,,,
-6/8/2022,P10,AWD,B,,,,,
-6/8/2022,P08,CON,A,Dytiscidae sp.2,Coleoptera,1,,foto
-6/8/2022,P08,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P06,CON,A,,,,,
-6/8/2022,P06,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P06,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-6/8/2022,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P04,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P04,MSD,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
-6/8/2022,P04,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-6/8/2022,P02,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P02,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/8/2022,P02,MSD,B,Carassius carassius,Fish,3,,fotos
-6/28/2022,P01,AWD,A,,,,,
-6/28/2022,P01,AWD,B,,,,,
-6/28/2022,P03,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-6/28/2022,P03,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P03,CON,A,Sympetrum sp.,Odonata,3,Juvenile,juvenil
-6/28/2022,P03,CON,B,Sympetrum sp.,Odonata,4,Juvenile,juvenil
-6/28/2022,P05,AWD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P07,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-6/28/2022,P07,MSD,B,Procambarus clarkii,Decapoda,10,Adult,adulta
-6/28/2022,P07,MSD,B,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
-6/28/2022,P07,MSD,B,Sympetrum sp.,Odonata,2,Juvenile,juvenil
-6/28/2022,P09,AWD,A,,,,,
-6/28/2022,P09,AWD,B,,,,,
-6/28/2022,P11,MSD,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
-6/28/2022,P11,MSD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P11,MSD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P11,MSD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P11,MSD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-6/28/2022,P11,MSD,B,Carassius carassius,Fish,1,Adult,adulta
-6/28/2022,P11,MSD,B,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
-6/28/2022,P13,MSD,A,Pelophylax perezi,Tadpole,43,Juvenile,juvenil
-6/28/2022,P13,MSD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P13,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-6/28/2022,P13,MSD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-6/28/2022,P13,MSD,B,Pelophylax perezi,Tadpole,11,Juvenile,juvenil
-6/28/2022,P13,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P13,MSD,B,Larva mosca,Diptera,1,,Identificar
-6/28/2022,P15,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/28/2022,P15,CON,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-6/28/2022,P15,CON,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
-6/28/2022,P15,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-6/28/2022,P15,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-6/28/2022,P15,CON,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-6/28/2022,P14,AWD,A,Larva diptero,Diptera,1,Juvenile,juvenil
-6/28/2022,P14,AWD,A,Carassius carassius,Fish,1,Adult,adulta
-6/28/2022,P14,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P12,CON,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-6/28/2022,P12,CON,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
-6/28/2022,P12,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P12,CON,B,Sympetrum sp.,Odonata,2,Juvenile,juvenil
-6/28/2022,P10,AWD,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-6/28/2022,P10,AWD,B,,,,,
-6/28/2022,P08,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-6/28/2022,P08,CON,A,Pelophylax perezi,Tadpole,2,Juvenile,juvenil
-6/28/2022,P08,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P08,CON,A,Sympetrum sp.,Odonata,3,Juvenile,juvenil
-6/28/2022,P08,CON,B,Pelophylax perezi,Tadpole,55,Juvenile,juvenil
-6/28/2022,P08,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P08,CON,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P06,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/28/2022,P06,CON,A,Sympetrum sp.,Odonata,6,Juvenile,juvenil
-6/28/2022,P06,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P06,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-6/28/2022,P06,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P06,CON,B,Pelophylax perezi,Tadpole,25,Juvenile,juvenil
-6/28/2022,P04,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-6/28/2022,P04,MSD,A,Pelophylax perezi,Tadpole,6,Juvenile,juvenil
-6/28/2022,P04,MSD,B,Carassius carassius,Fish,4,Adult,adulta
-6/28/2022,P04,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
-6/28/2022,P04,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-6/28/2022,P04,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
-6/28/2022,P04,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P04,MSD,B,Pelophylax perezi,Tadpole,83,Juvenile,juvenil
-6/28/2022,P04,MSD,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P02,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-6/28/2022,P02,MSD,A,Pelophylax perezi,Tadpole,3,Juvenile,juvenil
-6/28/2022,P02,MSD,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
-6/28/2022,P02,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-6/28/2022,P02,MSD,B,Pelophylax perezi,Tadpole,7,Juvenile,juvenil
-6/28/2022,P02,MSD,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-6/28/2022,P02,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P01,AWD,A,,,,,
-7/6/2022,P01,AWD,B,,,,,
-7/6/2022,P03,CON,A,Pelophylax perezi,Frog,3,Adult,adulta
-7/6/2022,P03,CON,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
-7/6/2022,P03,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/6/2022,P03,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P03,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P03,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/6/2022,P03,CON,B,Pelophylax perezi,Tadpole,3,Juvenile,juvenil
-7/6/2022,P03,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-7/6/2022,P05,AWD,A,,,,,
-7/6/2022,P05,AWD,B,,,,,
-7/6/2022,P07,MSD,A,,,,,
-7/6/2022,P07,MSD,B,,,,,
-7/6/2022,P09,AWD,A,,,,,
-7/6/2022,P09,AWD,B,,,,,
-7/6/2022,P11,MSD,A,,,,,
-7/6/2022,P11,MSD,B,,,,,
-7/6/2022,P13,MSD,A,,,,,
-7/6/2022,P13,MSD,B,,,,,
-7/6/2022,P15,CON,A,Procambarus clarkii,Decapoda,7,Adult,adulta
-7/6/2022,P15,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-7/6/2022,P15,CON,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/6/2022,P15,CON,B,Pseudorasbora parva,Fish,5,Adult,adulta
-7/6/2022,P14,AWD,A,,,,,
-7/6/2022,P14,AWD,B,,,,,
-7/6/2022,P12,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P12,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/6/2022,P12,CON,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
-7/6/2022,P12,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-7/6/2022,P12,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/6/2022,P12,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-7/6/2022,P12,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/6/2022,P10,AWD,A,,,,,
-7/6/2022,P10,AWD,B,,,,,
-7/6/2022,P08,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-7/6/2022,P08,CON,A,Pelophylax perezi,Tadpole,10,Juvenile,juvenil
-7/6/2022,P08,CON,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
-7/6/2022,P08,CON,A,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
-7/6/2022,P08,CON,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-7/6/2022,P08,CON,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/6/2022,P08,CON,B,Sympetrum sp.,Odonata,4,Juvenile,juvenil
-7/6/2022,P08,CON,B,Pelophylax perezi,Tadpole,5,Juvenile,juvenil
-7/6/2022,P06,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/6/2022,P06,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-7/6/2022,P06,CON,A,Pelophylax perezi,Tadpole,2,Juvenile,juvenil
-7/6/2022,P06,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P06,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P06,CON,B,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
-7/6/2022,P06,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-7/6/2022,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/6/2022,P06,CON,B,Carassius carassius,Fish,1,Adult,adulta
-7/6/2022,P06,CON,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-7/6/2022,P04,MSD,A,,,,,
-7/6/2022,P04,MSD,B,,,,,
-7/6/2022,P02,MSD,A,,,,,
-7/6/2022,P02,MSD,B,,,,,
-7/19/2022,P01,AWD,A,Dytiscidae sp.1,Coleoptera,3,Adult,adulta
-7/19/2022,P01,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P01,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-7/19/2022,P01,AWD,B,Pelophylax perezi,Frog,4,Adult,adulta
-7/19/2022,P03,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-7/19/2022,P03,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/19/2022,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P03,CON,A,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
-7/19/2022,P03,CON,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-7/19/2022,P05,AWD,A,Procambarus clarkii,Decapoda,10,Adult,adulta
-7/19/2022,P05,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P05,AWD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-7/19/2022,P05,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-7/19/2022,P05,AWD,B,Procambarus clarkii,Decapoda,7,Adult,adulta
-7/19/2022,P07,MSD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-7/19/2022,P07,MSD,A,Pelophylax perezi,Frog,3,Adult,adulta
-7/19/2022,P07,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P07,MSD,B,Procambarus clarkii,Decapoda,7,Adult,adulta
-7/19/2022,P09,AWD,A,Procambarus clarkii,Decapoda,4,Adult,adulta
-7/19/2022,P09,AWD,A,Pelophylax perezi,Frog,3,Adult,adulta
-7/19/2022,P09,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P09,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/19/2022,P11,MSD,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P11,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/19/2022,P11,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-7/19/2022,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/19/2022,P11,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
-7/19/2022,P11,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P11,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-7/19/2022,P13,MSD,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-7/19/2022,P13,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-7/19/2022,P13,MSD,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-7/19/2022,P13,MSD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-7/19/2022,P15,CON,A,Procambarus clarkii,Decapoda,29,Adult,adulta
-7/19/2022,P15,CON,B,Procambarus clarkii,Decapoda,32,Adult,adulta
-7/19/2022,P15,CON,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
-7/19/2022,P14,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/19/2022,P14,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P14,AWD,A,Dytiscidae sp.1,Coleoptera,6,Adult,adulta
-7/19/2022,P14,AWD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-7/19/2022,P14,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-7/19/2022,P14,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-7/19/2022,P12,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P12,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-7/19/2022,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P10,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-7/19/2022,P10,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P10,AWD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/19/2022,P08,CON,A,Procambarus clarkii,Decapoda,8,Adult,adulta
-7/19/2022,P08,CON,A,Gryllotalpa gryllotalpa,Cricket,1,Adult,adulta
-7/19/2022,P08,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-7/19/2022,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-7/19/2022,P06,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P06,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
-7/19/2022,P06,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-7/19/2022,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-7/19/2022,P04,MSD,A,Procambarus clarkii,Decapoda,6,Adult,adulta
-7/19/2022,P04,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-7/19/2022,P04,MSD,B,Pelophylax perezi,Frog,2,Adult,adulta
-7/19/2022,P02,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-7/19/2022,P02,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-7/19/2022,P02,MSD,B,Carassius carassius,Fish,1,Adult,adulta
-8/3/2022,P01,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P01,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
-8/3/2022,P03,CON,A,Procambarus clarkii,Decapoda,4,Adult,adulta
-8/3/2022,P03,CON,B,Procambarus clarkii,Decapoda,7,Adult,adulta
-8/3/2022,P05,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P05,AWD,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
-8/3/2022,P05,AWD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
-8/3/2022,P05,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-8/3/2022,P07,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/3/2022,P07,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P07,MSD,B,Pelophylax perezi,Frog,2,Adult,adulta
-8/3/2022,P07,MSD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/3/2022,P09,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-8/3/2022,P09,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-8/3/2022,P09,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/3/2022,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P11,MSD,A,Procambarus clarkii,Decapoda,28,Adult,adulta
-8/3/2022,P11,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/3/2022,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-8/3/2022,P13,MSD,A,Procambarus clarkii,Decapoda,9,Adult,adulta
-8/3/2022,P13,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P13,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
-8/3/2022,P15,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
-8/3/2022,P15,CON,B,Procambarus clarkii,Decapoda,37,Adult,adulta
-8/3/2022,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/3/2022,P14,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P14,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/3/2022,P14,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/3/2022,P12,CON,A,Procambarus clarkii,Decapoda,40,Adult,adulta
-8/3/2022,P12,CON,B,Procambarus clarkii,Decapoda,25,Adult,adulta
-8/3/2022,P12,CON,B,libelula,Odonata,1,Juvenile,juvenil
-8/3/2022,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P10,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-8/3/2022,P10,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/3/2022,P10,AWD,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/3/2022,P08,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
-8/3/2022,P08,CON,A,Procambarus clarkii,Decapoda,10,Adult,adulta
-8/3/2022,P08,CON,B,Procambarus clarkii,Decapoda,14,Adult,adulta
-8/3/2022,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/3/2022,P06,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/3/2022,P06,CON,A,Procambarus clarkii,Decapoda,18,Adult,adulta
-8/3/2022,P06,CON,B,Procambarus clarkii,Decapoda,12,Adult,adulta
-8/3/2022,P06,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/3/2022,P04,MSD,A,Procambarus clarkii,Decapoda,15,Adult,adulta
-8/3/2022,P04,MSD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-8/3/2022,P04,MSD,B,Misgurnus anguillicaudatus,Fish,3,Adult,adulta
-8/3/2022,P04,MSD,B,Procambarus clarkii,Decapoda,9,Adult,adulta
-8/3/2022,P02,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/3/2022,P02,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/3/2022,P02,MSD,B,Procambarus clarkii,Decapoda,19,Adult,adulta
-8/3/2022,P02,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/10/2022,P01,AWD,A,Procambarus clarkii,Decapoda,12,Adult,adulta
-8/10/2022,P01,AWD,A,Misgurnus anguillicaudatus,Fish,3,Adult,adulta
-8/10/2022,P01,AWD,A,Dytiscidae sp.1,Coleoptera,6,Adult,adulta
-8/10/2022,P01,AWD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-8/10/2022,P01,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-8/10/2022,P03,CON,A,Procambarus clarkii,Decapoda,25,Adult,adulta
-8/10/2022,P03,CON,B,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
-8/10/2022,P05,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-8/10/2022,P05,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
-8/10/2022,P05,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/10/2022,P07,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/10/2022,P07,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
-8/10/2022,P09,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/10/2022,P09,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-8/10/2022,P09,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/10/2022,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P11,MSD,A,Procambarus clarkii,Decapoda,27,Adult,adulta
-8/10/2022,P11,MSD,B,Procambarus clarkii,Decapoda,20,Adult,adulta
-8/10/2022,P13,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/10/2022,P13,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P13,MSD,B,Procambarus clarkii,Decapoda,17,Adult,adulta
-8/10/2022,P15,CON,A,Procambarus clarkii,Decapoda,23,Adult,adulta
-8/10/2022,P15,CON,B,Procambarus clarkii,Decapoda,36,Adult,adulta
-8/10/2022,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/10/2022,P14,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/10/2022,P14,AWD,A,Dytiscidae sp.1,Coleoptera,4,Adult,adulta
-8/10/2022,P14,AWD,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
-8/10/2022,P14,AWD,B,Procambarus clarkii,Decapoda,6,Adult,adulta
-8/10/2022,P14,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P12,CON,A,Procambarus clarkii,Decapoda,39,Adult,adulta
-8/10/2022,P12,CON,B,Procambarus clarkii,Decapoda,22,Adult,adulta
-8/10/2022,P12,CON,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-8/10/2022,P12,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/10/2022,P10,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-8/10/2022,P10,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P08,CON,A,Procambarus clarkii,Decapoda,15,Adult,adulta
-8/10/2022,P08,CON,B,Procambarus clarkii,Decapoda,38,Adult,adulta
-8/10/2022,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/10/2022,P08,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P06,CON,A,Procambarus clarkii,Decapoda,29,Adult,adulta
-8/10/2022,P06,CON,B,Procambarus clarkii,Decapoda,21,Adult,adulta
-8/10/2022,P04,MSD,A,Procambarus clarkii,Decapoda,31,Adult,adulta
-8/10/2022,P04,MSD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
-8/10/2022,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/10/2022,P04,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/10/2022,P02,MSD,A,Procambarus clarkii,Decapoda,7,Adult,adulta
-8/10/2022,P02,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/10/2022,P02,MSD,B,Procambarus clarkii,Decapoda,26,Adult,adulta
-8/10/2022,P02,MSD,B,pez,Fish,1,Adult,adulta
-8/10/2022,P02,MSD,B,Pseudorasbora parva,Fish,4,Adult,adulta
-8/10/2022,P02,MSD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-8/24/2022,P01,AWD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/24/2022,P01,AWD,A,Procambarus clarkii,Decapoda,23,Adult,adulta
-8/24/2022,P01,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/24/2022,P01,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/24/2022,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-8/24/2022,P03,CON,A,Procambarus clarkii,Decapoda,13,Adult,adulta
-8/24/2022,P03,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
-8/24/2022,P05,AWD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
-8/24/2022,P05,AWD,A,Procambarus clarkii,Decapoda,18,Adult,adulta
-8/24/2022,P05,AWD,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
-8/24/2022,P05,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/24/2022,P07,MSD,A,Procambarus clarkii,Decapoda,4,Adult,adulta
-8/24/2022,P07,MSD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-8/24/2022,P09,AWD,A,Procambarus clarkii,Decapoda,22,Adult,adulta
-8/24/2022,P09,AWD,A,Dytiscidae sp.1,Coleoptera,3,Adult,adulta
-8/24/2022,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/24/2022,P09,AWD,B,Procambarus clarkii,Decapoda,15,Adult,adulta
-8/24/2022,P11,MSD,A,Procambarus clarkii,Decapoda,18,Adult,adulta
-8/24/2022,P11,MSD,B,Procambarus clarkii,Decapoda,34,Adult,adulta
-8/24/2022,P13,MSD,A,Procambarus clarkii,Decapoda,16,Adult,adulta
-8/24/2022,P13,MSD,B,libelula,Odonata,1,Juvenile,juvenil
-8/24/2022,P13,MSD,B,Procambarus clarkii,Decapoda,6,Adult,adulta
-8/24/2022,P15,CON,A,Pseudorasbora parva,Fish,2,Adult,adulta
-8/24/2022,P15,CON,A,Procambarus clarkii,Decapoda,27,Adult,adulta
-8/24/2022,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
-8/24/2022,P15,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
-8/24/2022,P14,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
-8/24/2022,P14,AWD,A,Procambarus clarkii,Decapoda,10,Adult,adulta
-8/24/2022,P14,AWD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
-8/24/2022,P14,AWD,B,Procambarus clarkii,Decapoda,10,Adult,adulta
-8/24/2022,P12,CON,A,Procambarus clarkii,Decapoda,18,Adult,adulta
-8/24/2022,P12,CON,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
-8/24/2022,P12,CON,B,Procambarus clarkii,Decapoda,37,Adult,adulta
-8/24/2022,P10,AWD,A,Procambarus clarkii,Decapoda,15,Adult,adulta
-8/24/2022,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,(restos) adulta
-8/24/2022,P10,AWD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
-8/24/2022,P08,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
-8/24/2022,P08,CON,A,Procambarus clarkii,Decapoda,15,Adult,adulta
-8/24/2022,P08,CON,B,Procambarus clarkii,Decapoda,14,Adult,adulta
-8/24/2022,P06,CON,A,Procambarus clarkii,Decapoda,13,Adult,adulta
-8/24/2022,P06,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-8/24/2022,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
-8/24/2022,P04,MSD,A,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
-8/24/2022,P04,MSD,A,Carassius carassius,Fish,1,Adult,adulta
-8/24/2022,P04,MSD,A,Procambarus clarkii,Decapoda,24,Adult,adulta
-8/24/2022,P04,MSD,B,Misgurnus anguillicaudatus,Fish,4,Adult,adulta
-8/24/2022,P04,MSD,B,Procambarus clarkii,Decapoda,27,Adult,adulta
-8/24/2022,P02,MSD,A,Pseudorasbora parva,Fish,1,Adult,adulta
-8/24/2022,P02,MSD,A,Procambarus clarkii,Decapoda,25,Adult,adulta
-8/24/2022,P02,MSD,B,Pseudorasbora parva,Fish,5,Adult,adulta
-8/24/2022,P02,MSD,B,Procambarus clarkii,Decapoda,36,Adult,adulta
-9/13/2022,P01,AWD,A,Procambarus clarkii,Decapoda,17,Adult,adulta
-9/13/2022,P01,AWD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
-9/13/2022,P03,CON,A,Procambarus clarkii,Decapoda,4,Adult,adulta
-9/13/2022,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
-9/13/2022,P03,CON,B,Pelophylax perezi,Frog,2,Adult,adulta
-9/13/2022,P03,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-9/13/2022,P05,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-9/13/2022,P05,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
-9/13/2022,P05,AWD,B,,,,,
-9/13/2022,P07,MSD,A,Procambarus clarkii,Decapoda,12,Adult,adulta
-9/13/2022,P07,MSD,B,Procambarus clarkii,Decapoda,12,Adult,adulta
-9/13/2022,P09,AWD,A,,,,,
-9/13/2022,P09,AWD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
-9/13/2022,P09,AWD,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
-9/13/2022,P11,MSD,A,Procambarus clarkii,Decapoda,14,Adult,adulta
-9/13/2022,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
-9/13/2022,P13,MSD,A,Procambarus clarkii,Decapoda,20,Adult,adulta
-9/13/2022,P13,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
-9/13/2022,P13,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-9/13/2022,P15,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
-9/13/2022,P15,CON,B,Procambarus clarkii,Decapoda,12,Adult,adulta
-9/13/2022,P14,AWD,A,Procambarus clarkii,Decapoda,8,Adult,adulta
-9/13/2022,P14,AWD,B,Procambarus clarkii,Decapoda,12,Adult,adulta
-9/13/2022,P12,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-9/13/2022,P12,CON,B,Procambarus clarkii,Decapoda,40,Adult,adulta
-9/13/2022,P10,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
-9/13/2022,P10,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
-9/13/2022,P10,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
-9/13/2022,P08,CON,A,Procambarus clarkii,Decapoda,12,Adult,adulta
-9/13/2022,P08,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
-9/13/2022,P06,CON,A,Procambarus clarkii,Decapoda,8,Adult,adulta
-9/13/2022,P06,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
-9/13/2022,P04,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-9/13/2022,P04,MSD,B,Procambarus clarkii,Decapoda,9,Adult,adulta
-9/13/2022,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
-9/13/2022,P02,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
-9/13/2022,P02,MSD,B,Procambarus clarkii,Decapoda,11,Adult,adulta
-9/13/2022,P02,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-06-08,P01,AWD,A,,,,,
+2022-06-08,P01,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P03,CON,A,Carassius carassius,Fish,3,,foto 1 y 2
+2022-06-08,P03,CON,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
+2022-06-08,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P03,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P03,CON,B,,,,,
+2022-06-08,P05,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-06-08,P05,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-06-08,P05,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P07,MSD,A,,,,,
+2022-06-08,P07,MSD,B,,,,,
+2022-06-08,P09,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-06-08,P09,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P09,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-06-08,P09,AWD,B,,,,,
+2022-06-08,P11,MSD,A,,,,,
+2022-06-08,P11,MSD,B,,,,,
+2022-06-08,P13,MSD,A,Carassius carassius,Fish,1,Adult,adulta
+2022-06-08,P13,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P13,MSD,B,,,,,
+2022-06-08,P15,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P15,CON,B,,,,,
+2022-06-08,P14,AWD,A,,,,,
+2022-06-08,P14,AWD,B,,,,,
+2022-06-08,P12,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P12,CON,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
+2022-06-08,P12,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P10,AWD,A,,,,,
+2022-06-08,P10,AWD,B,,,,,
+2022-06-08,P08,CON,A,Dytiscidae sp.2,Coleoptera,1,,foto
+2022-06-08,P08,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P06,CON,A,,,,,
+2022-06-08,P06,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P06,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-06-08,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P04,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P04,MSD,A,Procambarus clarkii,Decapoda,1,Juvenile,juvenil
+2022-06-08,P04,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-08,P02,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P02,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-08,P02,MSD,B,Carassius carassius,Fish,3,,fotos
+2022-06-28,P01,AWD,A,,,,,
+2022-06-28,P01,AWD,B,,,,,
+2022-06-28,P03,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-06-28,P03,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P03,CON,A,Sympetrum sp.,Odonata,3,Juvenile,juvenil
+2022-06-28,P03,CON,B,Sympetrum sp.,Odonata,4,Juvenile,juvenil
+2022-06-28,P05,AWD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P07,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-06-28,P07,MSD,B,Procambarus clarkii,Decapoda,10,Adult,adulta
+2022-06-28,P07,MSD,B,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
+2022-06-28,P07,MSD,B,Sympetrum sp.,Odonata,2,Juvenile,juvenil
+2022-06-28,P09,AWD,A,,,,,
+2022-06-28,P09,AWD,B,,,,,
+2022-06-28,P11,MSD,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
+2022-06-28,P11,MSD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P11,MSD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P11,MSD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P11,MSD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-06-28,P11,MSD,B,Carassius carassius,Fish,1,Adult,adulta
+2022-06-28,P11,MSD,B,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
+2022-06-28,P13,MSD,A,Pelophylax perezi,Tadpole,43,Juvenile,juvenil
+2022-06-28,P13,MSD,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P13,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-06-28,P13,MSD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-06-28,P13,MSD,B,Pelophylax perezi,Tadpole,11,Juvenile,juvenil
+2022-06-28,P13,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P13,MSD,B,Larva mosca,Diptera,1,,Identificar
+2022-06-28,P15,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-28,P15,CON,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-06-28,P15,CON,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
+2022-06-28,P15,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-06-28,P15,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-06-28,P15,CON,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-06-28,P14,AWD,A,Larva diptero,Diptera,1,Juvenile,juvenil
+2022-06-28,P14,AWD,A,Carassius carassius,Fish,1,Adult,adulta
+2022-06-28,P14,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P12,CON,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-06-28,P12,CON,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
+2022-06-28,P12,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P12,CON,B,Sympetrum sp.,Odonata,2,Juvenile,juvenil
+2022-06-28,P10,AWD,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-06-28,P10,AWD,B,,,,,
+2022-06-28,P08,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-06-28,P08,CON,A,Pelophylax perezi,Tadpole,2,Juvenile,juvenil
+2022-06-28,P08,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P08,CON,A,Sympetrum sp.,Odonata,3,Juvenile,juvenil
+2022-06-28,P08,CON,B,Pelophylax perezi,Tadpole,55,Juvenile,juvenil
+2022-06-28,P08,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P08,CON,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P06,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-28,P06,CON,A,Sympetrum sp.,Odonata,6,Juvenile,juvenil
+2022-06-28,P06,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P06,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-06-28,P06,CON,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P06,CON,B,Pelophylax perezi,Tadpole,25,Juvenile,juvenil
+2022-06-28,P04,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-06-28,P04,MSD,A,Pelophylax perezi,Tadpole,6,Juvenile,juvenil
+2022-06-28,P04,MSD,B,Carassius carassius,Fish,4,Adult,adulta
+2022-06-28,P04,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-06-28,P04,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-06-28,P04,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-06-28,P04,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P04,MSD,B,Pelophylax perezi,Tadpole,83,Juvenile,juvenil
+2022-06-28,P04,MSD,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P02,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-06-28,P02,MSD,A,Pelophylax perezi,Tadpole,3,Juvenile,juvenil
+2022-06-28,P02,MSD,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
+2022-06-28,P02,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-06-28,P02,MSD,B,Pelophylax perezi,Tadpole,7,Juvenile,juvenil
+2022-06-28,P02,MSD,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-06-28,P02,MSD,B,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P01,AWD,A,,,,,
+2022-07-06,P01,AWD,B,,,,,
+2022-07-06,P03,CON,A,Pelophylax perezi,Frog,3,Adult,adulta
+2022-07-06,P03,CON,A,Pelophylax perezi,Tadpole,4,Juvenile,juvenil
+2022-07-06,P03,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-06,P03,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P03,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P03,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-06,P03,CON,B,Pelophylax perezi,Tadpole,3,Juvenile,juvenil
+2022-07-06,P03,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-07-06,P05,AWD,A,,,,,
+2022-07-06,P05,AWD,B,,,,,
+2022-07-06,P07,MSD,A,,,,,
+2022-07-06,P07,MSD,B,,,,,
+2022-07-06,P09,AWD,A,,,,,
+2022-07-06,P09,AWD,B,,,,,
+2022-07-06,P11,MSD,A,,,,,
+2022-07-06,P11,MSD,B,,,,,
+2022-07-06,P13,MSD,A,,,,,
+2022-07-06,P13,MSD,B,,,,,
+2022-07-06,P15,CON,A,Procambarus clarkii,Decapoda,7,Adult,adulta
+2022-07-06,P15,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-07-06,P15,CON,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-06,P15,CON,B,Pseudorasbora parva,Fish,5,Adult,adulta
+2022-07-06,P14,AWD,A,,,,,
+2022-07-06,P14,AWD,B,,,,,
+2022-07-06,P12,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P12,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-06,P12,CON,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
+2022-07-06,P12,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-07-06,P12,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-06,P12,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-07-06,P12,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-06,P10,AWD,A,,,,,
+2022-07-06,P10,AWD,B,,,,,
+2022-07-06,P08,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-06,P08,CON,A,Pelophylax perezi,Tadpole,10,Juvenile,juvenil
+2022-07-06,P08,CON,A,Sympetrum sp.,Odonata,2,Juvenile,juvenil
+2022-07-06,P08,CON,A,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
+2022-07-06,P08,CON,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-07-06,P08,CON,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-06,P08,CON,B,Sympetrum sp.,Odonata,4,Juvenile,juvenil
+2022-07-06,P08,CON,B,Pelophylax perezi,Tadpole,5,Juvenile,juvenil
+2022-07-06,P06,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-06,P06,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-06,P06,CON,A,Pelophylax perezi,Tadpole,2,Juvenile,juvenil
+2022-07-06,P06,CON,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P06,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P06,CON,B,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
+2022-07-06,P06,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-07-06,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-06,P06,CON,B,Carassius carassius,Fish,1,Adult,adulta
+2022-07-06,P06,CON,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-07-06,P04,MSD,A,,,,,
+2022-07-06,P04,MSD,B,,,,,
+2022-07-06,P02,MSD,A,,,,,
+2022-07-06,P02,MSD,B,,,,,
+2022-07-19,P01,AWD,A,Dytiscidae sp.1,Coleoptera,3,Adult,adulta
+2022-07-19,P01,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P01,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-07-19,P01,AWD,B,Pelophylax perezi,Frog,4,Adult,adulta
+2022-07-19,P03,CON,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-07-19,P03,CON,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-19,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P03,CON,A,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
+2022-07-19,P03,CON,B,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-07-19,P05,AWD,A,Procambarus clarkii,Decapoda,10,Adult,adulta
+2022-07-19,P05,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P05,AWD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-07-19,P05,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-07-19,P05,AWD,B,Procambarus clarkii,Decapoda,7,Adult,adulta
+2022-07-19,P07,MSD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-07-19,P07,MSD,A,Pelophylax perezi,Frog,3,Adult,adulta
+2022-07-19,P07,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P07,MSD,B,Procambarus clarkii,Decapoda,7,Adult,adulta
+2022-07-19,P09,AWD,A,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-07-19,P09,AWD,A,Pelophylax perezi,Frog,3,Adult,adulta
+2022-07-19,P09,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P09,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-19,P11,MSD,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P11,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-19,P11,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-07-19,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-19,P11,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-07-19,P11,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P11,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-07-19,P13,MSD,A,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-07-19,P13,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-07-19,P13,MSD,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-07-19,P13,MSD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-07-19,P15,CON,A,Procambarus clarkii,Decapoda,29,Adult,adulta
+2022-07-19,P15,CON,B,Procambarus clarkii,Decapoda,32,Adult,adulta
+2022-07-19,P15,CON,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
+2022-07-19,P14,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-19,P14,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P14,AWD,A,Dytiscidae sp.1,Coleoptera,6,Adult,adulta
+2022-07-19,P14,AWD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-07-19,P14,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-07-19,P14,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-07-19,P12,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P12,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-07-19,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P10,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-07-19,P10,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P10,AWD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-19,P08,CON,A,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-07-19,P08,CON,A,Gryllotalpa gryllotalpa,Cricket,1,Adult,adulta
+2022-07-19,P08,CON,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-07-19,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-07-19,P06,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P06,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
+2022-07-19,P06,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-07-19,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-07-19,P04,MSD,A,Procambarus clarkii,Decapoda,6,Adult,adulta
+2022-07-19,P04,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-07-19,P04,MSD,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-07-19,P02,MSD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-07-19,P02,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-07-19,P02,MSD,B,Carassius carassius,Fish,1,Adult,adulta
+2022-08-03,P01,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P01,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-08-03,P03,CON,A,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-08-03,P03,CON,B,Procambarus clarkii,Decapoda,7,Adult,adulta
+2022-08-03,P05,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P05,AWD,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
+2022-08-03,P05,AWD,A,Coenagrionidae sp.,Odonata,1,Juvenile,juvenil
+2022-08-03,P05,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-08-03,P07,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-03,P07,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P07,MSD,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-08-03,P07,MSD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-03,P09,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-08-03,P09,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-08-03,P09,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-03,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P11,MSD,A,Procambarus clarkii,Decapoda,28,Adult,adulta
+2022-08-03,P11,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-03,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-08-03,P13,MSD,A,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-08-03,P13,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P13,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-08-03,P15,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
+2022-08-03,P15,CON,B,Procambarus clarkii,Decapoda,37,Adult,adulta
+2022-08-03,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-03,P14,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P14,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-03,P14,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-03,P12,CON,A,Procambarus clarkii,Decapoda,40,Adult,adulta
+2022-08-03,P12,CON,B,Procambarus clarkii,Decapoda,25,Adult,adulta
+2022-08-03,P12,CON,B,libelula,Odonata,1,Juvenile,juvenil
+2022-08-03,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P10,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-08-03,P10,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-03,P10,AWD,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-03,P08,CON,A,Sympetrum sp.,Odonata,1,Juvenile,juvenil
+2022-08-03,P08,CON,A,Procambarus clarkii,Decapoda,10,Adult,adulta
+2022-08-03,P08,CON,B,Procambarus clarkii,Decapoda,14,Adult,adulta
+2022-08-03,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-03,P06,CON,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-03,P06,CON,A,Procambarus clarkii,Decapoda,18,Adult,adulta
+2022-08-03,P06,CON,B,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-08-03,P06,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-03,P04,MSD,A,Procambarus clarkii,Decapoda,15,Adult,adulta
+2022-08-03,P04,MSD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-08-03,P04,MSD,B,Misgurnus anguillicaudatus,Fish,3,Adult,adulta
+2022-08-03,P04,MSD,B,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-08-03,P02,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-03,P02,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-03,P02,MSD,B,Procambarus clarkii,Decapoda,19,Adult,adulta
+2022-08-03,P02,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-10,P01,AWD,A,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-08-10,P01,AWD,A,Misgurnus anguillicaudatus,Fish,3,Adult,adulta
+2022-08-10,P01,AWD,A,Dytiscidae sp.1,Coleoptera,6,Adult,adulta
+2022-08-10,P01,AWD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-08-10,P01,AWD,B,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-08-10,P03,CON,A,Procambarus clarkii,Decapoda,25,Adult,adulta
+2022-08-10,P03,CON,B,Coenagrionidae sp.,Odonata,2,Juvenile,juvenil
+2022-08-10,P05,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-08-10,P05,AWD,A,Dytiscidae sp.1,Coleoptera,2,Adult,adulta
+2022-08-10,P05,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-10,P07,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-10,P07,MSD,B,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-08-10,P09,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-10,P09,AWD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-08-10,P09,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-10,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P11,MSD,A,Procambarus clarkii,Decapoda,27,Adult,adulta
+2022-08-10,P11,MSD,B,Procambarus clarkii,Decapoda,20,Adult,adulta
+2022-08-10,P13,MSD,A,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-10,P13,MSD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P13,MSD,B,Procambarus clarkii,Decapoda,17,Adult,adulta
+2022-08-10,P15,CON,A,Procambarus clarkii,Decapoda,23,Adult,adulta
+2022-08-10,P15,CON,B,Procambarus clarkii,Decapoda,36,Adult,adulta
+2022-08-10,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-10,P14,AWD,A,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-10,P14,AWD,A,Dytiscidae sp.1,Coleoptera,4,Adult,adulta
+2022-08-10,P14,AWD,A,Dytiscidae sp.2,Coleoptera,1,Adult,adulta
+2022-08-10,P14,AWD,B,Procambarus clarkii,Decapoda,6,Adult,adulta
+2022-08-10,P14,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P12,CON,A,Procambarus clarkii,Decapoda,39,Adult,adulta
+2022-08-10,P12,CON,B,Procambarus clarkii,Decapoda,22,Adult,adulta
+2022-08-10,P12,CON,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-08-10,P12,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-10,P10,AWD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-08-10,P10,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P08,CON,A,Procambarus clarkii,Decapoda,15,Adult,adulta
+2022-08-10,P08,CON,B,Procambarus clarkii,Decapoda,38,Adult,adulta
+2022-08-10,P08,CON,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-10,P08,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P06,CON,A,Procambarus clarkii,Decapoda,29,Adult,adulta
+2022-08-10,P06,CON,B,Procambarus clarkii,Decapoda,21,Adult,adulta
+2022-08-10,P04,MSD,A,Procambarus clarkii,Decapoda,31,Adult,adulta
+2022-08-10,P04,MSD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
+2022-08-10,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-10,P04,MSD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-10,P02,MSD,A,Procambarus clarkii,Decapoda,7,Adult,adulta
+2022-08-10,P02,MSD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-10,P02,MSD,B,Procambarus clarkii,Decapoda,26,Adult,adulta
+2022-08-10,P02,MSD,B,pez,Fish,1,Adult,adulta
+2022-08-10,P02,MSD,B,Pseudorasbora parva,Fish,4,Adult,adulta
+2022-08-10,P02,MSD,B,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-08-24,P01,AWD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-24,P01,AWD,A,Procambarus clarkii,Decapoda,23,Adult,adulta
+2022-08-24,P01,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-24,P01,AWD,B,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-24,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-24,P03,CON,A,Procambarus clarkii,Decapoda,13,Adult,adulta
+2022-08-24,P03,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-08-24,P05,AWD,A,Misgurnus anguillicaudatus,Fish,1,Adult,adulta
+2022-08-24,P05,AWD,A,Procambarus clarkii,Decapoda,18,Adult,adulta
+2022-08-24,P05,AWD,B,Pelophylax perezi,Tadpole,1,Juvenile,juvenil
+2022-08-24,P05,AWD,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-24,P07,MSD,A,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-08-24,P07,MSD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-08-24,P09,AWD,A,Procambarus clarkii,Decapoda,22,Adult,adulta
+2022-08-24,P09,AWD,A,Dytiscidae sp.1,Coleoptera,3,Adult,adulta
+2022-08-24,P09,AWD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-24,P09,AWD,B,Procambarus clarkii,Decapoda,15,Adult,adulta
+2022-08-24,P11,MSD,A,Procambarus clarkii,Decapoda,18,Adult,adulta
+2022-08-24,P11,MSD,B,Procambarus clarkii,Decapoda,34,Adult,adulta
+2022-08-24,P13,MSD,A,Procambarus clarkii,Decapoda,16,Adult,adulta
+2022-08-24,P13,MSD,B,libelula,Odonata,1,Juvenile,juvenil
+2022-08-24,P13,MSD,B,Procambarus clarkii,Decapoda,6,Adult,adulta
+2022-08-24,P15,CON,A,Pseudorasbora parva,Fish,2,Adult,adulta
+2022-08-24,P15,CON,A,Procambarus clarkii,Decapoda,27,Adult,adulta
+2022-08-24,P15,CON,B,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-24,P15,CON,B,Procambarus clarkii,Decapoda,5,Adult,adulta
+2022-08-24,P14,AWD,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-08-24,P14,AWD,A,Procambarus clarkii,Decapoda,10,Adult,adulta
+2022-08-24,P14,AWD,A,Dytiscidae sp.1,Coleoptera,1,Adult,adulta
+2022-08-24,P14,AWD,B,Procambarus clarkii,Decapoda,10,Adult,adulta
+2022-08-24,P12,CON,A,Procambarus clarkii,Decapoda,18,Adult,adulta
+2022-08-24,P12,CON,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
+2022-08-24,P12,CON,B,Procambarus clarkii,Decapoda,37,Adult,adulta
+2022-08-24,P10,AWD,A,Procambarus clarkii,Decapoda,15,Adult,adulta
+2022-08-24,P10,AWD,A,Pelophylax perezi,Frog,1,Adult,(restos) adulta
+2022-08-24,P10,AWD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
+2022-08-24,P08,CON,A,Pelophylax perezi,Frog,2,Adult,adulta
+2022-08-24,P08,CON,A,Procambarus clarkii,Decapoda,15,Adult,adulta
+2022-08-24,P08,CON,B,Procambarus clarkii,Decapoda,14,Adult,adulta
+2022-08-24,P06,CON,A,Procambarus clarkii,Decapoda,13,Adult,adulta
+2022-08-24,P06,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-08-24,P06,CON,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-08-24,P04,MSD,A,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
+2022-08-24,P04,MSD,A,Carassius carassius,Fish,1,Adult,adulta
+2022-08-24,P04,MSD,A,Procambarus clarkii,Decapoda,24,Adult,adulta
+2022-08-24,P04,MSD,B,Misgurnus anguillicaudatus,Fish,4,Adult,adulta
+2022-08-24,P04,MSD,B,Procambarus clarkii,Decapoda,27,Adult,adulta
+2022-08-24,P02,MSD,A,Pseudorasbora parva,Fish,1,Adult,adulta
+2022-08-24,P02,MSD,A,Procambarus clarkii,Decapoda,25,Adult,adulta
+2022-08-24,P02,MSD,B,Pseudorasbora parva,Fish,5,Adult,adulta
+2022-08-24,P02,MSD,B,Procambarus clarkii,Decapoda,36,Adult,adulta
+2022-09-13,P01,AWD,A,Procambarus clarkii,Decapoda,17,Adult,adulta
+2022-09-13,P01,AWD,B,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-09-13,P03,CON,A,Procambarus clarkii,Decapoda,4,Adult,adulta
+2022-09-13,P03,CON,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-09-13,P03,CON,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-09-13,P03,CON,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-09-13,P05,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-09-13,P05,AWD,A,Pelophylax perezi,Frog,1,Adult,adulta
+2022-09-13,P05,AWD,B,,,,,
+2022-09-13,P07,MSD,A,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-09-13,P07,MSD,B,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-09-13,P09,AWD,A,,,,,
+2022-09-13,P09,AWD,B,Procambarus clarkii,Decapoda,22,Adult,adulta
+2022-09-13,P09,AWD,B,Misgurnus anguillicaudatus,Fish,2,Adult,adulta
+2022-09-13,P11,MSD,A,Procambarus clarkii,Decapoda,14,Adult,adulta
+2022-09-13,P11,MSD,B,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-09-13,P13,MSD,A,Procambarus clarkii,Decapoda,20,Adult,adulta
+2022-09-13,P13,MSD,B,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-09-13,P13,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-09-13,P15,CON,A,Procambarus clarkii,Decapoda,21,Adult,adulta
+2022-09-13,P15,CON,B,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-09-13,P14,AWD,A,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-09-13,P14,AWD,B,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-09-13,P12,CON,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-09-13,P12,CON,B,Procambarus clarkii,Decapoda,40,Adult,adulta
+2022-09-13,P10,AWD,A,Procambarus clarkii,Decapoda,2,Adult,adulta
+2022-09-13,P10,AWD,B,Procambarus clarkii,Decapoda,1,Adult,adulta
+2022-09-13,P10,AWD,B,Pelophylax perezi,Frog,2,Adult,adulta
+2022-09-13,P08,CON,A,Procambarus clarkii,Decapoda,12,Adult,adulta
+2022-09-13,P08,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-09-13,P06,CON,A,Procambarus clarkii,Decapoda,8,Adult,adulta
+2022-09-13,P06,CON,B,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-09-13,P04,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-09-13,P04,MSD,B,Procambarus clarkii,Decapoda,9,Adult,adulta
+2022-09-13,P04,MSD,B,Pelophylax perezi,Frog,1,Adult,adulta
+2022-09-13,P02,MSD,A,Procambarus clarkii,Decapoda,3,Adult,adulta
+2022-09-13,P02,MSD,B,Procambarus clarkii,Decapoda,11,Adult,adulta
+2022-09-13,P02,MSD,B,Pseudorasbora parva,Fish,1,Adult,adulta

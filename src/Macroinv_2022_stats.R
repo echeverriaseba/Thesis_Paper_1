@@ -614,10 +614,14 @@ visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", sc
 
 # Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
 
+emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
+pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
+
 # Sampling 3: 
 # 
 emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response")
 pairs(emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response"))
+
 
 glmm.q0.gaus7_Samp3 <- glmmTMB(data = Hills_Physchem_Samp3, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
                                  O2_percent + Salinity + (1|Rep) , family = "gaussian")
@@ -937,5 +941,117 @@ pairs(emmeans(glmm.abu.gaus2, ~Treat , type = "response"))
 emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response")
 pairs(emmeans(glmm.abu.gaus2, ~Treat|Order_SubOrder, type = "response"))
 
+# Alternative models to analyze Tadpole issue:
+
+# a. Complete model without Tadpoles:
+
+Abundance_2022noTad <- Abundance_2022 %>% 
+  filter(Order_SubOrder != "Tadpole")
+
+glmm.abu.gaus3 <- glmmTMB(data = Abundance_2022noTad, Abundance ~ Treat*Order_SubOrder , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus3, plot = T)
+summary(glmm.abu.gaus3)
+car::Anova(glmm.abu.gaus3)
+performance::r2(glmm.abu.gaus3)
+performance::check_collinearity(glmm.abu.gaus3)
+performance::check_singularity(glmm.abu.gaus3)
+visreg(glmm.abu.gaus3, scale="response") # Plotting conditional residuals
+
+emmeans(glmm.abu.gaus3, ~Treat , type = "response")
+pairs(emmeans(glmm.abu.gaus3, ~Treat , type = "response"))
+
+emmeans(glmm.abu.gaus3, ~Treat|Order_SubOrder, type = "response")
+pairs(emmeans(glmm.abu.gaus3, ~Treat|Order_SubOrder, type = "response"))
+
+# b Model only considering Tadpoles:
+
+Abundance_2022Tad <- Abundance_2022 %>% 
+  filter(Order_SubOrder == "Tadpole", Treat != "AWD")
+
+glmm.abu.gaus4 <- glmmTMB(data = Abundance_2022Tad, Abundance ~ Treat , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus4, plot = T)
+summary(glmm.abu.gaus4)
+car::Anova(glmm.abu.gaus4)
+performance::r2(glmm.abu.gaus4)
+performance::check_collinearity(glmm.abu.gaus4)
+performance::check_singularity(glmm.abu.gaus4)
+visreg(glmm.abu.gaus4, scale="response") # Plotting conditional residuals
+
+emmeans(glmm.abu.gaus4, ~Treat , type = "response")
+pairs(emmeans(glmm.abu.gaus4, ~Treat , type = "response"))
+
+emmeans(glmm.abu.gaus4, ~Treat, type = "response")
+pairs(emmeans(glmm.abu.gaus4, ~Treat, type = "response"))
+
+##### Model 3: NEW DATAFRAME Abund. - Gaussian - Treat*Order_SubOrder interaction - No Random factor ####
+# Family: Gaussian
+# Interacting independent variables: Treat*Order_SubOrder
+# Random effect: -
+
+glmm.abu.gaus5 <- glmmTMB(data = Abundance_2022_2, Abundance ~ Treat*Order_SubOrder , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus5, plot = T)
+summary(glmm.abu.gaus5)
+car::Anova(glmm.abu.gaus5)
+performance::r2(glmm.abu.gaus5)
+performance::check_collinearity(glmm.abu.gaus5)
+performance::check_singularity(glmm.abu.gaus5)
+visreg(glmm.abu.gaus5, scale="response") # Plotting conditional residuals
+
+emmeans(glmm.abu.gaus5, ~Treat , type = "response")
+pairs(emmeans(glmm.abu.gaus5, ~Treat , type = "response"))
+
+emmeans(glmm.abu.gaus5, ~Treat|Order_SubOrder, type = "response")
+pairs(emmeans(glmm.abu.gaus5, ~Treat|Order_SubOrder, type = "response"))
 
 
+##### Model 4: NEW DATAFRAME with and without Tadpoles
+# Family: Gaussian
+# Interacting independent variables: Treat*Order_SubOrder
+# Random effect: -
+
+# a. Complete model without Tadpoles: SELECTED
+
+Abundance_2022_2noTad <- Abundance_2022_2 %>% 
+  filter(Order_SubOrder != "Tadpole")
+
+glmm.abu.gaus6 <- glmmTMB(data = Abundance_2022_2noTad, Abundance ~ Treat*Order_SubOrder , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus6, plot = T)
+summary(glmm.abu.gaus6)
+car::Anova(glmm.abu.gaus6)
+performance::r2(glmm.abu.gaus6)
+performance::check_collinearity(glmm.abu.gaus6)
+performance::check_singularity(glmm.abu.gaus6)
+visreg(glmm.abu.gaus6, scale="response") # Plotting conditional residuals
+
+emmeans(glmm.abu.gaus6, ~Treat , type = "response")
+pairs(emmeans(glmm.abu.gaus6, ~Treat , type = "response"))
+
+emmeans(glmm.abu.gaus6, ~Treat|Order_SubOrder, type = "response")
+pairs(emmeans(glmm.abu.gaus6, ~Treat|Order_SubOrder, type = "response"))
+
+# b Model only considering Tadpoles:
+
+Abundance_2022_2Tad <- Abundance_2022_2 %>% 
+  filter(Order_SubOrder == "Tadpole", Treat != "AWD")
+
+glmm.abu.gaus7 <- glmmTMB(data = Abundance_2022_2Tad, Abundance ~ Treat , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.abu.gaus7, plot = T)
+summary(glmm.abu.gaus7)
+car::Anova(glmm.abu.gaus7)
+performance::r2(glmm.abu.gaus7)
+performance::check_collinearity(glmm.abu.gaus7)
+performance::check_singularity(glmm.abu.gaus7)
+visreg(glmm.abu.gaus7, scale="response") # Plotting conditional residuals
+
+# Note: no sense in going for emmeans due to sign. among treats
+# Selected models: Model 4: NEW DATAFRAME without Tadpoles and only with Tadpoles 
