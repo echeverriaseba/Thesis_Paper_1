@@ -1,4 +1,4 @@
-# Thesis_Paper_1: "Ecological trade-offs as a product of water saving irrigation strategies in rice fields"
+# Thesis_Paper_1: "Reconciling trade-offs between climate change mitigation, biodiversity conservation and rice production"
 1. R Project: Thesis_Paper_1_git 
 2. /src: R scripts.
 3. /data: data inputs (e.g. .csv, .xlsx)
