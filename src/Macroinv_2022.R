@@ -14,8 +14,10 @@ library(cowplot)
 library('unikn') 
 library(rsvg)
 library(png)
+library(tidyr)
+library(writexl)
 
-##############  1. Working initial sampling data #################
+#  1. Working initial sampling data ####
 
 Macroinv_2022 <- read.csv("data/BIO/Macroinv_2022.csv", fileEncoding="latin1", na.strings=c("","NA"))
 
@@ -301,9 +303,9 @@ Macroinv_2022_assign_ALL <- Macroinv_2022_assign_ALL %>%
 
 write_csv2(Macroinv_2022_assign_ALL, "outputs/csv/BIO/Macroinv_2022_assign_ALL.csv")
 
-##############  2. Diversity Analysis - Hill Numbers #################
+#  2. Diversity Analysis - Hill Numbers #####
 
-#### 2.1. Define extrar_divmetrics function ####
+## 2.1. Define extrar_divmetrics function ####
 
 extrar_divmetrics <- function (datafile){
   
@@ -371,7 +373,7 @@ ColOdoHet <- ColOdoHet %>%
 
 write_csv2(ColOdoHet, "outputs/csv/BIO/ColOdoHet.csv")
 
-#### 2.3 Calculate Hill numbers through extrar_divmetrics function ####
+## 2.3 Calculate Hill numbers through extrar_divmetrics function ####
 
 ColOdoHet_inext_params <- extrar_divmetrics(ColOdoHet)
 
@@ -391,7 +393,7 @@ write_csv(Hills_ColOdoHet, "outputs/csv/BIO/Hills_ColOdoHet.csv")
 
 #  To plot Annexes with plots for Col, Het and Odo separate (see: ColOdoHet_q0q1_2022_all), see script:  ColOdoHet_separate
 
-#### 2.4 Plot Hill Numbers ####
+## 2.4 Plot Hill Numbers ####
 
 ColOdoHet_summary_q0 <- Hills_ColOdoHet %>%
                       group_by(Treat) %>%
@@ -503,7 +505,9 @@ ColOdoHet_divplots <- grid.arrange(arrangeGrob(ColOdoHet_plot_SpRich, ColOdoHet_
 
 ggsave("outputs/Plots/BIO/ColOdoHet_arrange.pdf", plot = ColOdoHet_divplots ,width = 10, height = 20)
 
-#### 2.5 Prepare data for abundance plots ####
+# 3. Abundance ####
+
+## 3.1 Prepare data for abundance plots ####
 
 Sam.Date <- unique(Macroinv_2022[, c("Sampling", "Date")])
 Order.taxres_max <- unique(Macroinv_2022_assign_ALL[, c("Taxres_max", "Order_SubOrder")])
@@ -523,6 +527,8 @@ Abundance_2022 <- read.csv("data/BIO/Macrofauna_2022.csv", fileEncoding="latin1"
                   filter(!(Type == "Cricket")) %>%  # Removes Crickets 
                   filter(!(Type == "Diptera")) # Removes Diptera
 
+# write_xlsx(Abundance_2022, "outputs/Abundance_2022.xlsx")
+
 colnames(Abundance_2022)[colnames(Abundance_2022) == "Type"] <- "Order_SubOrder" 
 
 Abundance_2022 <- Abundance_2022 %>% 
@@ -541,7 +547,7 @@ acc_Abundance_2022 <- Abundance_2022 %>% # Creates dataframe with accumulated ab
                       group_by(Treat, Order_SubOrder) %>% 
                       summarise(Abundance = sum(Abundance))
 
-#### 2.6 Plot abundance ####
+## 3.2 Plot abundance ####
 
 # i. Sum of all plots:
 
@@ -787,3 +793,16 @@ Abundance_2022_plot_avg6 <- ggplot(Abundance_2022_2,aes(Order_SubOrder, Abundanc
  
  ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.8.pdf", plot = Abundance_2022_plot_avg6, width = 8, height = 10) 
  
+## 3.3 Abundance summary table (for Sup. Mat.) ####
+ 
+ColOdoHet_SupMat <- ColOdoHet %>% 
+                     group_by(Sampling, Treat, Taxres_max) %>% 
+                     summarise(Abundance = sum(Abundance))
+
+Abundance_SupMat <- ColOdoHet_SupMat %>% 
+                      group_by(Treat, Sampling, Taxres_max) %>%
+                      summarise(Abundance_sum = sum(Abundance)) %>%
+                      ungroup() %>%
+                      pivot_wider(names_from = c(Treat, Sampling), values_from = Abundance_sum, values_fill = 0)
+
+write_xlsx(Abundance_SupMat, "outputs/Abundance_SupMat.xlsx")
