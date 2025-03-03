@@ -714,8 +714,8 @@ custom_ylabs <- c( # Defining specific ylabs for scatterplots
   expression("Soil pH"),
   expression("Redox potential"),
   expression("Water temperature (ºC)"),
-  expression("Oxigen (%)"),
-  expression(paste("Oxigen (mg l"^"-1",")")),
+  expression("Oxygen (%)"),
+  expression(paste("Oxygen (mg l"^"-1",")")),
   expression(paste("Salinity")),
   expression("Water pH")
 )

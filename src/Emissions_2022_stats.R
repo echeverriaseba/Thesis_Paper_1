@@ -525,6 +525,11 @@ Accum_CH4_tot <- Accum_CH4 %>%
 
 Accum_CH4_tot$Treat <- factor(Accum_CH4_tot$Treat, levels = c('CON', 'MSD', 'AWD')) # Treat to factor to reorder below's ggplot x axis
 
+Accum_CH4_avg <- Accum_CH4_tot %>% 
+              group_by(Treat) %>%
+              summarise(CH4_kgha_avg = mean(CH4_kgha_tot)) %>% 
+              mutate(dif_vs_CON = (CH4_kgha_avg[1] - CH4_kgha_avg)/CH4_kgha_avg[1])
+
 # Plotting cumulative C-CH4:
 
 Accum_CH4_plot <- ggplot(Accum_CH4_tot, aes(x = Treat, y = CH4_kgha_tot, fill = Treat, color = Treat)) + 

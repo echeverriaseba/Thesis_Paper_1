@@ -14,7 +14,7 @@ library(gridExtra)
 
 ############### 1. Create Master_GHG_2022 Dataframe #########################
 
-load("outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections (calculated previously in script "GHG_rates_2022_w_corrections"):  
+load("outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData") # Load emissions 2022 with corrections (calculated previously in script "GHG_rates_2022_w_corrections")  
 
 ## Master_GHG_2022 taking corrected CH4. Original data for N2O and CO2: 
 Emissions_2022 <- select(Emission_rates_w_corrections_2022, Sampling_date, Plot, Treat, Rep, CH4_flux_corrected, N2O_flux_corrected)
@@ -205,7 +205,7 @@ CH4_water_C <- ggplot(CH4_melted_Avged_Master_GHG_2022, aes(x = Sampling_date, c
                     scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
                     theme_bw() +
                     labs(y = "Water level (cm)") +
-                    labs(x = "Sampling date") +
+                    labs(x = "Growing Season") +
                     geom_hline(yintercept=0, color = "grey") +
                     scale_linetype_manual(name = "Variable",
                           values = c("avg_Water_level_corr" = "dashed"), labels = "Water level (cm)") +

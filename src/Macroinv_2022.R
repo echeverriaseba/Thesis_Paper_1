@@ -141,6 +141,12 @@ for (i in 1:nrow(Macroinv_2022)) { # Iterate through rows in the original DataFr
 rownames(Macroinv_2022_assign_Fam) <- NULL # Reset row names and arrange output DataFrame
 Macroinv_2022_assign_Fam <- Macroinv_2022_assign_Fam[order(Macroinv_2022_assign_Fam$distID), ]
 
+# Check using Odonata as test group:
+Check_fam_Odo <- Macroinv_2022_assign_Fam %>% 
+  filter(Order_SubOrder == "Odonata")
+unique(Check_fam_Odo$Family_SubFamily) # "Libellulidae"   "Coenagrionidae"
+
+
 ######### Loop for Genus #####
 
 Macroinv_2022_assign_Genus <- data.frame(distID = character(0), Family_SubFamily = character(0), Weighted_Abundance = numeric(0), # Original
@@ -198,6 +204,11 @@ for (i in 1:nrow(Macroinv_2022_assign_Fam)) { # Iterate through rows in the orig
 
 rownames(Macroinv_2022_assign_Genus) <- NULL # Reset row names and arrange output DataFrame
 Macroinv_2022_assign_Genus <- Macroinv_2022_assign_Genus[order(Macroinv_2022_assign_Genus$distID), ]
+
+# Check using Odonata as test group:
+Check_gen_Odo <- Macroinv_2022_assign_Genus %>% 
+  filter(Order_SubOrder == "Odonata")
+unique(Check_gen_Odo$Genus) # NA           "Ischnura"   "Sympetrum"  "Coenagrion"
 
 ######### Loop for Species #####
 
@@ -259,6 +270,11 @@ for (i in 1:nrow(Macroinv_2022_assign_Genus)) { # Iterate through rows in the or
 rownames(Macroinv_2022_assign_Species) <- NULL # Reset row names and arrange output DataFrame
 Macroinv_2022_assign_Species <- Macroinv_2022_assign_Species[order(Macroinv_2022_assign_Species$distID), ]
 
+# Check using Odonata as test group:
+Check_spp_Odo <- Macroinv_2022_assign_Species %>% 
+  filter(Order_SubOrder == "Odonata")
+unique(Check_spp_Odo$Species) # NA             "elegans"      "lefebvrii"    "fonscolombii" "graellsii"
+
 #### 1.4. Merge abundances of duplicated rows to avoid false Hill Number results. ####
 ## In case there are any, these must be merged into one row, adding up Weigthed_Abundance.
 
@@ -300,6 +316,11 @@ Macroinv_2022_assign_ALL <- Macroinv_2022_assign_ALL %>%
              is.na(Species) & is.na(Genus) & is.na(Family_SubFamily) & is.na(Order_SubOrder) & is.na(Class_SubClass) & !is.na(Phylum_SubPhylum) ~ Phylum_SubPhylum, 
              TRUE ~ NA
          ))
+
+# Check using Odonata as test group:
+Check_all_Odo <- Macroinv_2022_assign_ALL %>% 
+  filter(Order_SubOrder == "Odonata")
+unique(Check_all_Odo$Taxres_max) # "Coenagrionidae" "Libellulidae"   "elegans"        "Coenagrion"     "graellsii"      "fonscolombii"   "lefebvrii"
 
 write_csv2(Macroinv_2022_assign_ALL, "outputs/csv/BIO/Macroinv_2022_assign_ALL.csv")
 
@@ -739,6 +760,8 @@ colnames(Abundance_2022_2)[colnames(Abundance_2022_2) == "Type"] <- "Order_SubOr
 Abundance_2022_2 <- Abundance_2022_2 %>% 
                       select(Date, Plot, Treat, Order_SubOrder, Abundance)  
 
+Abundance_2022_alt <- Abundance_2022_2 # before aggregation, for abundance per sampling date plot (AGEE corrections)
+
 Abundance_2022_2 <- rbind(Abundance_2022_2, ColOdoHet_merged) %>% 
                     group_by(Plot, Treat, Order_SubOrder) %>% 
                     summarise(Abundance = sum(Abundance)) %>% 
@@ -792,6 +815,62 @@ Abundance_2022_plot_avg6 <- ggplot(Abundance_2022_2,aes(Order_SubOrder, Abundanc
  print(Abundance_2022_plot_avg6)
  
  ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.8.pdf", plot = Abundance_2022_plot_avg6, width = 8, height = 10) 
+ 
+ # ii. version 7: Facet for samplings - as suggested in first AGEE corrections.
+
+ Abundance_zeroAbu <- data.frame( # data frame with plot-dates without observations so these are not excluded from abundance per sampling plot
+           Date = as.Date(c("2022-06-08", "2022-06-08", "2022-06-08", "2022-06-08", "2022-07-06", "2022-07-06", "2022-07-06", "2022-07-06", 
+                            "2022-07-06", "2022-07-06", "2022-07-19", "2022-08-03", "2022-08-03", "2022-08-03", "2022-08-10", "2022-08-10",
+                            "2022-08-10", "2022-08-24", "2022-08-24", "2022-09-13", "2022-09-13", "2022-09-13", "2022-09-13")),
+           Plot = factor(c("P01", "P03", "P02", "P01", "P02", "P01", "P02", "P01", "P02", "P01", "P01", "P03", "P02", "P01", "P03", "P02",
+                           "P01", "P03", "P02", "P03", "P01", "P03", "P02")),
+           Treat = factor(c("AWD", "CON", "MSD", "AWD", "MSD", "AWD", "MSD", "AWD", "MSD", "AWD", "AWD", "CON", "MSD", "AWD", "CON", "MSD",
+                            "AWD", "CON", "MSD", "CON", "AWD", "CON", "MSD")),
+           Order_SubOrder = factor(c("Fish", "Tadpole", "Tadpole", "Tadpole", "Decapoda", "Decapoda", "Fish", "Fish", "Tadpole", "Tadpole",
+                                     "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Tadpole", "Fish",
+                                     "Tadpole", "Tadpole", "Tadpole")),
+           Abundance = rep(0, 23))
+ 
+ Abundance_zeroAbu$Date <- as.character(Abundance_zeroAbu$Date)
+ Abundance_zeroAbu$Plot <- as.character(Abundance_zeroAbu$Plot)
+ Abundance_zeroAbu$Order_SubOrder <- as.character(Abundance_zeroAbu$Order_SubOrder)
+ 
+ Abundance_2022_alt <- Abundance_2022_alt %>% # binding these zero abundance rows into origunal abundance data frame
+   rbind(Abundance_zeroAbu)
+ 
+ Abundance_2022_alt$Treat <- factor(Abundance_2022_alt$Treat, levels = c("CON", "MSD", "AWD")) # Reorder the Treat variable
+ 
+ Abundance_2022_alt_avg <- Abundance_2022_alt %>% # dataframe to include mean bars to abundance per sampling plot
+   group_by(Date, Treat, Order_SubOrder) %>% 
+   summarise(mean_abu = mean(Abundance)) 
+ 
+ Abundance_2022_alt$Treat <- factor(Abundance_2022_alt$Treat, levels = c('CON', 'MSD', 'AWD')) # Treat to factor to reorder ggplot x axis
+ 
+Abundance_2022_plot_avg7 <- ggplot(Abundance_2022_alt,aes(Order_SubOrder, Abundance,  fill = Treat)) +
+                                       geom_bar(data = Abundance_2022_alt_avg, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), 
+                                                alpha = 0.7, stat = "identity", position = position_dodge(0.95), show.legend = TRUE) +
+                                       geom_jitter(position = position_jitterdodge(jitter.height = .0, jitter.width = .2),
+                                                   colour = "lightgrey", pch = 21, size =4, alpha = 0.5) +
+                                       scale_fill_manual(values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D")) +
+                                       theme_bw() +
+                                       ylab("Abundance (nº individuals)") +
+                                       ggtitle("")+
+                                       geom_vline(xintercept = 1.5) +
+                                       geom_vline(xintercept = 2.5) +
+                                       geom_vline(xintercept = 3.5) +
+                                       geom_vline(xintercept = 4.5) +
+                                       geom_vline(xintercept = 5.5) +
+                                       theme(axis.title = element_text(size = 15), axis.text = element_text(size = 15), strip.text = element_text(size = 15),
+                                             axis.title.y = element_text(size = 15, margin = margin(r = 8)), axis.title.x = element_blank(),
+                                             axis.text.y = element_text(size = 15, margin = margin(r = 0), angle = 90), legend.position = "top", 
+                                             legend.background = element_rect(fill="white", size = 0.7), legend.title = element_blank(),
+                                             legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 13, angle = 90, vjust = 0.5, hjust=1),
+                                             panel.border = element_rect(size=1)) +
+                                        facet_wrap(~Date)
+
+ print(Abundance_2022_plot_avg7)
+ 
+ ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.perDate.pdf", plot = Abundance_2022_plot_avg7, width = 10, height = 10)
  
 ## 3.3 Abundance summary table (for Sup. Mat.) ####
  
