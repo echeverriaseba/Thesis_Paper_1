@@ -43,11 +43,7 @@ ggsave("outputs/Plots/PROD/Prod_2022_plot.pdf", plot = Prod_2022_plot, width = 8
 # Version 2:
 
 Prod_2022_plot2 <- ggplot(Prod_2022, aes(Treat, Yield_kg_ha, group = Treat, colour = Treat, fill = Treat)) +
-                          geom_point(position = position_jitterdodge (0.80, jitter.width = 0.4, jitter.height = 0), alpha = 0.1, shape = 21, colour = "black",size = 10) +
-                          geom_point(alpha = 0.6, shape = 21, colour = "black",size = 10) +
-                          geom_point(data = Prod_2022_means, aes(x = Treat, y = Yield_mean),  alpha = 0.9, shape = 21, size = 10) +
-                          geom_point(data = Prod_2022_means, aes(x = Treat, y = Yield_mean), shape = 21, size = 10,  colour = "black") +
-                          geom_errorbar(data = Prod_2022_means, aes(y = Yield_mean , ymin = Yield_mean - SE, ymax = Yield_mean + SE, color = Treat), width = 0.4, position = position_dodge(width = 0.9), size = 1) +
+                          geom_point(position = position_jitterdodge (0.80, jitter.width = 0.4, jitter.height = 0), alpha = 0.2, shape = 21, colour = "black",size = 10) +
                           scale_colour_manual(name = "Treatment", values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D")) +
                           scale_fill_manual(values = c(CON = "#002B5B", MSD = "#03C988", AWD = "#FF5D5D"), guide = "none") +
                           theme_bw() +
@@ -57,6 +53,9 @@ Prod_2022_plot2 <- ggplot(Prod_2022, aes(Treat, Yield_kg_ha, group = Treat, colo
                           theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
                                 axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
                                 axis.text.y = element_text(size = 20, margin = margin(r = 10), angle = 90), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
+                          geom_point(data = Prod_2022_means, aes(x = Treat, y = Yield_mean), shape = 19, size = 12,  colour = "black") +
+                          geom_point(data = Prod_2022_means, aes(x = Treat, y = Yield_mean),  shape = 19, size = 10) +
+                          geom_errorbar(data = Prod_2022_means, aes(y = Yield_mean , ymin = Yield_mean - SE, ymax = Yield_mean + SE, color = Treat), width = 0.3, size = 1) +
                           scale_y_continuous(expand = c(0, 0), limits = c(6500, 9100), breaks = seq(7000, 9000, by = 1000))
 
 print(Prod_2022_plot2)

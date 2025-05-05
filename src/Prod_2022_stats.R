@@ -3,6 +3,7 @@
 
 library(dplyr)
 library(ggplot2)
+library(emmeans)
 
 #### 1. Prod data ####
 
