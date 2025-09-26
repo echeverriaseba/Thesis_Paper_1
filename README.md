@@ -1,4 +1,4 @@
-# Thesis_Paper_1: "Water-saving irrigation can mitigate climate change but entails negative side effects on biodiversity in rice paddy fields"
+# Water-saving irrigation can mitigate climate change but entails negative side effects on biodiversity in rice paddy fields
 Open access article: [Agriculture, Ecosystems and Environment](https://doi.org/10.1016/j.agee.2025.109719).
 
 Contact: secheverriap@gmail.com (do not hesitate to contact in case you have any doubts using this material).
