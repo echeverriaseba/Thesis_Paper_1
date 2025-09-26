@@ -1,7 +1,7 @@
 # Thesis_Paper_1: "Water-Saving Irrigation Can Mitigate Climate Change But Entails Negative Side Effects on Biodiversity in Rice Paddy Fields"
-Open access article: [Agriculture, Ecosystems and Environment](https://doi.org/10.1016/j.agee.2025.109719)
+Open access article: [Agriculture, Ecosystems and Environment](https://doi.org/10.1016/j.agee.2025.109719).
 
-Contact: secheverriap@gmail.com (do not hesitate to contact in case you have any doubts using this material)
+Contact: secheverriap@gmail.com (do not hesitate to contact in case you have any doubts using this material).
 
 ## Index:
 1. R Project: Thesis_Paper_1_git 
