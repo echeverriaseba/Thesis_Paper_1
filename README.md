@@ -3,7 +3,7 @@ Open access article: [Agriculture, Ecosystems and Environment](https://doi.org/1
 
 Contact: secheverriap@gmail.com (do not hesitate to contact in case you have any doubts using this material).
 
-## Index:
+## Index
 1. R Project: Thesis_Paper_1_git 
 2. /src: R scripts.
 3. /data: data inputs (e.g. .csv, .xlsx). All data colected across the sampling campaign 2022.
