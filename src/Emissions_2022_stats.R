@@ -24,10 +24,10 @@ library(gridExtra)
 
 ################ 2. STATS ###################
 
-##### 2.1. Data validation ######
+## 2.1. Data validation ######
 # According to "Analyzing the impact of multiple stressors in aquatic biomonitoring data: A ‘cookbook’ with applications in R" - Feld et al., 2016. ##
 
-#### 2.1.1. Outline analysis ####
+### 2.1.1. Outlier analysis ####
 
 summary(Master_GHG_2022_no_NA$Temp_soil)
 boxplot(Master_GHG_2022_no_NA$Temp_soil)
@@ -124,7 +124,7 @@ Master_GHG_2022_no_NA_nooutliers <-  Master_GHG_2022_no_NA %>%  # New data frame
                                Salinity < 0.4 | Salinity > 1.1 ~ 1,TRUE ~ 0)) %>% 
                                filter(Outliers == 0)
 
-#### 2.1.2. Testing correlations ####
+### 2.1.2. Testing correlations ####
 
 #### i) Spearman rank correlation ####
 
@@ -361,7 +361,7 @@ dev.off()
 # 'Water_level_corr', 'Temp_soil', 'Rice_cover_prop', 'Env_temp_final', 'Conduct_microS_cm', 'pH_soil', 'Redox_pot', 'Water_temp', 'O2_mg_l', 'Salinity'
 
 
-#### 2.2. GLMMs ####
+## 2.2. GLMMs ####
 
 # Creating a "Sampling" column that assigns a number to each unique Sampling_date. This way we can have "Sampling" as a model variable. 
 Master_GHG_2022_no_NA <- Master_GHG_2022_no_NA %>%
@@ -493,9 +493,7 @@ pairs(emmeans(glmm.CH4.gaus2.noout, ~Sampling, type = "response"))
 
 pairs(emmeans(glmm.CH4.gaus2.noout, ~Treat|Sampling, type = "response"))
 
-
-
-################ 3. Other analyses ####################
+# 3. Other analyses ####
 
 ## 3.1. Comparing overall emission averages per Treat ####
 

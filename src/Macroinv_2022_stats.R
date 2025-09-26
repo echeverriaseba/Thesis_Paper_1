@@ -426,10 +426,6 @@ dev.off()
 Hills_Physchem$Rep_Treat <- paste0(Hills_Physchem$Rep, "_", Hills_Physchem$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
 Hills_Physchem_nooutliers$Rep_Treat <- paste0(Hills_Physchem_nooutliers$Rep, "_", Hills_Physchem_nooutliers$Treat) # Creates the random effects variable, which is, in this case, controlled by the blocks design.
 
-# Testing effect of editing vector types: # These were a trial to check if changing dataframe structure would impact the GLMMs result. They sopped fitting...
-# Hills_Physchem$Sampling <- as.factor(Hills_Physchem$Sampling)   
-# Hills_Physchem$Treat <- as.character(Hills_Physchem$Treat)
-
 ##### Checking q0 vs Samplings ####
 
 # Testing for linear or quadratic relation
@@ -456,7 +452,6 @@ q1_Sampling <- ggplot(Hills_Physchem, aes(Sampling, q1.obs))  +
                 geom_point(data = Hills_Physchem_summary_q1, aes(x = Sampling, y = mean_q1.obs), shape = 19, colour = "black", size = 6) 
 
 print(q1_Sampling) # Relation between q1 and Sampling seems to be quadratic, "Treat*I(Sampling^2)" interaction should be tested.
-
 
 ### 2.2.1. Selected model for q0: Model 11b (not removing outliers) ####
 
@@ -593,58 +588,75 @@ visreg(glmm.q0.gaus7_Samp1, xvar="Treat", overlay = TRUE, type="conditional", sc
 
 # Sampling 2: 
 
-# Note:For sub-model "glmm.q0.gaus7_Samp2" water physicochemical variables O2_percent and Salinity are removed due to lack of data for most of AWD and MSD
+# Note: For sub-model "glmm.q0.gaus7_Samp3" water physicochemical variables O2_percent and Salinity are removed due to lack of data for most of AWD and MSD
 # plots as the Sampling was done after drainage for both treats, so the average of the three previous physicochemical samplings does not apply (no water 
 # to assess)
 
-glmm.q0.gaus7_Samp2 <- glmmTMB(data = Hills_Physchem_Samp2, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
+glmm.q0.gaus7_Samp3 <- glmmTMB(data = Hills_Physchem_Samp2, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
                                (1|Rep) , family = "gaussian")
 
 # Model diagnostics:
-DHARMa::simulateResiduals(glmm.q0.gaus7_Samp2, plot = T)
-summary(glmm.q0.gaus7_Samp2)
-car::Anova(glmm.q0.gaus7_Samp2)
-r.squaredGLMM(glmm.q0.gaus7_Samp2) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
-performance::r2(glmm.q0.gaus7_Samp2)
-performance::check_collinearity(glmm.q0.gaus7_Samp2)
-performance::check_singularity(glmm.q0.gaus7_Samp2)
-visreg(glmm.q0.gaus7_Samp2, scale="response")
-visreg(glmm.q0.gaus7_Samp2, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
-visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp3, plot = T)
+summary(glmm.q0.gaus7_Samp3)
+car::Anova(glmm.q0.gaus7_Samp3)
+r.squaredGLMM(glmm.q0.gaus7_Samp3) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp3)
+performance::check_collinearity(glmm.q0.gaus7_Samp3)
+performance::check_singularity(glmm.q0.gaus7_Samp3)
+visreg(glmm.q0.gaus7_Samp3, scale="response")
+visreg(glmm.q0.gaus7_Samp3, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp3, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 
-# Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
+# Post-hoc test for sub-model glmm.q0.gaus7_Samp3:
 
-emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
-pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
-
-# Sampling 3: 
-# 
 emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response")
 pairs(emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response"))
 
+# Note: Significant Treat effects on q0 identified for pairs: CON - MSD and CON - AWD
+
+# Sampling 3: 
 
 glmm.q0.gaus7_Samp3 <- glmmTMB(data = Hills_Physchem_Samp3, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
-                                 O2_percent + Salinity + (1|Rep) , family = "gaussian")
+                                 (1|Rep) , family = "gaussian")
 
 # Model diagnostics:
-DHARMa::simulateResiduals(glmm.q0.gaus7_Samp2, plot = T)
-summary(glmm.q0.gaus7_Samp2)
-car::Anova(glmm.q0.gaus7_Samp2)
-r.squaredGLMM(glmm.q0.gaus7_Samp2) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
-performance::r2(glmm.q0.gaus7_Samp2)
-performance::check_collinearity(glmm.q0.gaus7_Samp2)
-performance::check_singularity(glmm.q0.gaus7_Samp2)
-visreg(glmm.q0.gaus7_Samp2, scale="response")
-visreg(glmm.q0.gaus7_Samp2, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
-visreg(glmm.q0.gaus7_Samp2, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp3, plot = T)
+summary(glmm.q0.gaus7_Samp3)
+car::Anova(glmm.q0.gaus7_Samp3)
+r.squaredGLMM(glmm.q0.gaus7_Samp3) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp3)
+performance::check_collinearity(glmm.q0.gaus7_Samp3)
+performance::check_singularity(glmm.q0.gaus7_Samp3)
+visreg(glmm.q0.gaus7_Samp3, scale="response")
+visreg(glmm.q0.gaus7_Samp3, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp3, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
 
-# Post-hoc test for sub-model glmm.q0.gaus7_Samp2:
+# Post-hoc test for sub-model glmm.q0.gaus7_Samp3:
 
-emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response")
-pairs(emmeans(glmm.q0.gaus7_Samp2, ~Treat , type = "response"))
+emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response")
+pairs(emmeans(glmm.q0.gaus7_Samp3, ~Treat , type = "response"))
 
+# Sampling 4: 
 
-# Note: Significant Treat effects on q0 identified for pairs: CON - MSD and CON - AWD
+glmm.q0.gaus7_Samp4 <- glmmTMB(data = Hills_Physchem_Samp4, q0.obs ~ Treat + Conduct_microS_cm + pH_soil + Redox_pot + 
+                                 (1|Rep) , family = "gaussian")
+
+# Model diagnostics:
+DHARMa::simulateResiduals(glmm.q0.gaus7_Samp4, plot = T)
+summary(glmm.q0.gaus7_Samp4)
+car::Anova(glmm.q0.gaus7_Samp4)
+r.squaredGLMM(glmm.q0.gaus7_Samp4) # Calculates Pseudo-R-squared for Generalized Mixed-Effect models
+performance::r2(glmm.q0.gaus7_Samp4)
+performance::check_collinearity(glmm.q0.gaus7_Samp4)
+performance::check_singularity(glmm.q0.gaus7_Samp4)
+visreg(glmm.q0.gaus7_Samp4, scale="response")
+visreg(glmm.q0.gaus7_Samp4, xvar="Sampling2", by = "Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+visreg(glmm.q0.gaus7_Samp4, xvar="Treat", overlay = TRUE, type="conditional", scale = "response") # Plotting conditional residuals
+
+# Post-hoc test for sub-model glmm.q0.gaus7_Samp4:
+
+emmeans(glmm.q0.gaus7_Samp4, ~Treat , type = "response")
+pairs(emmeans(glmm.q0.gaus7_Samp4, ~Treat , type = "response"))
 
 ## iii) q0 - Comparing overall species richness averages per Treat (for Sampling 2) ####
 
@@ -685,8 +697,6 @@ visreg(glmm.q1.gaus9, scale="response") # Plotting conditional residuals
 
 emmeans(glmm.q1.gaus9, ~Treat , type = "response")
 pairs(emmeans(glmm.q1.gaus9, ~Treat , type = "response"))
-
-
 
 ## i) q1 - Conduct_microS_cm - Treat correlation ####
 

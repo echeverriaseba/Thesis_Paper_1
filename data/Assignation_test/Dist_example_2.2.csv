@@ -1,9 +1,0 @@
-Date,Sampling,Plot,Treat,Rep,siteID,distID,Sub_sample,Weight,Phylum_SubPhylum,Class_SubClass,Order_SubOrder,Family_SubFamily,Genus,Species,Stadium,Unclassified,Trophic_level,Abundance,Weighted_Abundance
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Hydrophilidae,Genus_x,Species_x,Adult,,,1,15
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,Genus_x,Species_y,Adult,,,,20
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,Genus_y,Species_z,Adult,,,,12
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,NA,NA,Adult,,,,28
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,Family_x,Genus_y,NA,Adult,,,,35
-2022-08-31,4,P10,AWD,4,Samp_4Rep_4AWDColeoptera,4AWDColeopteraAdult,N,1,Arthropoda,Insecta,Coleoptera,NA,NA,NA,Adult,,,1,26
-2022-08-31,4,P09,AWD,3,Samp_4Rep_3AWDColeoptera,4AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,Hydrophilidae,Genus_w,NA,Larvae,,,1,15
-2022-08-31,4,P10,AWD,4,Samp_4Rep_4AWDColeoptera,4AWDColeopteraLarvae,N,1,Arthropoda,Insecta,Coleoptera,NA,NA,NA,Larvae,,,1,26

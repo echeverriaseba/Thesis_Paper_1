@@ -28,7 +28,7 @@ Plot_Rep <- data.frame(Plot, Rep)
 Macroinv_2022 <- merge(Macroinv_2022, Plot_Rep, by.x="Plot", by.y="Plot")
 Macroinv_2022  <- Macroinv_2022 [, c(2, 3, 1, 4, 19, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18)] # Reorder columns
 
-#### 1.1. Modifications regarding to UdG stay with Dani Boix. ####
+#### 1.1. Modifications regarding to UdG stay with Prof. Dani Boix. ####
 
 Macroinv_2022 <- Macroinv_2022 %>% 
   mutate(Species = case_when(Genus == "Microvelia" ~ "pygmaea", TRUE ~ Species),  # i. All Microvelia found are Microvelia pygmaea
@@ -146,7 +146,6 @@ Check_fam_Odo <- Macroinv_2022_assign_Fam %>%
   filter(Order_SubOrder == "Odonata")
 unique(Check_fam_Odo$Family_SubFamily) # "Libellulidae"   "Coenagrionidae"
 
-
 ######### Loop for Genus #####
 
 Macroinv_2022_assign_Genus <- data.frame(distID = character(0), Family_SubFamily = character(0), Weighted_Abundance = numeric(0), # Original
@@ -205,11 +204,6 @@ for (i in 1:nrow(Macroinv_2022_assign_Fam)) { # Iterate through rows in the orig
 rownames(Macroinv_2022_assign_Genus) <- NULL # Reset row names and arrange output DataFrame
 Macroinv_2022_assign_Genus <- Macroinv_2022_assign_Genus[order(Macroinv_2022_assign_Genus$distID), ]
 
-# Check using Odonata as test group:
-Check_gen_Odo <- Macroinv_2022_assign_Genus %>% 
-  filter(Order_SubOrder == "Odonata")
-unique(Check_gen_Odo$Genus) # NA           "Ischnura"   "Sympetrum"  "Coenagrion"
-
 ######### Loop for Species #####
 
 Macroinv_2022_assign_Species <- data.frame(distID = character(0), Family_SubFamily = character(0), Weighted_Abundance = numeric(0), # Original
@@ -218,20 +212,20 @@ Macroinv_2022_assign_Species <- data.frame(distID = character(0), Family_SubFami
                                          Order_SubOrder = character(0), Genus = character(0), Species = character(0), Stadium = character(0), 
                                          Unclassified = character(0),Trophic_level = character(0), Abundance = numeric(0)
                                          
-)# Initialize an empty output DataFrame
+) # Initialize an empty output dataframe
 
-for (i in 1:nrow(Macroinv_2022_assign_Genus)) { # Iterate through rows in the original DataFrame
+for (i in 1:nrow(Macroinv_2022_assign_Genus)) { # Iterate through rows in the original dataframe
   row <- Macroinv_2022_assign_Genus[i, ]
   
   distribution_values <- Macroinv_2022_assign_Genus[Macroinv_2022_assign_Genus$Family_SubFamily == row$Family_SubFamily & Macroinv_2022_assign_Genus$Genus == row$Genus & Macroinv_2022_assign_Genus$distID == row$distID & !is.na(Macroinv_2022_assign_Genus$Species), ] %>%    # Get the distribution values # IMPORTANT: AGGREGATES FOR FAMILY EQUAL TO THAT OF THE ITERATING ROW
                           group_by(Species) %>%
                           summarise(Weighted_Abundance = sum(Weighted_Abundance))
   
-  if (nrow(distribution_values)==0) { # If no assigned Species for this Genus, add the row to the output DataFrame
+  if (nrow(distribution_values)==0) { # If no assigned Species for this Genus, add the row to the output dataframe
     Macroinv_2022_assign_Species <- rbind(Macroinv_2022_assign_Species, row)
   } 
   
-  else if (!is.na(row$Species)) {   # If Species is not NA, add the row to the output DataFrame
+  else if (!is.na(row$Species)) {   # If Species is not NA, add the row to the output dataframe
     Macroinv_2022_assign_Species <- rbind(Macroinv_2022_assign_Species, row)
     
   } else {
@@ -267,16 +261,11 @@ for (i in 1:nrow(Macroinv_2022_assign_Genus)) { # Iterate through rows in the or
   }
 }
 
-rownames(Macroinv_2022_assign_Species) <- NULL # Reset row names and arrange output DataFrame
+rownames(Macroinv_2022_assign_Species) <- NULL # Reset row names and arrange output dataframe
 Macroinv_2022_assign_Species <- Macroinv_2022_assign_Species[order(Macroinv_2022_assign_Species$distID), ]
 
-# Check using Odonata as test group:
-Check_spp_Odo <- Macroinv_2022_assign_Species %>% 
-  filter(Order_SubOrder == "Odonata")
-unique(Check_spp_Odo$Species) # NA             "elegans"      "lefebvrii"    "fonscolombii" "graellsii"
-
 #### 1.4. Merge abundances of duplicated rows to avoid false Hill Number results. ####
-## In case there are any, these must be merged into one row, adding up Weigthed_Abundance.
+## In case there are any, these must be merged into one row, adding up Weighted_Abundance.
 
 Macroinv_2022_assign_ALL <- Macroinv_2022_assign_Species %>%
                 group_by(Date, Plot, Rep, Treat, Family_SubFamily, Genus, Species, Unclassified, Stadium) %>%
@@ -288,20 +277,6 @@ Macroinv_2022_assign_ALL <- Macroinv_2022_assign_Species %>%
                             distinct(Date, Plot, Rep, Treat, Family_SubFamily, Genus, Species, Unclassified, Stadium, .keep_all = TRUE)
 
 Macroinv_2022_assign_ALL  <- Macroinv_2022_assign_ALL [, c(1, 11, 2, 4, 3, 13, 14, 12, 15, 16, 5, 6, 7, 8, 9, 10, 17, 18)] # Reorder columns
-
-## Review: 
-
-# - Check if distributions are correct.
-# - Check cases in which there is only Family (All Genus and Species are NA), e.g. Curculionidae
-# - Find review tables to compare assignations of each Dist_example_2 ... .csv in C:\Users\SECHEVERRIA\Documents\R\Thesis_Paper_1\data\Assignation_test\Dist_example.xlsx
-
-sum(Macroinv_2022$Weighted_Abundance) # Check 1       
-sum(Macroinv_2022_assign_Fam$Weighted_Abundance) # Check 2
-sum(Macroinv_2022_assign_Genus$Weighted_Abundance) # Check 3
-sum(Macroinv_2022_assign_Species$Weighted_Abundance) # Check 4 
-sum(Macroinv_2022_assign_ALL$Weighted_Abundance) # Check 5 
-
-# Output: .csv with all the previous corrections and assignations 
 
 #### 1.5. Create Taxres_max before applying Hill Numbers ####
 
@@ -316,11 +291,6 @@ Macroinv_2022_assign_ALL <- Macroinv_2022_assign_ALL %>%
              is.na(Species) & is.na(Genus) & is.na(Family_SubFamily) & is.na(Order_SubOrder) & is.na(Class_SubClass) & !is.na(Phylum_SubPhylum) ~ Phylum_SubPhylum, 
              TRUE ~ NA
          ))
-
-# Check using Odonata as test group:
-Check_all_Odo <- Macroinv_2022_assign_ALL %>% 
-  filter(Order_SubOrder == "Odonata")
-unique(Check_all_Odo$Taxres_max) # "Coenagrionidae" "Libellulidae"   "elegans"        "Coenagrion"     "graellsii"      "fonscolombii"   "lefebvrii"
 
 write_csv2(Macroinv_2022_assign_ALL, "outputs/csv/BIO/Macroinv_2022_assign_ALL.csv")
 
@@ -394,7 +364,7 @@ ColOdoHet <- ColOdoHet %>%
 
 write_csv2(ColOdoHet, "outputs/csv/BIO/ColOdoHet.csv")
 
-## 2.3 Calculate Hill numbers through extrar_divmetrics function ####
+## 2.3. Calculate Hill numbers through extrar_divmetrics function ####
 
 ColOdoHet_inext_params <- extrar_divmetrics(ColOdoHet)
 
@@ -412,9 +382,7 @@ Hills_ColOdoHet$Treat <- factor(Hills_ColOdoHet$Treat, levels = c("CON", "MSD", 
 
 write_csv(Hills_ColOdoHet, "outputs/csv/BIO/Hills_ColOdoHet.csv")
 
-#  To plot Annexes with plots for Col, Het and Odo separate (see: ColOdoHet_q0q1_2022_all), see script:  ColOdoHet_separate
-
-## 2.4 Plot Hill Numbers ####
+## 2.4. Plot Hill Numbers ####
 
 ColOdoHet_summary_q0 <- Hills_ColOdoHet %>%
                       group_by(Treat) %>%
@@ -447,35 +415,6 @@ print(ColOdoHet_plot_SpRich_indiv)
 
 ggsave("outputs/Plots/BIO/SpRich_indiv.pdf", plot = ColOdoHet_plot_SpRich_indiv ,width = 10, height = 10)
 saveRDS(ColOdoHet_plot_SpRich_indiv, "outputs/Plots/BIO/SpRich_indiv.rds") # This RDS file can be called from other scripts (e.g. from stats to make an arrange)
-
-plot(x = Hills_ColOdoHet$Treat, y = Hills_ColOdoHet$q1.obs) # Simple plot to have an idea of how ggplot must then look
-
-ColOdoHet_plot_Shannon_indiv <- ggplot(Hills_ColOdoHet, 
-                                 aes(Treat, q1.obs, group = Treat, colour = Treat, fill = Treat)) +
-                            geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), alpha = 0.2,shape = 21,colour = "black",size = 10)+
-                            scale_colour_manual(name = "Treatment", values = c("#002B5B", "#03C988", "#FF5D5D")) +
-                            scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
-                            # scale_y_sqrt() +
-                            theme_bw() +
-                            # xlab("Treatment") +
-                            ylab("") +
-                            ggtitle(expression("Shannon diversity (q"[1]*")")) +
-                            theme(plot.title = element_text(size=20, hjust=0.5), axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                  axis.title.y = element_text(size = 20, margin = margin(r = 12)), axis.title.x = element_blank(), legend.position = "none", 
-                                  axis.text.y = element_text(size = 20, margin = margin(r = 0)), axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) +
-                            geom_point(data = ColOdoHet_summary_q1, aes(x = Treat, y = mean_q1.obs), shape = 19, colour = "black", size = 12) +
-                            geom_point(data = ColOdoHet_summary_q1, aes(x = Treat, y = mean_q1.obs), shape = 19, size = 10) +
-                            geom_errorbar(data = ColOdoHet_summary_q1, aes(x = Treat, y = mean_q1.obs, ymin = mean_q1.obs - se_q1.obs, ymax = mean_q1.obs + se_q1.obs), width = 0.3, size = 1) 
-
-print(ColOdoHet_plot_Shannon_indiv)
-
-ggsave("outputs/Plots/BIO/Shannon_indiv.pdf", plot = ColOdoHet_plot_Shannon_indiv ,width = 10, height = 10)
-
-## Arranging individual plots:
-
-ColOdoHet_inddivplots <- grid.arrange(arrangeGrob(ColOdoHet_plot_SpRich_indiv, ColOdoHet_plot_Shannon_indiv, nrow = 1, ncol = 2))
-
-ggsave("outputs/Plots/BIO/ColOdoHet_indiv_arrange.pdf", plot = ColOdoHet_inddivplots ,width = 20, height = 10)
 
 ## Plots for arrange:
 
@@ -520,15 +459,9 @@ print(ColOdoHet_plot_Shannon)
 
 ggsave("outputs/Plots/BIO/Shannon_indiv2.pdf", plot = ColOdoHet_plot_Shannon ,width = 10, height = 10)
 
-# Arrange plots:
-
-ColOdoHet_divplots <- grid.arrange(arrangeGrob(ColOdoHet_plot_SpRich, ColOdoHet_plot_Shannon, nrow = 2, ncol = 1))
-
-ggsave("outputs/Plots/BIO/ColOdoHet_arrange.pdf", plot = ColOdoHet_divplots ,width = 10, height = 20)
-
 # 3. Abundance ####
 
-## 3.1 Prepare data for abundance plots ####
+## 3.1. Prepare data for abundance plots ####
 
 Sam.Date <- unique(Macroinv_2022[, c("Sampling", "Date")])
 Order.taxres_max <- unique(Macroinv_2022_assign_ALL[, c("Taxres_max", "Order_SubOrder")])
@@ -568,184 +501,13 @@ acc_Abundance_2022 <- Abundance_2022 %>% # Creates dataframe with accumulated ab
                       group_by(Treat, Order_SubOrder) %>% 
                       summarise(Abundance = sum(Abundance))
 
-## 3.2 Plot abundance ####
+## 3.2. Plot abundance ####
 
-# i. Sum of all plots:
-
-Abundance_2022_plot <- ggplot(acc_Abundance_2022, aes(Treat, Abundance, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
-                              geom_point(colour = "black", size = 13) +
-                              geom_point(aes(colour = Order_SubOrder), size = 11) +
-                              scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70")) +
-                              scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70"), guide = "none") +
-                              geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5) +
-                              scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) +
-                              theme_bw() +
-                              labs(title = "Accumulated abundance", y = NULL) +
-                              theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                    axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
-                                    axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
-                                    legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
-                                    legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1),
-                                    plot.title = element_text(hjust = 0.5, size = 20)) +  
-                              # scale_y_continuous(breaks = seq(0, 30, by = 5)) +
-                              guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
-                              scale_y_sqrt()  
-                              # annotation_custom(rasterGrob(Hydrophilidae_png), xmin = 0.05, xmax = 0.1, ymin = 0.4, ymax = 0.5)
-
-print(Abundance_2022_plot)  
-
-ggsave("outputs/Plots/BIO/Abundance_2022.pdf", plot = Abundance_2022_plot, width = 10, height = 10)
-
-## Arrange oh diversity plots and abundance plot:
+## Arrange of diversity plots and abundance plot:
 
 Abu.div_2022_plots <- grid.arrange(arrangeGrob(ColOdoHet_divplots, Abundance_2022_plot, ncol = 2, nrow = 1))
 
 ggsave("outputs/Plots/BIO/Abu.div_2022_plots.pdf", plot = Abu.div_2022_plots, width = 20, height = 10)
-
-# ii. Plots' average:
-
-Abundance_2022_summary <- Abundance_2022 %>%
-                          group_by(Treat, Order_SubOrder) %>%
-                          summarise(mean_abu = mean(Abundance),se_abu = sd(Abundance) / sqrt(n()))
-# ii. version 1:
-
-Abundance_2022_plot_avg1 <- ggplot(Abundance_2022_summary, aes(Treat, mean_abu, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder)) +
-                                    geom_point(position=position_dodge(width=0.3), colour = "black", size = 13) +
-                                    geom_point(position=position_dodge(width=0.3), aes(colour = Order_SubOrder), size = 11) +
-                                    scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70")) +
-                                    scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70"), guide = "none") +
-                                    # geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5,  alpha = 0.5) +
-                                    scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) +
-                                    theme_bw() +
-                                    ylab("Accumulated abundance") +
-                                    ggtitle("") +
-                                    theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                          axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
-                                          axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
-                                          legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
-                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1),
-                                          plot.title = element_text(hjust = 0.5, size = 20)) +  
-                                    # scale_y_continuous(breaks = seq(0, 30, by = 5)) +
-                                    guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
-                                    scale_y_sqrt() +
-                                    # geom_point(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu), shape = 19, size = 10) +
-                                    geom_errorbar(position=position_dodge(width=0.3), data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.7, size = 1, alpha = 0.6)
-
-print(Abundance_2022_plot_avg1)
-
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.1.pdf", plot = Abundance_2022_plot_avg1, width = 10, height = 12)
-
-# ii. version 2:
-
-Abundance_2022_plot_avg2 <- ggplot(Abundance_2022, aes(Treat, Abundance, group = Order_SubOrder, colour = Order_SubOrder, fill = Order_SubOrder, shape = Order_SubOrder, shape = category)) +
-                                    # geom_point(colour = "black", size = 13) +
-                                    geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), aes(colour = Order_SubOrder), size = 11, alpha = 0.1) +
-                                    scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70")) +
-                                    scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#F6FA70"), guide = "none") +
-                                    # geom_line(aes(colour = Order_SubOrder), linetype = "dashed", linewidth = 1.5,  alpha = 0.5) +
-                                    theme_bw() +
-                                    labs(title = "Accumulated abundance", y = NULL) +
-                                    theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                          axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
-                                          axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.9, 0.87), legend.title = element_blank(),
-                                          legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
-                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1),
-                                          plot.title = element_text(hjust = 0.5, size = 20)) +  
-                                    # scale_y_continuous(breaks = seq(0, 30, by = 5)) +
-                                    guides(color = guide_legend(override.aes = list(size = 6, vjust = 10), byrow = TRUE)) +
-                                    scale_y_sqrt() +
-                                    geom_point(position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0), data = Abundance_2022_summary, aes(x = Treat, y = mean_abu), size = 15) +
-                                    # geom_errorbar(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, ymin = mean_abu - se_abu, ymax = mean_abu + se_abu), width = 0.3, size = 1,  alpha = 0.5)
-                                    scale_shape_manual(values = c(20, 23, 15, 16, 17, 18)) 
-
-print(Abundance_2022_plot_avg2)
-
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.2.pdf", plot = Abundance_2022_plot_avg2, width = 10, height = 12)
-
-# ii. version 3:
-
-Abundance_2022_plot_avg3 <-  ggplot(Abundance_2022,aes(Treat, Abundance,colour = Order_SubOrder, fill = Order_SubOrder)) +
-                                    geom_bar(data = Abundance_2022_summary, aes(x = Treat, y = mean_abu, fill = Order_SubOrder), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
-                                    geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Order_SubOrder), position = "dodge", size = 1) +
-                                    scale_colour_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#CEDEBD")) +
-                                    scale_fill_manual(values = c("#071952", "#E9B824", "#5BC0F8", "#D83F31", "#35A29F", "#CEDEBD"), guide = "none") +
-                                    theme_bw() +
-                                    ylab("Accumulated abundance (nº individuals)") +
-                                    ggtitle("")+
-                                    geom_vline(xintercept = 1.5) +
-                                    geom_vline(xintercept = 2.5) +
-                                    theme(axis.title = element_text(size = 20), axis.text = element_text(size = 14), strip.text = element_text(size = 14),
-                                          axis.title.y = element_text(size = 20, margin = margin(r = 8)), axis.title.x = element_blank(), 
-                                          axis.text.y = element_text(size = 20, margin = margin(r = 0), angle = 90), legend.position = c(0.87, 0.9), legend.title = element_blank(),
-                                          legend.background = element_rect(fill="white", size = 0.7, linetype="solid", colour = "black"), 
-                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 20), panel.border = element_rect(size = 1)) 
-   
-print(Abundance_2022_plot_avg3)
-
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.3.pdf", plot = Abundance_2022_plot_avg3, width = 8, height = 10)
-
-# ii. version 4:
-
-Abundance_2022_plot_avg4 <-  ggplot(Abundance_2022,aes(Order_SubOrder, Abundance, colour = Treat, fill = Treat)) +
-                                    geom_bar(data = Abundance_2022_summary, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = "dodge", show.legend = FALSE) +
-                                    geom_errorbar(data = Abundance_2022_summary, aes(y = mean_abu , ymin = mean_abu - se_abu, ymax = mean_abu + se_abu, color = Treat), position = "dodge", size = 1) +
-                                    geom_point(data = Abundance_2022, position = position_jitterdodge (0.80, jitter.width = 0.2, jitter.height = 0)) +
-                                    scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D")) +
-                                    scale_fill_manual(values = c("#002B5B", "#03C988", "#FF5D5D"), guide = "none") +
-                                    theme_bw() +
-                                    ylab("Accumulated abundance (nº individuals)") +
-                                    scale_y_log10(breaks = c(5, 10, 20, 30, 50, 100)) +
-                                    ggtitle("")+
-                                    geom_vline(xintercept = 1.5) +
-                                    geom_vline(xintercept = 2.5) +
-                                    geom_vline(xintercept = 3.5) +
-                                    geom_vline(xintercept = 4.5) +
-                                    geom_vline(xintercept = 5.5) +
-                                    theme(axis.title = element_text(size = 15), axis.text = element_text(size = 15), strip.text = element_text(size = 15),
-                                          axis.title.y = element_text(size = 15, margin = margin(r = 8)), axis.title.x = element_blank(),
-                                          axis.text.y = element_text(size = 15, margin = margin(r = 0), angle = 90), legend.position = "top", 
-                                          legend.background = element_rect(fill="white", size = 0.7), legend.title = element_text(size = 15),
-                                          legend.text = element_text(colour="black", size = 15),  axis.text.x = element_text(size = 13), panel.border = element_rect(size = 1)) 
-
-print(Abundance_2022_plot_avg4)
-
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.7.pdf", plot = Abundance_2022_plot_avg4, width = 8, height = 10) # Abu.div_2022_avg_plots.5.pdf is the same without...
-# ...jitter of points: geom_point(data = Abundance_2022, position = position_dodge(width = 1)) 
-
-# ii. version 5:
-
-Abundance_2022$Date <- as.Date(Abundance_2022$Date)
-
-Abundance_2022_plot_avg5 <- ggplot(Abundance_2022, aes(x = Date, y = Abundance, color = Treat, group = Plot)) +
-                                    geom_line(alpha = 0.5, linetype = "dotted") +  # Adjust transparency by setting alpha
-                                    scale_colour_manual(name = "Irrigation strategies", values = c("#002B5B", "#03C988", "#FF5D5D"), breaks=c('CON', 'MSD', 'AWD')) +
-                                    theme_bw() +
-                                    ylab("Accumulated abundance (nº individuals)") +
-                                    geom_hline(yintercept = 0, color = "grey") +
-                                    guides(linetype = guide_legend(override.aes = list(color = c("black", "black")))) +
-                                    theme(
-                                      axis.title.y = element_text(color = "black"), legend.margin=margin(0,0,0,0),
-                                      axis.text.y = element_text(color = "black"),
-                                      axis.title.y.right = element_text(color = "black"),
-                                      axis.text.y.right = element_text(color = "black"),
-                                      strip.background = element_blank(),
-                                      strip.placement = "outside",
-                                      legend.position="top",
-                                      plot.margin = unit(c(1, 1, 0, 1), "lines")) +
-                                    facet_wrap(~Order_SubOrder)
-
-Abundance_2022avg2 <- Abundance_2022 %>% 
-                      group_by(Date, Order_SubOrder, Treat) %>% 
-                      summarise(Abundance = sum(Abundance))
-
-Abundance_2022_plot_avg5 <- Abundance_2022_plot_avg5 +
-  geom_line(data = Abundance_2022avg2, aes(x = Date, y = Abundance, group = Treat))
-
-print(Abundance_2022_plot_avg5) 
-
-ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.6.pdf", plot = Abundance_2022_plot_avg5, width = 7, height = 5)
-
-# 2nd version Abundance models:
 
 Abundance_2022_2 <- read.csv("data/BIO/Macrofauna_2022.csv", fileEncoding="latin1", na.strings=c("","NA")) %>% # Import Macrofauna_2022 data
                       filter(!(c(Organism == "Pelophylax perezi" & Stadium == "Adult"))) %>% # Removes frog adults (leaving only tadpoles) and rows with empty traps
@@ -771,23 +533,17 @@ Abundance_2022_2$Treat <- factor(Abundance_2022_2$Treat, levels = c("CON", "MSD"
 
 write_csv2(Abundance_2022_2, "outputs/csv/BIO/Abundance_2022_2.csv")
 
-# acc_Abundance_2022_2 <- Abundance_2022_2 %>% # Creates dataframe with accumulated abundances per Treat and Order_SubOrder
-#                         group_by(Treat, Order_SubOrder) %>% 
-#                         summarise(Abundance = sum(Abundance))
- Abu_correctmatrix <- data.frame(Plot = c("P01", "P07", "P09", "P12", "P14"),
+Abu_correctmatrix <- data.frame(Plot = c("P01", "P07", "P09", "P12", "P14"),
                                  Treat =c("AWD", "MSD", "AWD", "CON", "AWD"),
                                  Order_SubOrder = c("Tadpole", "Fish", "Tadpole", "Tadpole", "Tadpole"),
                                  Abundance = rep(0,5))
- Abundance_2022_2 <- rbind(Abundance_2022_2, Abu_correctmatrix)
+Abundance_2022_2 <- rbind(Abundance_2022_2, Abu_correctmatrix)
  
+  # Plots' average:
  
- # ii. Plots' average:
- 
- Abundance_2022_summary_2 <- Abundance_2022_2 %>%
+Abundance_2022_summary_2 <- Abundance_2022_2 %>%
                              group_by(Treat, Order_SubOrder) %>%
                              summarise(mean_abu = mean(Abundance),se_abu = sd(Abundance) / sqrt(n()))
- 
- # ii. version 6:
  
 Abundance_2022_plot_avg6 <- ggplot(Abundance_2022_2,aes(Order_SubOrder, Abundance,  fill = Treat)) +
                                      geom_bar(data = Abundance_2022_summary_2, aes(x = Order_SubOrder, y = mean_abu, fill = Treat), alpha = 0.7, stat = "identity", position = position_dodge(0.95), show.legend = FALSE) +
@@ -816,7 +572,7 @@ Abundance_2022_plot_avg6 <- ggplot(Abundance_2022_2,aes(Order_SubOrder, Abundanc
  
  ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.8.pdf", plot = Abundance_2022_plot_avg6, width = 8, height = 10) 
  
- # ii. version 7: Facet for samplings - as suggested in first AGEE corrections.
+ # Facet for samplings - as suggested in first AGEE corrections (for Sup. Mat.). 
 
  Abundance_zeroAbu <- data.frame( # data frame with plot-dates without observations so these are not excluded from abundance per sampling plot
            Date = as.Date(c("2022-06-08", "2022-06-08", "2022-06-08", "2022-06-08", "2022-07-06", "2022-07-06", "2022-07-06", "2022-07-06", 
@@ -872,7 +628,7 @@ Abundance_2022_plot_avg7 <- ggplot(Abundance_2022_alt,aes(Order_SubOrder, Abunda
  
  ggsave("outputs/Plots/BIO/Abu.div_2022_avg_plots.perDate.pdf", plot = Abundance_2022_plot_avg7, width = 10, height = 10)
  
-## 3.3 Abundance summary table (for Sup. Mat.) ####
+## 3.3. Abundance summary table (for Sup. Mat.) ####
  
 ColOdoHet_SupMat <- ColOdoHet %>% 
                      group_by(Sampling, Treat, Taxres_max) %>% 
