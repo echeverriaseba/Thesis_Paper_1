@@ -35,7 +35,7 @@ Description of the main scripts used for data preparation, plotting and statisti
 
 ### Macroinv_2022_stats_alt_models: All alternative tested models.
   
-### GHG_rates_2022: Calculating original CH<sub>4</sub>emission rates from sampled GHG concentration through gas chromatography.
+### GHG_rates_2022: Calculating original CH<sub>4</sub> emission rates from sampled GHG concentration through gas chromatography.
 - Creating "Chrom_results_2022" dataframe, which calculates GHG concentrations in mg m<sup>-2</sup> from C-ppm chromatography results.
 - Calculating emission rates through lm(), also R<sup>2</sup> for each lm() to apply posterior model corrections (see "Emission_rates_2022" dataframe).
 
