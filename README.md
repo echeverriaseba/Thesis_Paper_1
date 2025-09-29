@@ -40,8 +40,16 @@ Description of the main scripts used for data preparation, plotting and statisti
 - Calculating emission rates through lm(), also R<sup>2</sup> for each lm() to apply posterior model corrections (see "Emission_rates_2022" dataframe).
 
 ### GHG_rates_2022_w_corrections: Applying corrections to GHG (CH<sub>4</sub>, N<sub>2</sub>O and CO<sub>2</sub>) emission rates.   
-- Same procedure as "GHG_rates_2022" script but fitting 4 alternative "3-values" models (each one removing one time-step) and then selecting that which achieves higher R<sup>2</sup> and positive rate (lm slope).
-- Output results saved in "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData" and in "/outputs/GHG/2022/Rates_corrected/Results_CH4_w_corrections.xlsx". 
+- Creating "Chrom_w_corrections_2022" dataframe, which calculates GHG concentrations in mg m<sup>-2</sup> from C-ppm chromatography results.
+- Calculating emission rates through lm(), also R<sup>2</sup> for each lm() to apply posterior model corrections.
+- Fitting 4 alternative "drop-one-timestep" models (each one removing one timestep) and then selecting that which achieves higher R<sup>2</sup> and positive rate (lm slope).
+- outputs:
+  - Emission_rates_w_corrections_2022 dataframe: Chromatography GHG rates for all GHG (CH<sub>4</sub>, N<sub>2</sub>O and CO<sub>2</sub>). Rates (flux), R<sup>2</sup> and p-vaues for all fitted models (complete and alternative. E.g.: Column Chrom_N2O_flux_Alt4 shows all N<sub>2</sub>O rates from alternative model 4, calculated removing T3 (concentration of vial collected at time 30 minutes). Finally, selected model calculations are shown in columns:
+    - "Chrom_GHG_model": Selected model, that with higher R<sup>2</sup> above defined threshold (0.7).
+    - "Chrom_GHG_flux_corrected": Flux from the selected model.
+    - "Chrom_R2_GHG_corrected": R<sup>2</sup> from the selected model.
+    - "Chrom_Logic_GHG": Logic for selecting a particular model. In case none of them surpasses the defined R<sup>2</sup> threshold, or if they do but the rate is negative, then flux is assumed to be 0.
+  - Diagnostic plots: Pdf file with concentrations in time for each of the fitted models and for all GHG (e.g., N2O_Plots_w_corrections_2022.pdf).
 
 ### Emissions_2022: Working with GHG emission rates data.
 - Creating "Master_GHG_2022" dataframe. Emission rates were previously calculated and corrected in script "GHG_rates_2022_w_corrections" and loaded from "/outputs/GHG/2022/Rates_corrected/Emission_rates_w_corrections_2022.RData". This dataframe merges GHG emissions, physicochemical and water level data. Water level is "corrected", meaning that it takes the closest level data to the GHG sampling (see script for notes on script for correction conditions).
