@@ -74,6 +74,8 @@ physchem_avg_2022 <- physchem_avg_2022 %>%
 
 #### 1.2. Creating base biodiv-physchem data frame ####
 
+load("outputs/csv/BIO/Hills_ColOdoHet.Rdata")
+
 Hills_Physchem <- merge(Hills_ColOdoHet, physchem_avg_2022, by = "siteID", all = TRUE)
 Hills_Physchem <- Hills_Physchem %>% 
                   mutate(across(c(q2.se), ~ifelse(is.nan(.), NA, .))) # Replaces NaN for NA values.

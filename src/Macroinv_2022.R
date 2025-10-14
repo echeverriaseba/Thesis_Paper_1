@@ -382,6 +382,8 @@ Hills_ColOdoHet$Treat <- factor(Hills_ColOdoHet$Treat, levels = c("CON", "MSD", 
 
 write_csv(Hills_ColOdoHet, "outputs/csv/BIO/Hills_ColOdoHet.csv")
 
+save(Hills_ColOdoHet, file = "outputs/csv/BIO/Hills_ColOdoHet.Rdata")
+
 ## 2.4. Plot Hill Numbers ####
 
 ColOdoHet_summary_q0 <- Hills_ColOdoHet %>%
